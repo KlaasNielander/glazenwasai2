@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gratis eerste wasbeurt – Lappers Glazenwasser Nijmegen</title>
-    <meta name="description" content="Nieuwe klant? Uw eerste wasbeurt is volledig gratis. Lappers – betrouwbare glazenwasser in Nijmegen en omgeving. Geen verplichtingen.">
+    <meta name="description" content="Nieuwe klant? Uw eerste wasbeurt is volledig gratis. Lappers – betrouwbare glazenwasser in Nijmegen en omgeving. Geen verplichtingen, geen verborgen kosten.">
     <link rel="canonical" href="https://lappers.nl/gratis-wasbeurt">
     <meta name="robots" content="noindex">
 
@@ -16,7 +16,14 @@
 </head>
 <body class="lp-body">
 
-    <nav class="nav lp-nav">
+    <!-- Urgency bar -->
+    <div class="urgency-bar">
+        <span class="urgency-dot" aria-hidden="true"></span>
+        Exclusief voor nieuwe klanten &mdash; beperkte plaatsen beschikbaar
+    </div>
+
+    <!-- Minimal nav -->
+    <nav class="nav lp-nav" id="nav">
         <div class="container nav__inner">
             <a href="/" class="nav__logo">Lappers</a>
             <a href="tel:0629010650" class="lp-nav__phone">
@@ -26,45 +33,44 @@
         </div>
     </nav>
 
+    <!-- Hero sectie -->
     <header class="lp-hero">
+        <div class="lp-hero__glow lp-hero__glow--1" aria-hidden="true"></div>
+        <div class="lp-hero__glow lp-hero__glow--2" aria-hidden="true"></div>
         <div class="container lp-hero__inner">
             <div class="lp-hero__content">
                 <p class="eyebrow eyebrow--light">Exclusief voor nieuwe klanten</p>
                 <h1>Claim jouw<br><em>gratis wasbeurt</em></h1>
-                <p class="lp-hero__sub">Laat uw gegevens achter. Ik bel u persoonlijk op om een moment af te spreken.</p>
+                <p class="lp-hero__sub">Laat uw gegevens achter. Ik bel u persoonlijk op om een moment af te spreken — zonder verplichtingen.</p>
                 <div class="lp-hero__usps">
                     <div class="lp-usp">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                        Geen verplichtingen
-                    </div>
-                    <div class="lp-usp">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                        Ik bel terug binnen 24 uur
-                    </div>
-                    <div class="lp-usp">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                         Volledig gratis — geen verborgen kosten
+                    </div>
+                    <div class="lp-usp">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        Geen verplichtingen, geen abonnement
+                    </div>
+                    <div class="lp-usp">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        Ik bel u terug binnen 24 uur
                     </div>
                 </div>
             </div>
             <div class="lp-form-wrap">
                 <div class="lp-form-card">
                     <p class="lp-form-card__title">Ja, ik wil gratis schone ramen</p>
-                    <p class="lp-form-card__sub">Geen verplichtingen. Ik bel je terug. Binnen 24 uur.</p>
+                    <p class="lp-form-card__sub">Geen verplichtingen. Ik bel u terug. Binnen 24 uur.</p>
                     <form class="lp-form" id="lpForm" novalidate>
                         <div class="form-field">
-                            <label for="lpName">Jouw naam</label>
+                            <label for="lpName">Uw naam</label>
                             <input type="text" id="lpName" name="name" required autocomplete="name" placeholder="Jan de Vries">
                         </div>
                         <div class="form-field">
                             <label for="lpPhone">Telefoonnummer</label>
                             <input type="tel" id="lpPhone" name="phone" required autocomplete="tel" placeholder="06 12 34 56 78">
                         </div>
-                        <div class="form-field">
-                            <label for="lpEmail">E-mailadres</label>
-                            <input type="email" id="lpEmail" name="email" required autocomplete="email" placeholder="jan@email.nl">
-                        </div>
-                        <button type="submit" class="btn btn--gold btn--lg btn--full lp-submit">
+                        <button type="submit" class="btn btn--gold btn--lg btn--full btn--shimmer lp-submit">
                             Claim mijn gratis wasbeurt <span aria-hidden="true">&rarr;</span>
                         </button>
                         <p class="form__notice">Geen spam. Alleen gebruikt om contact op te nemen.</p>
@@ -74,32 +80,131 @@
         </div>
     </header>
 
+    <!-- VSL + uitgebreide form sectie -->
+    <section class="section lp-vsl-section">
+        <div class="container lp-vsl-inner">
+            <!-- VSL video player -->
+            <div class="vsl-player-wrap">
+                <div class="vsl-player" id="vslPlayer">
+                    <div class="vsl-thumbnail">
+                        <div class="vsl-play-btn" id="vslPlayBtn" role="button" tabindex="0" aria-label="Bekijk de video over Lappers">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        </div>
+                        <div class="vsl-overlay-grid" aria-hidden="true"></div>
+                    </div>
+                    <div class="vsl-iframe-wrap" id="vslIframeWrap" hidden>
+                        <!-- Iframe wordt hier door JS geladen bij klik op play -->
+                    </div>
+                </div>
+                <p class="vsl-label">Bekijk hoe Lappers werkt &mdash; 2 min.</p>
+            </div>
+
+            <!-- Uitgebreid formulier -->
+            <div class="lp-form-full glass-card">
+                <p class="lp-form-card__title">Claim jouw gratis wasbeurt</p>
+                <p class="lp-form-card__sub">Vul uw gegevens in — ik bel u persoonlijk terug.</p>
+                <form class="lp-form" id="lpFormFull" novalidate>
+                    <div class="form-field">
+                        <label for="lpFullName">Uw naam</label>
+                        <input type="text" id="lpFullName" name="name" required autocomplete="name" placeholder="Jan de Vries">
+                    </div>
+                    <div class="form-field">
+                        <label for="lpFullPhone">Telefoonnummer</label>
+                        <input type="tel" id="lpFullPhone" name="phone" required autocomplete="tel" placeholder="06 12 34 56 78">
+                    </div>
+                    <button type="submit" class="btn btn--gold btn--lg btn--full btn--shimmer">
+                        Ja, ik wil gratis schone ramen <span aria-hidden="true">&rarr;</span>
+                    </button>
+                    <p class="form__notice">Geen spam. Ik bel u terug binnen 24 uur.</p>
+                </form>
+            </div>
+        </div>
+        <!-- data-src voor YouTube embed — vervang VIDEO_ID door het juiste ID -->
+        <div data-vsl-src="https://www.youtube.com/embed/VIDEO_ID" hidden id="vslData"></div>
+    </section>
+
+    <!-- Social proof balk -->
+    <div class="social-proof-bar">
+        <div class="container social-proof-bar__inner">
+            <div class="social-proof-stars" aria-label="4.9 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <span class="social-proof-text"><strong>127 tevreden klanten</strong> in Nijmegen en omgeving</span>
+            <span class="social-proof-sep" aria-hidden="true">&middot;</span>
+            <span class="social-proof-rating">4.9 / 5</span>
+        </div>
+    </div>
+
+    <!-- Stappen -->
     <section class="section lp-steps-section">
         <div class="container">
             <div class="section__header">
-                <p class="eyebrow">Hoe het werkt</p>
-                <h2>In drie stappen naar <em>stralende ramen</em></h2>
+                <p class="eyebrow eyebrow--light">Hoe het werkt</p>
+                <h2>In 3 stappen naar <em>stralende ramen</em></h2>
             </div>
             <div class="lp-steps">
-                <div class="lp-step">
+                <div class="lp-step glass-card">
                     <div class="lp-step__num">Stap 1</div>
-                    <h3>Jij laat je gegevens achter</h3>
-                    <p>Ik bel je terug en we plannen samen een moment in dat jou uitkomt.</p>
+                    <h3>U laat uw gegevens achter</h3>
+                    <p>Vul het formulier in of bel direct. Ik plan samen met u een moment in dat uitkomt.</p>
                 </div>
-                <div class="lp-step">
+                <div class="lp-step glass-card">
                     <div class="lp-step__num">Stap 2</div>
                     <h3>Ik neem contact op</h3>
-                    <p>Kort telefonisch afstemmen: wanneer kom ik langs, wat zijn de wensen, wat kun je verwachten.</p>
+                    <p>Kort telefonisch afstemmen: wanneer kom ik langs, wat zijn de wensen, wat kunt u verwachten.</p>
                 </div>
-                <div class="lp-step">
+                <div class="lp-step glass-card">
                     <div class="lp-step__num">Stap 3</div>
                     <h3>Ik kom langs</h3>
-                    <p>We maken kennis, ik ga direct aan de slag. De eerste beurt is volledig gratis.</p>
+                    <p>We maken kennis, ik ga direct aan de slag. De eerste beurt is volledig gratis — geen rekening, geen addertje.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Reviews -->
+    <section class="section reviews-section">
+        <div class="container">
+            <div class="section__header">
+                <p class="eyebrow eyebrow--light">Wat klanten zeggen</p>
+                <h2>Nijmegen over <em>Lappers</em></h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card glass-card">
+                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Via de gratis wasbeurt begonnen en nooit meer weggegaan. Betrouwbaar, punctueel, kristalheldere resultaten."</blockquote>
+                    <div class="review-card__author">
+                        <strong>Mark de B.</strong>
+                        <span>Beuningen &middot; Vaste klant</span>
+                    </div>
+                </div>
+                <div class="review-card glass-card">
+                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Geen gedoe, geen strepen, geen verrassingen. Gewoon wat er beloofd wordt. Dat is zeldzaam."</blockquote>
+                    <div class="review-card__author">
+                        <strong>Anita K.</strong>
+                        <span>Nijmegen &middot; Vaste klant</span>
+                    </div>
+                </div>
+                <div class="review-card glass-card">
+                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Eindelijk een glazenwasser die ook echt de kozijnen meeneemt. Huis ziet er compleet anders uit."</blockquote>
+                    <div class="review-card__author">
+                        <strong>Sandra V.</strong>
+                        <span>Nijmegen &middot; Vaste klant</span>
+                    </div>
+                </div>
+                <div class="review-card glass-card">
+                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Hij weet wanneer hij komt, doet zijn werk en het ziet er altijd perfect uit. Precies wat je zoekt."</blockquote>
+                    <div class="review-card__author">
+                        <strong>Peter L.</strong>
+                        <span>Druten</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
     <section class="section section--alt lp-faq-section">
         <div class="container">
             <div class="section__header">
@@ -113,7 +218,7 @@
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq__a" hidden>
-                        <p>Ik werk liever met klanten die tevreden zijn dan met klanten die verplicht zijn. Één gratis beurt — zodat u zelf ervaart wat de kwaliteit is. Geen verplichtingen.</p>
+                        <p>Ik werk liever met klanten die tevreden zijn dan met klanten die verplicht zijn. Eén gratis beurt — zodat u zelf ervaart wat de kwaliteit is. Geen verplichtingen.</p>
                     </div>
                 </div>
                 <div class="faq__item" role="listitem">
@@ -122,12 +227,12 @@
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq__a" hidden>
-                        <p>Echt gratis. Geen abonnementsverplichtingen, geen verborgen kosten. Na de gratis beurt beslist u zelf of u wilt doorgaan.</p>
+                        <p>Echt gratis. Geen abonnementsverplichtingen, geen verborgen kosten. Na de gratis beurt beslist u zelf of u wilt doorgaan en op welke basis.</p>
                     </div>
                 </div>
                 <div class="faq__item" role="listitem">
                     <button class="faq__q" aria-expanded="false">
-                        Moet ik thuis zijn als je langskomt?
+                        Moet ik thuis zijn als u langskomt?
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq__a" hidden>
@@ -140,7 +245,16 @@
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq__a" hidden>
-                        <p>Na de gratis beurt geef ik een vaste prijs op basis van uw woning. Geen verrassingen achteraf.</p>
+                        <p>Na de gratis beurt geef ik een vaste prijs op basis van uw woning. Geen verrassingen achteraf. U beslist zelf of en hoe u verder gaat.</p>
+                    </div>
+                </div>
+                <div class="faq__item" role="listitem">
+                    <button class="faq__q" aria-expanded="false">
+                        Hoe snel word ik teruggebeld?
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq__a" hidden>
+                        <p>Normaal gesproken binnen 24 uur op werkdagen. Vaak eerder. U ontvangt een telefoontje van mij persoonlijk — geen callcenter.</p>
                     </div>
                 </div>
                 <div class="faq__item" role="listitem">
@@ -149,60 +263,19 @@
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq__a" hidden>
-                        <p>Voor rijtjeshuizen, vrijstaande woningen en appartementen is dit vrijwel altijd mogelijk. Bij bijzondere situaties stemmen we vooraf af.</p>
+                        <p>Voor rijtjeshuizen, vrijstaande woningen en appartementen is dit vrijwel altijd mogelijk. Bij bijzondere situaties — zoals dakramen of hoge verdiepingen — stemmen we vooraf af.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section reviews-section">
-        <div class="container">
-            <div class="section__header">
-                <p class="eyebrow eyebrow--light">Wat klanten zeggen</p>
-                <h2>Nijmegen over <em>Lappers</em></h2>
-            </div>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <blockquote>"Via de gratis wasbeurt begonnen en nooit meer weggegaan. Betrouwbaar, punctueel, kristalheldere resultaten."</blockquote>
-                    <div class="review-card__author">
-                        <strong>Mark de B.</strong>
-                        <span>Beuningen &middot; Vaste klant</span>
-                    </div>
-                </div>
-                <div class="review-card">
-                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <blockquote>"Geen gedoe, geen strepen, geen verrassingen. Gewoon wat er beloofd wordt. Dat is zeldzaam."</blockquote>
-                    <div class="review-card__author">
-                        <strong>Anita K.</strong>
-                        <span>Nijmegen &middot; Vaste klant</span>
-                    </div>
-                </div>
-                <div class="review-card">
-                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <blockquote>"Eindelijk een glazenwasser die ook echt de kozijnen meeneemt. Huis ziet er compleet anders uit."</blockquote>
-                    <div class="review-card__author">
-                        <strong>Sandra V.</strong>
-                        <span>Nijmegen &middot; Vaste klant</span>
-                    </div>
-                </div>
-                <div class="review-card">
-                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <blockquote>"Hij weet wanneer hij komt, doet zijn werk en het ziet er altijd perfect uit. Ideaal."</blockquote>
-                    <div class="review-card__author">
-                        <strong>Peter L.</strong>
-                        <span>Druten</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
+    <!-- Minimal footer -->
+    <footer class="footer lp-footer">
         <div class="footer__bottom">
-            <div class="container">
-                <p>&copy; 2025 Lappers &mdash; Glazenwasser Nijmegen &amp; omgeving &middot; <a href="/">Terug naar de hoofdpagina</a></p>
+            <div class="container lp-footer__inner">
+                <p>&copy; 2025 Lappers &mdash; Glazenwasser Nijmegen &amp; omgeving</p>
+                <a href="/" class="lp-footer__back">Terug naar de hoofdpagina</a>
             </div>
         </div>
     </footer>
