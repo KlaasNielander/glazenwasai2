@@ -30,24 +30,18 @@
     },
     "areaServed": ["Nijmegen", "Beuningen", "Wijchen", "Malden", "Groesbeek", "Beek", "Ubbergen"],
     "priceRange": "€€",
-    "openingHours": "Mo-Fr 08:00-18:00",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "127"
-    }
+    "openingHours": "Mo-Fr 08:00-18:00"
   }
   </script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <style>
 /* ==========================================================================
    main.css – Lappers Glazenwasser Nijmegen
    ========================================================================== */
 
-/* --- Design tokens --- */
 :root {
   --sky:        #d6eeff;
   --sky-mid:    #a8d8f8;
@@ -56,14 +50,11 @@
   --blue-dark:  #0e4a7e;
   --ink:        #0d1b2a;
   --ink-mid:    #1e3a54;
-  --ink-soft:   rgba(13,27,42,.62);
   --cream:      #f7f3ec;
   --cream-mid:  #ede8df;
   --sun:        #f9c84a;
   --sun-dark:   #e0a820;
-  --sun-light:  #fef3c7;
   --clean:      #ffffff;
-  --green:      #22c55e;
 
   --font-display: 'Fraunces', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
@@ -71,18 +62,15 @@
   --container:   1100px;
   --radius-sm:   8px;
   --radius-md:   14px;
-  --radius-lg:   22px;
-  --radius-xl:   32px;
+  --radius-lg:   20px;
   --radius-full: 999px;
 
-  --shadow-xs: 0 1px 4px rgba(13,27,42,.06);
-  --shadow-sm: 0 2px 10px rgba(13,27,42,.08);
-  --shadow-md: 0 8px 32px rgba(13,27,42,.11);
-  --shadow-lg: 0 20px 64px rgba(13,27,42,.16);
-  --shadow-xl: 0 32px 96px rgba(13,27,42,.2);
+  /* Gelaagde schaduwen voor meer diepte */
+  --shadow-sm: 0 1px 3px rgba(13,27,42,.04), 0 4px 14px rgba(13,27,42,.08);
+  --shadow-md: 0 1px 3px rgba(13,27,42,.04), 0 8px 28px rgba(13,27,42,.10), 0 20px 48px rgba(13,27,42,.08);
+  --shadow-lg: 0 2px 4px rgba(13,27,42,.04), 0 16px 40px rgba(13,27,42,.10), 0 40px 80px rgba(13,27,42,.14);
 
-  --topbar-h: 48px;
-  --nav-h:    68px;
+  --ease: cubic-bezier(.22, 1, .36, 1);
 }
 
 /* --- Reset --- */
@@ -96,7 +84,6 @@ body {
   color: var(--ink);
   background: var(--cream);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 img { max-width: 100%; display: block; }
@@ -107,16 +94,14 @@ em { font-style: italic; }
 
 /* --- Utilities --- */
 .section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: .45rem;
-  font-size: .75rem;
-  font-weight: 700;
+  display: inline-block;
+  font-size: .78rem;
+  font-weight: 600;
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--blue);
   background: rgba(26,111,181,.1);
-  padding: .35rem .9rem;
+  padding: .35rem .85rem;
   border-radius: var(--radius-full);
   margin-bottom: 1rem;
 }
@@ -127,187 +112,84 @@ em { font-style: italic; }
   margin-bottom: 2.5rem;
   letter-spacing: -.02em;
 }
-.section-title em { color: var(--blue); }
-
-/* Scroll fade-up animation */
-.fade-up {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1);
-}
-.fade-up.visible {
-  opacity: 1;
-  transform: none;
-}
 
 /* ==========================================================================
-   TOPBAR – lead magnet strip (gold)
+   HEADER: topbar + nav
    ========================================================================== */
 
-.topbar {
-  background: var(--sun);
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  padding: 0 1rem;
-  height: var(--topbar-h);
-  position: relative;
-  overflow: hidden;
-  transition: height .3s, opacity .3s;
-  z-index: 300;
-}
-.topbar::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.28) 50%, transparent 100%);
-  animation: topbar-shimmer 4s ease-in-out infinite;
-  pointer-events: none;
-}
-@keyframes topbar-shimmer {
-  0%   { transform: translateX(-100%); }
-  60%  { transform: translateX(100%); }
-  100% { transform: translateX(100%); }
-}
-
-.topbar.hidden {
-  height: 0;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.topbar-inner {
-  display: flex;
-  align-items: center;
-  gap: .85rem;
-  max-width: var(--container);
-  width: 100%;
-  position: relative;
-  z-index: 1;
-}
-
-/* Pulsing live indicator */
-.topbar-pulse {
-  width: 8px;
-  height: 8px;
-  background: var(--green);
-  border-radius: 50%;
-  flex-shrink: 0;
-  position: relative;
-}
-.topbar-pulse::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  background: var(--green);
-  opacity: .35;
-  animation: pulse-ring 1.8s ease-out infinite;
-}
-@keyframes pulse-ring {
-  0%   { transform: scale(1);   opacity: .35; }
-  100% { transform: scale(2.4); opacity: 0; }
-}
-
-.topbar-text {
-  font-size: .85rem;
-  font-weight: 500;
-  color: var(--ink);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  flex: 1;
-}
-.topbar-text strong { font-weight: 800; }
-
-.topbar-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: .35rem;
-  background: var(--ink);
-  color: var(--sun);
-  font-family: var(--font-body);
-  font-size: .82rem;
-  font-weight: 700;
-  padding: .42rem 1.1rem;
-  border-radius: var(--radius-full);
-  text-decoration: none;
-  white-space: nowrap;
-  flex-shrink: 0;
-  transition: background .15s, transform .15s;
-  letter-spacing: .01em;
-}
-.topbar-cta:hover {
-  background: var(--blue-dark);
-  transform: translateY(-1px);
-}
-
-.topbar-close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  background: rgba(13,27,42,.12);
-  border-radius: 50%;
-  font-size: .75rem;
-  color: var(--ink);
-  border: none;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: background .15s;
-  margin-left: auto;
-}
-.topbar-close:hover { background: rgba(13,27,42,.22); }
-
-/* ==========================================================================
-   NAV
-   ========================================================================== */
-
-nav, #nav {
-  background: rgba(247,243,236,.96);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(13,27,42,.08);
-  padding: 0 clamp(1rem, 4vw, 2.5rem);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: var(--nav-h);
+.header-wrap {
   position: sticky;
   top: 0;
   z-index: 200;
-  transition: box-shadow .25s;
 }
-nav.scrolled, #nav.scrolled { box-shadow: 0 4px 32px rgba(13,27,42,.11); }
-nav.topbar-hidden, #nav.topbar-hidden { top: 0; }
+
+.topbar {
+  background: var(--ink);
+  color: var(--clean);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .9rem;
+  padding: .6rem 1.5rem;
+  font-size: .82rem;
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+.topbar span { opacity: .78; }
+.topbar a {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-weight: 700;
+  color: var(--sun);
+  text-decoration: none;
+  white-space: nowrap;
+  border: 1px solid rgba(249,200,74,.35);
+  padding: .28rem .85rem;
+  border-radius: var(--radius-full);
+  transition: background var(--ease) .15s, border-color .15s;
+}
+.topbar a:hover {
+  background: rgba(249,200,74,.12);
+  border-color: rgba(249,200,74,.6);
+}
+
+nav {
+  background: rgba(247,243,236,.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(13,27,42,.07);
+  padding: 0 clamp(1rem, 4vw, 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  transition: box-shadow .3s var(--ease);
+}
+nav.scrolled { box-shadow: 0 4px 32px rgba(13,27,42,.09); }
 
 .logo {
   font-family: var(--font-display);
-  font-size: 1.65rem;
+  font-size: 1.6rem;
   font-weight: 900;
   color: var(--ink);
   text-decoration: none;
   letter-spacing: -.02em;
-  line-height: 1;
 }
 .logo span { color: var(--blue); }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 2rem;
 }
 .nav-links a {
   font-size: .9rem;
   font-weight: 500;
   color: var(--ink);
   text-decoration: none;
-  opacity: .68;
+  opacity: .65;
   transition: opacity .15s;
-  white-space: nowrap;
 }
 .nav-links a:hover { opacity: 1; }
 .nav-links .nav-cta {
@@ -318,57 +200,26 @@ nav.topbar-hidden, #nav.topbar-hidden { top: 0; }
   border-radius: var(--radius-full);
   font-size: .85rem;
   font-weight: 700;
-  transition: background .15s, transform .15s;
+  transition: background .18s, transform .18s var(--ease);
 }
 .nav-links .nav-cta:hover {
   background: var(--blue-dark);
   transform: translateY(-1px);
 }
 
-/* Hamburger */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  width: 36px;
-  height: 36px;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  border-radius: var(--radius-sm);
-  padding: .3rem;
-  transition: background .15s;
-}
-.nav-toggle:hover { background: rgba(13,27,42,.07); }
-.nav-toggle span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--ink);
-  border-radius: 2px;
-  transition: transform .25s, opacity .25s;
-  transform-origin: center;
-}
-.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
 /* ==========================================================================
    HERO
    ========================================================================== */
 
 .hero {
-  background: linear-gradient(155deg, var(--cream) 35%, #e8f4ff 100%);
+  background: linear-gradient(150deg, var(--cream) 40%, #e4f2ff 100%);
   position: relative;
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
-  padding: 88px clamp(1.5rem, 5vw, 80px) 100px;
-  min-height: calc(100vh - var(--topbar-h) - var(--nav-h));
+  padding: 80px clamp(1.5rem, 5vw, 80px) 96px;
 }
 
 .hero-bg-circle {
@@ -377,22 +228,16 @@ nav.topbar-hidden, #nav.topbar-hidden { top: 0; }
   pointer-events: none;
 }
 .hero-bg-circle.c1 {
-  width: 600px; height: 600px;
-  top: -220px; right: -80px;
-  background: radial-gradient(circle, rgba(168,216,248,.55) 0%, transparent 65%);
+  width: 520px; height: 520px;
+  top: -200px; right: -80px;
+  background: radial-gradient(circle, rgba(168,216,248,.6) 0%, transparent 65%);
 }
 .hero-bg-circle.c2 {
-  width: 360px; height: 360px;
+  width: 340px; height: 340px;
   bottom: -100px; left: -80px;
-  background: radial-gradient(circle, rgba(249,200,74,.28) 0%, transparent 65%);
-}
-.hero-bg-circle.c3 {
-  width: 200px; height: 200px;
-  top: 30%; left: 40%;
-  background: radial-gradient(circle, rgba(26,111,181,.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(249,200,74,.22) 0%, transparent 65%);
 }
 
-/* Sparkles */
 .sparkle {
   position: absolute;
   background: var(--sun);
@@ -403,20 +248,16 @@ nav.topbar-hidden, #nav.topbar-hidden { top: 0; }
 }
 @keyframes sparkle-float {
   0%, 100% { opacity: 0;   transform: scale(.4) translateY(0); }
-  50%       { opacity: .7;  transform: scale(1) translateY(-14px); }
+  50%       { opacity: .6; transform: scale(1)   translateY(-14px); }
 }
 
-/* Hero content */
 .hero-content { position: relative; z-index: 1; }
 
 .hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: .4rem;
+  display: inline-block;
   font-size: .8rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: .06em;
-  text-transform: uppercase;
   color: var(--blue);
   background: rgba(26,111,181,.1);
   padding: .35rem .9rem;
@@ -425,40 +266,33 @@ nav.topbar-hidden, #nav.topbar-hidden { top: 0; }
 }
 
 .free-offer-strip {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
+  display: inline-block;
   background: var(--sun);
   color: var(--ink);
-  font-size: .85rem;
-  font-weight: 800;
-  padding: .5rem 1.1rem;
+  font-size: .83rem;
+  font-weight: 700;
+  padding: .48rem 1.05rem;
   border-radius: var(--radius-full);
-  margin-bottom: 1.3rem;
-  box-shadow: 0 4px 16px rgba(249,200,74,.35);
-}
-.free-offer-strip::before {
-  content: '🎁';
-  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 3px 12px rgba(249,200,74,.3);
 }
 
 h1 {
-  font-size: clamp(2.4rem, 5.2vw, 4rem);
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
   color: var(--ink);
-  margin-bottom: 1.3rem;
-  letter-spacing: -.03em;
-  line-height: 1.08;
+  margin-bottom: 1.25rem;
+  letter-spacing: -.025em;
+  line-height: 1.1;
 }
 .hero-sub-line {
-  font-size: .48em;
+  font-size: .52em;
   font-weight: 400;
-  opacity: .48;
+  opacity: .5;
   display: block;
   font-style: normal;
-  margin-bottom: .15em;
-  letter-spacing: -.01em;
+  margin-bottom: .12em;
+  letter-spacing: 0;
 }
-
 .underline-wave {
   position: relative;
   display: inline-block;
@@ -474,45 +308,43 @@ h1 {
 }
 
 .hero-content > p {
-  font-size: 1.06rem;
-  color: var(--ink-soft);
-  max-width: 480px;
+  font-size: 1.05rem;
+  color: rgba(13,27,42,.64);
+  max-width: 460px;
   margin-bottom: 2rem;
-  line-height: 1.7;
   font-weight: 300;
+  line-height: 1.7;
 }
 
-/* CTAs */
 .hero-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .btn-free {
   display: inline-flex;
   align-items: center;
-  gap: .45rem;
+  gap: .4rem;
   background: var(--sun);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: .97rem;
-  font-weight: 800;
-  padding: .9rem 1.9rem;
+  font-size: .95rem;
+  font-weight: 700;
+  padding: .88rem 1.8rem;
   border-radius: var(--radius-full);
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: background .15s, transform .2s, box-shadow .2s;
-  box-shadow: 0 6px 24px rgba(249,200,74,.45);
-  letter-spacing: .01em;
+  transition: background .18s, transform .22s var(--ease), box-shadow .22s var(--ease);
+  box-shadow: 0 4px 16px rgba(249,200,74,.38), 0 1px 3px rgba(249,200,74,.2);
 }
 .btn-free:hover {
   background: var(--sun-dark);
   transform: translateY(-3px);
-  box-shadow: 0 12px 36px rgba(249,200,74,.55);
+  box-shadow: 0 10px 32px rgba(249,200,74,.5), 0 2px 6px rgba(249,200,74,.25);
 }
 
 .btn-secondary {
@@ -524,11 +356,11 @@ h1 {
   font-family: var(--font-body);
   font-size: .9rem;
   font-weight: 600;
-  padding: .9rem 1.6rem;
+  padding: .88rem 1.5rem;
   border-radius: var(--radius-full);
   text-decoration: none;
-  border: 1.5px solid rgba(13,27,42,.22);
-  transition: border-color .15s, background .15s, transform .15s;
+  border: 1.5px solid rgba(13,27,42,.2);
+  transition: border-color .18s, background .18s, transform .22s var(--ease);
 }
 .btn-secondary:hover {
   border-color: var(--ink);
@@ -537,49 +369,42 @@ h1 {
 }
 
 .hero-trust {
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-  flex-wrap: wrap;
   font-size: .78rem;
-  color: rgba(13,27,42,.52);
+  color: rgba(13,27,42,.5);
   font-weight: 500;
+  line-height: 1.6;
 }
-.hero-trust .star-row { color: #f59e0b; }
-.hero-trust .sep { opacity: .3; }
 
-/* Hero visual – window illustration */
+/* Window illustration */
 .hero-visual {
   position: relative;
   z-index: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .window-frame {
   background: var(--clean);
-  border-radius: var(--radius-xl);
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-lg);
   width: 100%;
-  max-width: 440px;
+  max-width: 420px;
   border: 1px solid rgba(13,27,42,.07);
-  animation: window-float 6s ease-in-out infinite;
+  animation: window-float 7s ease-in-out infinite;
 }
 @keyframes window-float {
-  0%, 100% { transform: translateY(0); }
+  0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-12px); }
 }
 
 .window-sky {
-  background: linear-gradient(180deg, #5aabec 0%, #9dd3f7 55%, #d6eeff 100%);
-  height: 220px;
+  background: linear-gradient(180deg, #5aaee8 0%, #9dd3f8 50%, #d6eeff 100%);
+  height: 200px;
   position: relative;
   overflow: hidden;
 }
 
-/* Clouds */
 .cloud {
   position: absolute;
   background: rgba(255,255,255,.92);
@@ -592,22 +417,22 @@ h1 {
   border-radius: 50%;
 }
 .cloud1 {
-  width: 90px; height: 24px;
-  top: 38px; left: 36px;
+  width: 80px; height: 22px;
+  top: 36px; left: 44px;
   animation: cloud-drift 16s linear infinite;
 }
-.cloud1::before { width: 44px; height: 44px; top: -22px; left: 10px; }
-.cloud1::after  { width: 30px; height: 30px; top: -16px; left: 42px; }
+.cloud1::before { width: 40px; height: 40px; top: -20px; left: 10px; }
+.cloud1::after  { width: 28px; height: 28px; top: -14px; left: 38px; }
 .cloud2 {
-  width: 60px; height: 18px;
-  top: 76px; right: 50px;
+  width: 56px; height: 16px;
+  top: 72px; right: 56px;
   animation: cloud-drift 22s linear infinite;
 }
-.cloud2::before { width: 30px; height: 30px; top: -18px; left: 8px; }
-.cloud2::after  { width: 22px; height: 22px; top: -13px; left: 28px; }
+.cloud2::before { width: 28px; height: 28px; top: -16px; left: 8px; }
+.cloud2::after  { width: 20px; height: 20px; top: -11px; left: 28px; }
 @keyframes cloud-drift {
   0%  { transform: translateX(0); }
-  50% { transform: translateX(22px); }
+  50% { transform: translateX(20px); }
   100%{ transform: translateX(0); }
 }
 
@@ -615,7 +440,7 @@ h1 {
   position: absolute;
   top: 0; left: -100%;
   width: 50%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.32), transparent);
   animation: shine-sweep 6s ease-in-out infinite;
   pointer-events: none;
 }
@@ -634,101 +459,53 @@ h1 {
   content: '';
   position: absolute;
   top: 0; bottom: 0; left: 50%;
-  width: 6px; margin-left: -3px;
+  width: 5px; margin-left: -2.5px;
   background: rgba(255,255,255,.5);
 }
 .window-cross::after {
   content: '';
   position: absolute;
   left: 0; right: 0; top: 46%;
-  height: 6px; margin-top: -3px;
+  height: 5px; margin-top: -2.5px;
   background: rgba(255,255,255,.5);
 }
 
 .window-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
+  display: block;
   background: var(--ink);
   color: var(--clean);
   text-align: center;
-  font-size: .9rem;
-  font-weight: 700;
+  font-size: .88rem;
+  font-weight: 600;
   padding: .9rem 1.5rem;
   text-decoration: none;
-  transition: background .15s;
+  transition: background .18s;
 }
 .window-badge:hover { background: var(--blue-dark); }
 
 .window-stat-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid rgba(13,27,42,.08);
+  border-top: 1px solid rgba(13,27,42,.07);
 }
 .window-stat {
-  padding: 1.1rem .75rem;
+  padding: 1rem .75rem;
   text-align: center;
-  border-right: 1px solid rgba(13,27,42,.08);
+  border-right: 1px solid rgba(13,27,42,.07);
 }
 .window-stat:last-child { border-right: none; }
 .window-stat .num {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   font-weight: 900;
   color: var(--blue);
-  line-height: 1;
+  line-height: 1.1;
 }
 .window-stat .lbl {
   font-size: .68rem;
   font-weight: 500;
-  color: rgba(13,27,42,.48);
+  color: rgba(13,27,42,.45);
   margin-top: .2rem;
-}
-
-/* ==========================================================================
-   MARQUEE – social proof ticker
-   ========================================================================== */
-
-.marquee {
-  background: var(--ink);
-  padding: .72rem 0;
-  overflow: hidden;
-  border-top: 1px solid rgba(255,255,255,.06);
-}
-
-.marquee-track {
-  display: flex;
-  white-space: nowrap;
-  gap: 0;
-}
-
-.marquee-inner {
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-  animation: marquee-scroll 30s linear infinite;
-  padding-right: 0;
-  font-size: .8rem;
-  font-weight: 600;
-  color: rgba(255,255,255,.72);
-  letter-spacing: .02em;
-  flex-shrink: 0;
-}
-@keyframes marquee-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.marquee-item {
-  padding: 0 2rem;
-  white-space: nowrap;
-}
-.marquee-item.accent { color: var(--sun); }
-
-.marquee-dot {
-  opacity: .3;
-  padding: 0 .5rem;
 }
 
 /* ==========================================================================
@@ -737,10 +514,10 @@ h1 {
 
 .services {
   background: var(--cream);
-  padding: 96px clamp(1.5rem, 5vw, 80px);
+  padding: 88px clamp(1.5rem, 5vw, 80px);
   text-align: center;
 }
-.services .section-title { margin-bottom: 2.5rem; }
+.services .section-title { margin-bottom: 2rem; }
 
 .services-grid {
   display: grid;
@@ -755,8 +532,8 @@ h1 {
   background: var(--clean);
   border: 1.5px solid rgba(13,27,42,.07);
   border-radius: var(--radius-lg);
-  padding: 1.9rem;
-  transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s, border-color .25s;
+  padding: 1.8rem;
+  transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .2s;
   position: relative;
   overflow: hidden;
 }
@@ -766,70 +543,68 @@ h1 {
   top: 0; left: 0; right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--blue), var(--sky-mid));
+  border-radius: 0 0 3px 3px;
   opacity: 0;
-  transition: opacity .25s;
+  transition: opacity .25s var(--ease);
 }
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 16px 48px rgba(13,27,42,.13);
-  border-color: rgba(26,111,181,.2);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(26,111,181,.18);
 }
 .service-card:hover::before { opacity: 1; }
 
 .service-card--featured {
   border-color: var(--blue);
-  background: linear-gradient(150deg, rgba(26,111,181,.04) 0%, var(--clean) 60%);
+  background: linear-gradient(145deg, rgba(26,111,181,.04) 0%, var(--clean) 60%);
 }
 .service-card--featured::before { opacity: 1; }
 
 .service-card__most-chosen {
   position: absolute;
-  top: -1px;
-  left: 1.5rem;
+  top: -1px; left: 1.5rem;
   background: var(--blue);
   color: var(--clean);
   font-size: .68rem;
   font-weight: 800;
-  letter-spacing: .07em;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  padding: .3rem .8rem;
+  padding: .28rem .75rem;
   border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
 .service-icon {
-  width: 54px; height: 54px;
+  width: 52px; height: 52px;
   background: var(--sky);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--blue);
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.05rem;
   transition: background .25s;
 }
-.service-card:hover .service-icon { background: rgba(26,111,181,.18); }
+.service-card:hover .service-icon { background: rgba(26,111,181,.16); }
 
 .service-card h3 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--ink);
-  margin-bottom: .55rem;
+  margin-bottom: .5rem;
   font-weight: 800;
 }
 .service-card p {
   font-size: .9rem;
-  color: var(--ink-soft);
+  color: rgba(13,27,42,.58);
   line-height: 1.65;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1rem;
   font-weight: 300;
 }
 .service-tag {
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   font-size: .7rem;
   font-weight: 700;
-  padding: .25rem .7rem;
+  padding: .25rem .65rem;
   border-radius: var(--radius-full);
-  letter-spacing: .04em;
 }
 .tag-abo  { background: rgba(26,111,181,.1); color: var(--blue); }
 .tag-once { background: rgba(249,200,74,.22); color: #7a5d00; }
@@ -840,7 +615,7 @@ h1 {
 
 .how {
   background: var(--ink);
-  padding: 96px clamp(1.5rem, 5vw, 80px);
+  padding: 88px clamp(1.5rem, 5vw, 80px);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -848,14 +623,14 @@ h1 {
 .how::before {
   content: '';
   position: absolute;
-  top: -200px; right: -200px;
+  top: -160px; right: -160px;
   width: 600px; height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(26,111,181,.14) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(26,111,181,.12) 0%, transparent 65%);
   pointer-events: none;
 }
 .how .section-label {
-  background: rgba(214,238,255,.14);
+  background: rgba(168,216,248,.14);
   color: var(--sky-mid);
 }
 .how .section-title { color: var(--clean); }
@@ -868,44 +643,32 @@ h1 {
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   text-align: left;
-  position: relative;
 }
-.steps::before {
-  content: '';
-  position: absolute;
-  top: 2.2rem;
-  left: calc(12.5% + 1.5rem);
-  right: calc(12.5% + 1.5rem);
-  height: 1px;
-  background: linear-gradient(90deg, rgba(168,216,248,.25), rgba(168,216,248,.1));
-  pointer-events: none;
-}
-
 .step {
   background: rgba(255,255,255,.05);
   border: 1px solid rgba(255,255,255,.09);
   border-radius: var(--radius-lg);
-  padding: 1.9rem 1.6rem;
-  transition: background .25s, border-color .25s, transform .25s;
+  padding: 1.8rem;
+  transition: background .25s var(--ease), border-color .25s, transform .28s var(--ease);
 }
 .step:hover {
   background: rgba(255,255,255,.09);
-  border-color: rgba(168,216,248,.25);
+  border-color: rgba(168,216,248,.22);
   transform: translateY(-4px);
 }
 .step-num {
   font-family: var(--font-display);
-  font-size: 2.8rem;
+  font-size: 2.4rem;
   font-weight: 900;
   color: var(--sky-mid);
-  opacity: .35;
+  opacity: .4;
   line-height: 1;
-  margin-bottom: .9rem;
+  margin-bottom: .8rem;
 }
 .step h4 {
-  font-size: .97rem;
+  font-size: 1rem;
   color: var(--clean);
-  margin-bottom: .55rem;
+  margin-bottom: .5rem;
   font-weight: 700;
 }
 .step p {
@@ -916,195 +679,30 @@ h1 {
 }
 
 /* ==========================================================================
-   REVIEWS
-   ========================================================================== */
-
-.reviews {
-  background: var(--cream-mid);
-  padding: 96px clamp(1.5rem, 5vw, 80px);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.reviews::before {
-  content: '';
-  position: absolute;
-  bottom: -150px; left: -150px;
-  width: 500px; height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(26,111,181,.06) 0%, transparent 65%);
-  pointer-events: none;
-}
-
-.reviews-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2.5rem;
-}
-.google-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  background: var(--clean);
-  border: 1.5px solid rgba(13,27,42,.08);
-  border-radius: var(--radius-full);
-  padding: .45rem 1rem;
-  font-size: .82rem;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 1.1rem;
-  box-shadow: var(--shadow-xs);
-}
-.google-stars { color: #f59e0b; letter-spacing: .05em; }
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  max-width: var(--container);
-  margin: 0 auto;
-  text-align: left;
-}
-
-.review-card {
-  background: var(--clean);
-  border: 1.5px solid rgba(13,27,42,.07);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s;
-}
-.review-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 44px rgba(13,27,42,.1);
-}
-.review-card--featured {
-  border-color: var(--blue);
-  background: linear-gradient(150deg, rgba(26,111,181,.03), var(--clean));
-}
-
-.review-stars { color: #f59e0b; font-size: .95rem; letter-spacing: .06em; }
-.review-quote {
-  font-size: .9rem;
-  line-height: 1.7;
-  color: rgba(13,27,42,.7);
-  font-style: italic;
-  font-weight: 300;
-  flex: 1;
-}
-.review-quote::before { content: 'C'; }
-.review-quote::after  { content: 'D'; }
-.reviewer {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-}
-.reviewer-avatar {
-  width: 40px; height: 40px;
-  background: var(--sky);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: .95rem;
-  font-weight: 900;
-  color: var(--blue);
-  flex-shrink: 0;
-}
-.reviewer-info strong {
-  display: block;
-  font-size: .88rem;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.2;
-}
-.reviewer-info span {
-  font-size: .75rem;
-  color: rgba(13,27,42,.45);
-  font-weight: 400;
-}
-
-/* ==========================================================================
-   CTA BANNER
-   ========================================================================== */
-
-.cta-banner {
-  background: linear-gradient(135deg, var(--ink) 0%, var(--ink-mid) 100%);
-  padding: 80px clamp(1.5rem, 5vw, 80px);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.cta-banner::before {
-  content: '';
-  position: absolute;
-  top: -120px; right: -120px;
-  width: 480px; height: 480px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(249,200,74,.12) 0%, transparent 65%);
-  pointer-events: none;
-}
-.cta-banner::after {
-  content: '';
-  position: absolute;
-  bottom: -100px; left: -100px;
-  width: 360px; height: 360px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(26,111,181,.18) 0%, transparent 65%);
-  pointer-events: none;
-}
-
-.cta-banner-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 640px;
-  margin: 0 auto;
-}
-.cta-banner h2 {
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
-  color: var(--clean);
-  margin-bottom: 1rem;
-  letter-spacing: -.03em;
-  line-height: 1.1;
-}
-.cta-banner h2 em { color: var(--sun); }
-.cta-banner p {
-  font-size: .9rem;
-  color: rgba(255,255,255,.45);
-  margin-top: 1.1rem;
-  font-weight: 300;
-  letter-spacing: .02em;
-}
-
-/* ==========================================================================
    CONTACT
    ========================================================================== */
 
 .contact {
   background: var(--cream);
-  padding: 96px clamp(1.5rem, 5vw, 80px);
+  padding: 88px clamp(1.5rem, 5vw, 80px);
   text-align: center;
 }
-.contact .section-title { margin-bottom: 1.2rem; }
+.contact .section-title { margin-bottom: 1rem; }
 
 .contact-box {
   max-width: 520px;
   margin: 0 auto;
   background: var(--clean);
-  border: 1.5px solid rgba(13,27,42,.08);
-  border-radius: var(--radius-xl);
-  padding: 2.75rem;
-  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(13,27,42,.07);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
   text-align: left;
 }
 
 .phone-big {
   font-family: var(--font-display);
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   font-weight: 900;
   color: var(--blue);
   letter-spacing: -.03em;
@@ -1119,8 +717,8 @@ h1 {
 
 .phone-sub {
   font-size: .88rem;
-  color: var(--ink-soft);
-  margin-bottom: 1.5rem;
+  color: rgba(13,27,42,.5);
+  margin-bottom: 1.3rem;
   text-align: center;
   font-weight: 300;
 }
@@ -1135,13 +733,13 @@ h1 {
   font-family: var(--font-body);
   font-size: .95rem;
   font-weight: 700;
-  padding: .95rem 2rem;
+  padding: .92rem 2rem;
   border-radius: var(--radius-full);
   text-decoration: none;
   border: none;
   cursor: pointer;
   width: 100%;
-  transition: background .15s, transform .15s;
+  transition: background .18s, transform .22s var(--ease);
 }
 .btn-primary:hover {
   background: var(--blue-dark);
@@ -1154,14 +752,13 @@ h1 {
   gap: 1rem;
   color: rgba(13,27,42,.3);
   font-size: .82rem;
-  margin: 1.4rem 0;
-  font-weight: 400;
+  margin: 1.3rem 0;
 }
 .divider::before, .divider::after {
   content: '';
   flex: 1;
   height: 1px;
-  background: rgba(13,27,42,.1);
+  background: rgba(13,27,42,.09);
 }
 
 /* Forms */
@@ -1175,12 +772,12 @@ h1 {
 input, textarea, select {
   width: 100%;
   font-family: var(--font-body);
-  font-size: .93rem;
+  font-size: .92rem;
   color: var(--ink);
-  background: #f3f0eb;
+  background: #f2ede6;
   border: 1.5px solid rgba(13,27,42,.1);
   border-radius: var(--radius-md);
-  padding: .85rem 1.1rem;
+  padding: .78rem 1rem;
   outline: none;
   transition: border-color .18s, box-shadow .18s, background .18s;
   resize: vertical;
@@ -1191,27 +788,26 @@ input:focus, textarea:focus {
   background: var(--clean);
   box-shadow: 0 0 0 3px rgba(26,111,181,.1);
 }
-input.error { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,.1); }
 
 .submit-btn {
   width: 100%;
   background: var(--sun);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: .97rem;
-  font-weight: 800;
-  padding: .95rem 2rem;
+  font-size: .95rem;
+  font-weight: 700;
+  padding: .92rem 2rem;
   border-radius: var(--radius-full);
   border: none;
   cursor: pointer;
-  transition: background .15s, transform .2s, box-shadow .2s;
-  margin-top: .3rem;
-  box-shadow: 0 4px 20px rgba(249,200,74,.3);
+  transition: background .18s, transform .22s var(--ease), box-shadow .22s var(--ease);
+  margin-top: .25rem;
+  box-shadow: 0 3px 12px rgba(249,200,74,.28);
 }
 .submit-btn:hover {
   background: var(--sun-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(249,200,74,.45);
+  box-shadow: 0 8px 24px rgba(249,200,74,.42);
 }
 .submit-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; box-shadow: none; }
 
@@ -1220,10 +816,10 @@ input.error { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,.1); }
   color: #166534;
   background: #dcfce7;
   border: 1px solid #86efac;
-  border-radius: var(--radius-md);
-  padding: .95rem 1.1rem;
+  border-radius: var(--radius-sm);
+  padding: .88rem 1rem;
   font-size: .9rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-top: .75rem;
   text-align: center;
 }
@@ -1235,13 +831,13 @@ input.error { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,.1); }
 
 .area {
   background: var(--sky);
-  padding: 3.5rem clamp(1.5rem, 5vw, 80px);
+  padding: 3.25rem clamp(1.5rem, 5vw, 80px);
   text-align: center;
 }
 .area p {
   font-size: .9rem;
   color: var(--ink-mid);
-  margin-bottom: 1.1rem;
+  margin-bottom: 1rem;
   font-weight: 600;
 }
 .area-tags {
@@ -1255,14 +851,14 @@ input.error { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,.1); }
   color: var(--blue);
   font-size: .82rem;
   font-weight: 600;
-  padding: .42rem .95rem;
+  padding: .4rem .95rem;
   border-radius: var(--radius-full);
-  border: 1.5px solid rgba(26,111,181,.2);
-  transition: background .15s, border-color .15s;
+  border: 1px solid rgba(26,111,181,.18);
+  transition: background .18s, border-color .18s;
 }
 .area-tag:hover {
   background: var(--sky-mid);
-  border-color: var(--blue);
+  border-color: rgba(26,111,181,.35);
 }
 
 /* ==========================================================================
@@ -1271,15 +867,15 @@ input.error { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,.1); }
 
 footer {
   background: var(--ink);
-  color: rgba(255,255,255,.45);
-  padding: 3rem 1.5rem 2.5rem;
+  color: rgba(255,255,255,.5);
+  padding: 2.75rem 1.5rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: .6rem;
+  gap: .55rem;
 }
-footer .logo { font-size: 1.45rem; color: var(--clean); margin-bottom: .35rem; }
+footer .logo { font-size: 1.4rem; color: var(--clean); margin-bottom: .2rem; }
 footer .logo span { color: var(--sky-mid); }
 footer div  { font-size: .84rem; }
 footer a    { color: var(--sky-mid); text-decoration: none; }
@@ -1301,15 +897,15 @@ footer a:hover { text-decoration: underline; }
   font-weight: 700;
   font-size: .95rem;
   text-align: center;
-  padding: 1.05rem;
+  padding: 1rem;
   border-radius: var(--radius-full);
   text-decoration: none;
-  box-shadow: 0 8px 32px rgba(13,27,42,.32);
+  box-shadow: 0 8px 32px rgba(13,27,42,.28);
   z-index: 300;
   align-items: center;
   justify-content: center;
   gap: .6rem;
-  transition: background .15s;
+  transition: background .18s;
 }
 .mobile-call-cta:hover { background: var(--blue-dark); }
 
@@ -1322,37 +918,41 @@ footer a:hover { text-decoration: underline; }
   position: fixed;
   bottom: 1.25rem;
   left: 1.25rem;
+  right: auto;
   background: var(--ink);
   color: rgba(255,255,255,.8);
   border-radius: var(--radius-lg);
-  padding: 1.35rem 1.6rem;
-  box-shadow: var(--shadow-xl);
+  padding: 1.3rem 1.5rem;
+  box-shadow: var(--shadow-lg);
   z-index: 400;
   max-width: 420px;
   border: 1px solid rgba(255,255,255,.08);
 }
-.cookie-banner.visible { display: block; animation: cookie-slide 0.4s cubic-bezier(.22,1,.36,1) both; }
-@keyframes cookie-slide {
+.cookie-banner.visible {
+  display: block;
+  animation: cookie-up .4s var(--ease) both;
+}
+@keyframes cookie-up {
   from { transform: translateY(120%); opacity: 0; }
   to   { transform: none; opacity: 1; }
 }
 .cookie-banner p {
   font-size: .84rem;
   margin-bottom: 1rem;
-  line-height: 1.6;
+  line-height: 1.55;
   color: rgba(255,255,255,.68);
 }
 .cookie-banner-actions { display: flex; gap: .75rem; }
 .cookie-btn {
   flex: 1;
-  padding: .65rem 1rem;
+  padding: .6rem 1rem;
   border-radius: var(--radius-full);
   font-family: var(--font-body);
   font-size: .84rem;
   font-weight: 600;
   border: none;
   cursor: pointer;
-  transition: opacity .15s, transform .15s;
+  transition: opacity .15s, transform .18s var(--ease);
 }
 .cookie-btn:hover { opacity: .85; transform: translateY(-1px); }
 .cookie-btn-decline { background: rgba(255,255,255,.12); color: rgba(255,255,255,.72); }
@@ -1365,70 +965,26 @@ footer a:hover { text-decoration: underline; }
 @media (max-width: 960px) {
   .hero {
     grid-template-columns: 1fr;
-    padding: 64px 1.5rem 80px;
-    min-height: auto;
+    padding: 60px 1.5rem 72px;
   }
   .hero-visual { display: none; }
   .steps { grid-template-columns: 1fr 1fr; }
-  .steps::before { display: none; }
   .services-grid { grid-template-columns: 1fr; }
-  .reviews-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 640px) {
-  :root {
-    --topbar-h: 44px;
-    --nav-h: 60px;
-  }
-
-  nav, #nav { padding: 0 1rem; }
+  nav { padding: 0 1rem; }
   .nav-links a:not(.nav-cta) { display: none; }
-  .nav-toggle { display: flex; }
 
-  /* Mobile nav open state */
-  .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: .5rem;
-    position: fixed;
-    top: var(--nav-h);
-    left: 0; right: 0;
-    background: rgba(247,243,236,.98);
-    backdrop-filter: blur(20px);
-    padding: 1.25rem 1.25rem 1.5rem;
-    border-bottom: 1px solid rgba(13,27,42,.1);
-    box-shadow: 0 16px 40px rgba(13,27,42,.14);
-    z-index: 199;
-  }
-  .nav-links.open a:not(.nav-cta) {
-    display: block;
-    font-size: 1.05rem;
-    padding: .75rem .5rem;
-    border-bottom: 1px solid rgba(13,27,42,.07);
-    opacity: 1;
-  }
-  .nav-links.open .nav-cta {
-    text-align: center;
-    padding: .9rem;
-    margin-top: .5rem;
-  }
-
-  .hero  { padding: 52px 1.25rem 64px; }
-  .how   { padding: 72px 1.25rem; }
+  .hero  { padding: 48px 1.25rem 64px; }
+  .how   { padding: 64px 1.25rem; }
   .steps { grid-template-columns: 1fr; }
 
-  .contact-box { padding: 1.9rem 1.25rem; }
+  .contact-box { padding: 1.8rem 1.25rem; }
   .form-row    { grid-template-columns: 1fr; }
-  .phone-big   { font-size: 1.8rem; }
-
-  .reviews-grid { grid-template-columns: 1fr; }
-  .services-grid { grid-template-columns: 1fr; }
+  .phone-big   { font-size: 1.75rem; }
 
   .mobile-call-cta { display: flex; }
-
-  .topbar-text { font-size: .76rem; }
-  .topbar-cta  { font-size: .76rem; padding: .38rem .9rem; }
 
   .cookie-banner {
     left: .75rem; right: .75rem;
@@ -1441,70 +997,44 @@ footer a:hover { text-decoration: underline; }
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════════════
-       TOPBAR – lead magnet (gold, sticky bovenaan nav)
-  ═══════════════════════════════════════════════════ -->
-  <div class="topbar" id="topbar" role="banner">
-    <div class="topbar-inner">
-      <span class="topbar-pulse" aria-hidden="true"></span>
-      <span class="topbar-text">Nieuwe klanten: <strong>eerste wasbeurt 100% gratis</strong> &mdash; geen verplichtingen</span>
-      <a href="preview-lp-new.html" class="topbar-cta">Claim gratis wasbeurt &rarr;</a>
-      <button class="topbar-close" id="topbarClose" aria-label="Melding sluiten">&#10005;</button>
+  <div class="header-wrap">
+    <div class="topbar">
+      <span>Nieuwe klanten: eerste wasbeurt 100% gratis</span>
+      <a href="preview-lp-new.html">Claim gratis wasbeurt &rarr;</a>
     </div>
+    <nav id="nav">
+      <div class="logo">Lap<span>pers</span></div>
+      <div class="nav-links">
+        <a href="#diensten">Diensten</a>
+        <a href="#werkwijze">Werkwijze</a>
+        <a href="#contact" class="nav-cta">Offerte aanvragen</a>
+      </div>
+    </nav>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════
-       NAV
-  ═══════════════════════════════════════════════════ -->
-  <nav id="nav" role="navigation" aria-label="Hoofdmenu">
-    <a href="/" class="logo" aria-label="Lappers – terug naar home">Lap<span>pers</span></a>
-    <div class="nav-links" id="navLinks">
-      <a href="#diensten">Diensten</a>
-      <a href="#werkwijze">Werkwijze</a>
-      <a href="#beoordelingen">Beoordelingen</a>
-      <a href="#contact" class="nav-cta">Offerte aanvragen</a>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- ═══════════════════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════════════════ -->
-  <section class="hero" aria-labelledby="hero-heading">
-    <div class="hero-bg-circle c1" aria-hidden="true"></div>
-    <div class="hero-bg-circle c2" aria-hidden="true"></div>
-    <div class="hero-bg-circle c3" aria-hidden="true"></div>
-    <div class="sparkle" style="width:7px;height:7px;top:22%;left:44%;animation-delay:0s;" aria-hidden="true"></div>
-    <div class="sparkle" style="width:5px;height:5px;top:58%;left:52%;animation-delay:1.4s;" aria-hidden="true"></div>
-    <div class="sparkle" style="width:9px;height:9px;top:32%;left:68%;animation-delay:2.8s;" aria-hidden="true"></div>
+  <section class="hero">
+    <div class="hero-bg-circle c1"></div>
+    <div class="hero-bg-circle c2"></div>
+    <div class="sparkle" style="width:8px;height:8px;top:25%;left:42%;animation-delay:0s;"></div>
+    <div class="sparkle" style="width:6px;height:6px;top:60%;left:55%;animation-delay:1.2s;"></div>
+    <div class="sparkle" style="width:10px;height:10px;top:35%;left:70%;animation-delay:2.5s;"></div>
 
     <div class="hero-content">
       <div class="hero-tag">&#10022; Glazenwasser Nijmegen &amp; omstreken</div>
-      <div class="free-offer-strip">Nieuwe klanten &mdash; eerste wasbeurt 100% gratis</div>
-      <h1 id="hero-heading">
-        <span class="hero-sub-line">Glazenwasser Nijmegen</span>
+      <div class="free-offer-strip">&#127381; Nieuwe klanten: eerste wasbeurt gratis &mdash; geen verplichtingen</div>
+      <h1>
+        <span class="hero-sub-line">Glazenwasser Nijmegen &mdash;</span><br>
         Ramen die <em><span class="underline-wave">&eacute;cht</span> schitteren.</em>
       </h1>
-      <p>Lappers wast ramen en kozijnen bij particulieren in Nijmegen, Beuningen, Wijchen, Groesbeek en omgeving. Eenmalig of op vaste basis &mdash; altijd op afspraak, altijd streeploos resultaat.</p>
+      <p>Lappers wast ramen en kozijnen bij particulieren in Nijmegen, Beuningen, Wijchen, Groesbeek en omgeving. Eenmalig of op vaste basis &mdash; altijd op afspraak en streeploos resultaat.</p>
       <div class="hero-actions">
         <a href="preview-lp-new.html" class="btn-free">Claim gratis wasbeurt &rarr;</a>
         <a href="#contact" class="btn-secondary">Offerte aanvragen</a>
       </div>
-      <div class="hero-trust">
-        <span class="star-row">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <strong>4.9 op Google</strong>
-        <span class="sep">&middot;</span>
-        127 beoordelingen
-        <span class="sep">&middot;</span>
-        Verzekerd
-        <span class="sep">&middot;</span>
-        Geen verborgen kosten
-      </div>
+      <div class="hero-trust">&#9733;&#9733;&#9733;&#9733;&#9733;&ensp;4.9 op Google &middot; 127 beoordelingen &middot; Verzekerd &middot; Geen verborgen kosten</div>
     </div>
 
-    <div class="hero-visual" aria-hidden="true">
+    <div class="hero-visual">
       <div class="window-frame">
         <div class="window-sky">
           <div class="cloud cloud1"></div>
@@ -1512,10 +1042,7 @@ footer a:hover { text-decoration: underline; }
           <div class="shine-bar"></div>
           <div class="window-cross"></div>
         </div>
-        <a href="tel:+31629010630" class="window-badge">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Bel direct: 06 290 106 30
-        </a>
+        <a href="tel:+31629010630" class="window-badge">&#128222; Bel direct: 06 290 106 30</a>
         <div class="window-stat-row">
           <div class="window-stat">
             <div class="num">500+</div>
@@ -1534,124 +1061,66 @@ footer a:hover { text-decoration: underline; }
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════
-       MARQUEE – social proof ticker
-  ═══════════════════════════════════════════════════ -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="marquee-inner">
-        <span class="marquee-item accent">&#9733; 4.9 op Google</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">127 beoordelingen</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Geen strepen</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item accent">&#127873; Eerste beurt gratis</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Verzekerd bedrijf</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">500+ tevreden klanten</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Kozijnen gratis mee</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Geen verborgen kosten</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">Actief in Nijmegen &amp; omstreken</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item accent">Maandelijks, 6-wekelijks of per kwartaal</span>
-        <span class="marquee-dot">&middot;</span>
-      </span>
-      <span class="marquee-inner" aria-hidden="true">
-        <span class="marquee-item accent">&#9733; 4.9 op Google</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">127 beoordelingen</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Geen strepen</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item accent">&#127873; Eerste beurt gratis</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Verzekerd bedrijf</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">500+ tevreden klanten</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Kozijnen gratis mee</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Geen verborgen kosten</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">Actief in Nijmegen &amp; omstreken</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item accent">Maandelijks, 6-wekelijks of per kwartaal</span>
-        <span class="marquee-dot">&middot;</span>
-      </span>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════════════════════════
-       DIENSTEN
-  ═══════════════════════════════════════════════════ -->
-  <section class="services" id="diensten" aria-labelledby="diensten-heading">
+  <section class="services" id="diensten">
     <div class="section-label">Wat ik doe</div>
-    <h2 class="section-title" id="diensten-heading">Alles voor <em>stralend</em> heldere ramen</h2>
+    <h2 class="section-title">Alles voor <em>stralend</em> heldere ramen</h2>
     <div class="services-grid">
-      <div class="service-card fade-up">
+      <div class="service-card">
         <div class="service-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
         </div>
         <h3>Ramen lappen</h3>
-        <p>Binnen &eacute;n buiten, van begane grond tot verdieping. Professioneel materiaal, streeploos resultaat &mdash; gegarandeerd.</p>
+        <p>Binnen &eacute;n buiten, van begane grond tot verdieping. Professioneel materiaal, streeploos resultaat.</p>
         <span class="service-tag tag-abo">Abonnement mogelijk</span>
       </div>
-      <div class="service-card fade-up" style="transition-delay:.07s">
+      <div class="service-card">
         <div class="service-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <h3>Kozijnen &amp; omlijsting</h3>
-        <p>Ramen zijn maar de helft van het plaatje. Kozijnen en omlijstingen maak ik tegelijk mee schoon, zonder meerprijs.</p>
+        <p>Ramen zijn maar de helft van het plaatje. De kozijnen en omlijstingen maak ik tegelijk schoon.</p>
         <span class="service-tag tag-abo">Abonnement mogelijk</span>
       </div>
-      <div class="service-card service-card--featured fade-up" style="transition-delay:.14s">
+      <div class="service-card service-card--featured">
         <div class="service-card__most-chosen">Meest gekozen</div>
         <div class="service-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
         <h3>Vaste schoonmaakbeurt</h3>
-        <p>Kies zelf de frequentie: maandelijks, om de zes weken of elk kwartaal. Ik kom op vaste tijden langs &mdash; u hoeft er niet voor thuis te zijn.</p>
+        <p>Kies zelf de frequentie: maandelijks, om de zes weken of elk kwartaal. Ik kom op vaste tijden langs.</p>
         <span class="service-tag tag-abo">Abonnement</span>
       </div>
-      <div class="service-card fade-up" style="transition-delay:.21s">
+      <div class="service-card">
         <div class="service-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <h3>Eenmalige beurt</h3>
-        <p>Verbouwing afgerond? Voorjaarsschoonmaak? Gewoon zin in schone ramen? Ik kom langs, ook voor een eenmalig klusje.</p>
+        <p>Verbouwing afgerond? Voorjaarsschoonmaak? Gewoon zin in schone ramen? Ik kom gewoon langs.</p>
         <span class="service-tag tag-once">Eenmalig</span>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════
-       WERKWIJZE
-  ═══════════════════════════════════════════════════ -->
-  <section class="how" id="werkwijze" aria-labelledby="werkwijze-heading">
+  <section class="how" id="werkwijze">
     <div class="section-label">Zo werkt het</div>
-    <h2 class="section-title" id="werkwijze-heading">Van aanvraag naar <em>blinkende</em> ramen</h2>
+    <h2 class="section-title">Van aanvraag naar <em>blinkende</em> ramen</h2>
     <div class="steps">
-      <div class="step fade-up">
+      <div class="step">
         <div class="step-num">01</div>
         <h4>Neem contact op</h4>
-        <p>Bel me op of vul het formulier in. Ik reageer snel en zonder omhaal.</p>
+        <p>Bel me op of vul het contactformulier in. Ik reageer snel en zonder gedoe.</p>
       </div>
-      <div class="step fade-up" style="transition-delay:.07s">
+      <div class="step">
         <div class="step-num">02</div>
         <h4>Korte afstemming</h4>
-        <p>Ik geef een eerlijke prijs op basis van uw woning. Geen verborgen kosten.</p>
+        <p>Ik geef een eerlijke prijs, gebaseerd op uw woning. Geen verborgen kosten.</p>
       </div>
-      <div class="step fade-up" style="transition-delay:.14s">
+      <div class="step">
         <div class="step-num">03</div>
         <h4>Ik kom langs</h4>
         <p>Op het afgesproken moment sta ik voor de deur. U hoeft er niet voor thuis te zijn.</p>
       </div>
-      <div class="step fade-up" style="transition-delay:.21s">
+      <div class="step">
         <div class="step-num">04</div>
         <h4>Kraakhelder resultaat</h4>
         <p>Ramen spiksplinternieuw, kozijnen mee. Klaar. Zo simpel is het.</p>
@@ -1659,117 +1128,43 @@ footer a:hover { text-decoration: underline; }
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════
-       BEOORDELINGEN
-  ═══════════════════════════════════════════════════ -->
-  <section class="reviews" id="beoordelingen" aria-labelledby="reviews-heading">
-    <div class="reviews-header">
-      <div class="section-label">Beoordelingen</div>
-      <div class="google-badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-        </svg>
-        <span class="google-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <strong>4.9</strong> &mdash; 127 Google-beoordelingen
-      </div>
-      <h2 class="section-title" id="reviews-heading">Nijmegen over <em>Lappers</em></h2>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card review-card--featured fade-up">
-        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="review-quote">Eindelijk een glazenwasser die ook echt de kozijnen meeneemt. Het hele huis ziet er compleet anders uit. En via de gratis wasbeurt gestart &mdash; nooit meer weggegaan.</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">S</div>
-          <div class="reviewer-info">
-            <strong>Sandra V.</strong>
-            <span>Nijmegen &mdash; vaste klant</span>
-          </div>
-        </div>
-      </div>
-      <div class="review-card fade-up" style="transition-delay:.07s">
-        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="review-quote">Geen gedoe, geen strepen, geen verrassingen. Gewoon wat er beloofd wordt. Dat is zeldzamer dan je denkt.</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">A</div>
-          <div class="reviewer-info">
-            <strong>Anita K.</strong>
-            <span>Wijchen &mdash; vaste klant</span>
-          </div>
-        </div>
-      </div>
-      <div class="review-card fade-up" style="transition-delay:.14s">
-        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="review-quote">Hij weet wanneer hij komt, doet zijn werk en het ziet er altijd perfect uit. Prijs precies zoals afgesproken. Geen extra rekening.</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">P</div>
-          <div class="reviewer-info">
-            <strong>Peter L.</strong>
-            <span>Groesbeek &mdash; abonnement</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════
-       CTA BANNER
-  ═══════════════════════════════════════════════════ -->
-  <section class="cta-banner" aria-labelledby="cta-heading">
-    <div class="cta-banner-inner">
-      <h2 id="cta-heading">Nog geen klant?<br>Uw eerste wasbeurt is <em>gratis.</em></h2>
-      <div style="margin-top:2rem;">
-        <a href="preview-lp-new.html" class="btn-free" style="font-size:1.05rem;padding:1rem 2.2rem;">Claim gratis wasbeurt &rarr;</a>
-      </div>
-      <p>Geen verplichtingen &middot; Binnen 24 uur reactie &middot; Streeploos resultaat gegarandeerd</p>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════
-       CONTACT
-  ═══════════════════════════════════════════════════ -->
-  <section class="contact" id="contact" aria-labelledby="contact-heading">
+  <section class="contact" id="contact">
     <div class="section-label">Contact</div>
-    <h2 class="section-title" id="contact-heading">Klaar voor <em>schone ramen</em>?</h2>
+    <h2 class="section-title">Klaar voor <em>schone ramen</em>?</h2>
     <div class="contact-box">
-      <a href="tel:+31629010630" aria-label="Bel 06 290 106 30">
+      <a href="tel:+31629010630" style="text-decoration:none;">
         <div class="phone-big">06 290 106 30</div>
       </a>
-      <div class="phone-sub">Bel gerust &mdash; ik neem altijd op of bel snel terug.</div>
+      <div class="phone-sub">Bel mij gerust &mdash; ik neem altijd op of bel snel terug.</div>
       <a href="tel:+31629010630" class="btn-primary">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         Direct bellen
       </a>
       <div class="divider">of stuur een bericht</div>
       <form id="contactForm" novalidate>
         <div class="form-row">
           <div class="form-group">
-            <input type="text" name="naam" id="naam" placeholder="Uw naam" required autocomplete="name" />
+            <input type="text" name="naam" placeholder="Uw naam" required />
           </div>
           <div class="form-group">
-            <input type="tel" name="telefoon" id="telefoon" placeholder="Telefoonnummer" required autocomplete="tel" />
+            <input type="tel" name="telefoon" placeholder="Telefoonnummer" required />
           </div>
         </div>
         <div class="form-group">
-          <input type="text" name="adres" placeholder="Adres (straat + woonplaats)" autocomplete="street-address" />
+          <input type="text" name="adres" placeholder="Adres (straat + woonplaats)" />
         </div>
         <div class="form-group">
           <textarea name="bericht" rows="3" placeholder="Eventuele opmerking of vraag..."></textarea>
         </div>
         <button type="submit" class="submit-btn">Verstuur aanvraag &rarr;</button>
       </form>
-      <div class="success-msg" id="successMsg" role="status">
+      <div class="success-msg" id="successMsg">
         &#10003; Bedankt voor uw aanvraag! Ik neem zo snel mogelijk contact met u op.
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════
-       WERKGEBIED
-  ═══════════════════════════════════════════════════ -->
-  <section class="area" aria-label="Werkgebied">
+  <section class="area">
     <p><strong>Actief in Nijmegen en omstreken</strong></p>
     <div class="area-tags">
       <span class="area-tag">Nijmegen</span>
@@ -1783,122 +1178,25 @@ footer a:hover { text-decoration: underline; }
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════════════════ -->
   <footer>
-    <a href="/" class="logo">Lap<span>pers</span></a>
+    <div class="logo">Lap<span>pers</span></div>
     <div>Glazenwasser Nijmegen &amp; omstreken</div>
     <div><a href="tel:+31629010630">06 290 106 30</a></div>
-    <div style="font-size:.76rem;margin-top:.25rem;">KVK: 12345678 &middot; Verzekerd</div>
   </footer>
 
-  <!-- Mobile sticky bel-knop -->
-  <a href="tel:+31629010630" class="mobile-call-cta" aria-label="Bel direct">
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  <a href="tel:+31629010630" class="mobile-call-cta">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
     Bel direct: 06 290 106 30
   </a>
 
-  <!-- Cookie banner -->
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookiemelding">
-    <p>Wij gebruiken cookies om de website te laten functioneren en bezoekersstatistieken bij te houden.</p>
+  <div class="cookie-banner" id="cookieBanner">
+    <p>Wij gebruiken cookies om de website te laten functioneren en bezoekersstatistieken te verzamelen.</p>
     <div class="cookie-banner-actions">
       <button class="cookie-btn cookie-btn-decline" onclick="cookieChoice(false)">Alleen noodzakelijk</button>
       <button class="cookie-btn cookie-btn-accept" onclick="cookieChoice(true)">Accepteren</button>
     </div>
   </div>
 
-  <script>
-    /* Cookie banner */
-    window.cookieChoice = function (accepted) {
-      try { localStorage.setItem('cookieChoice', accepted ? 'accepted' : 'declined'); } catch (e) {}
-      var b = document.getElementById('cookieBanner');
-      if (b) { b.classList.remove('visible'); }
-    };
-    try {
-      if (!localStorage.getItem('cookieChoice')) {
-        setTimeout(function () {
-          var b = document.getElementById('cookieBanner');
-          if (b) b.classList.add('visible');
-        }, 1500);
-      }
-    } catch (e) {}
-
-    /* Topbar dismiss */
-    var topbar = document.getElementById('topbar');
-    var nav    = document.getElementById('nav');
-    document.getElementById('topbarClose').addEventListener('click', function () {
-      topbar.classList.add('hidden');
-      try { sessionStorage.setItem('topbar-closed', '1'); } catch (_) {}
-    });
-    try { if (sessionStorage.getItem('topbar-closed')) topbar.classList.add('hidden'); } catch (_) {}
-
-    /* Nav scroll shadow */
-    window.addEventListener('scroll', function () {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
-
-    /* Mobile hamburger */
-    var navToggle = document.getElementById('navToggle');
-    var navLinks  = document.getElementById('navLinks');
-    navToggle.addEventListener('click', function () {
-      var open = navLinks.classList.toggle('open');
-      navToggle.classList.toggle('open', open);
-      navToggle.setAttribute('aria-expanded', String(open));
-    });
-    navLinks.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-    document.addEventListener('click', function (e) {
-      if (navLinks.classList.contains('open') && !nav.contains(e.target)) {
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    /* Contact form */
-    var form = document.getElementById('contactForm');
-    if (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var naam = form.querySelector('[name="naam"]');
-        var tel  = form.querySelector('[name="telefoon"]');
-        var valid = true;
-        if (!naam.value.trim() || naam.value.trim().length < 2) { naam.classList.add('error'); valid = false; }
-        if (!tel.value.trim() || tel.value.replace(/\s/g,'').length < 9) { tel.classList.add('error'); valid = false; }
-        if (!valid) return;
-        var btn = form.querySelector('[type="submit"]');
-        btn.disabled = true; btn.textContent = 'Versturen…';
-        fetch('https://formspree.io/f/mzdwpyqb', {
-          method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form)
-        }).then(function (res) {
-          if (res.ok) {
-            form.style.display = 'none';
-            document.getElementById('successMsg').classList.add('visible');
-          } else { btn.disabled = false; btn.textContent = 'Verstuur aanvraag →'; }
-        }).catch(function () { btn.disabled = false; btn.textContent = 'Verstuur aanvraag →'; });
-      });
-      form.querySelectorAll('input, textarea').forEach(function (el) {
-        el.addEventListener('input', function () { el.classList.remove('error'); });
-      });
-    }
-
-    /* Scroll fade-up */
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
-        });
-      }, { threshold: 0.08 });
-      document.querySelectorAll('.fade-up').forEach(function (el) { io.observe(el); });
-    } else {
-      document.querySelectorAll('.fade-up').forEach(function (el) { el.classList.add('visible'); });
-    }
-  </script>
+  <script src="js/site.js"></script>
 </body>
 </html>

@@ -30,86 +30,55 @@
     },
     "areaServed": ["Nijmegen", "Beuningen", "Wijchen", "Malden", "Groesbeek", "Beek", "Ubbergen"],
     "priceRange": "€€",
-    "openingHours": "Mo-Fr 08:00-18:00",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "127"
-    }
+    "openingHours": "Mo-Fr 08:00-18:00"
   }
   </script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════════════
-       TOPBAR – lead magnet (gold, sticky bovenaan nav)
-  ═══════════════════════════════════════════════════ -->
-  <div class="topbar" id="topbar" role="banner">
-    <div class="topbar-inner">
-      <span class="topbar-pulse" aria-hidden="true"></span>
-      <span class="topbar-text">Nieuwe klanten: <strong>eerste wasbeurt 100% gratis</strong> &mdash; geen verplichtingen</span>
-      <a href="gratis-wasbeurt.html" class="topbar-cta">Claim gratis wasbeurt &rarr;</a>
-      <button class="topbar-close" id="topbarClose" aria-label="Melding sluiten">&#10005;</button>
+  <div class="header-wrap">
+    <div class="topbar">
+      <span>Nieuwe klanten: eerste wasbeurt 100% gratis</span>
+      <a href="gratis-wasbeurt.html">Claim gratis wasbeurt &rarr;</a>
     </div>
+    <nav id="nav">
+      <div class="logo">Lap<span>pers</span></div>
+      <div class="nav-links">
+        <a href="#diensten">Diensten</a>
+        <a href="#werkwijze">Werkwijze</a>
+        <a href="#contact" class="nav-cta">Offerte aanvragen</a>
+      </div>
+    </nav>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════
-       NAV
-  ═══════════════════════════════════════════════════ -->
-  <nav id="nav" role="navigation" aria-label="Hoofdmenu">
-    <a href="/" class="logo" aria-label="Lappers – terug naar home">Lap<span>pers</span></a>
-    <div class="nav-links" id="navLinks">
-      <a href="#diensten">Diensten</a>
-      <a href="#werkwijze">Werkwijze</a>
-      <a href="#beoordelingen">Beoordelingen</a>
-      <a href="#contact" class="nav-cta">Offerte aanvragen</a>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- ═══════════════════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════════════════ -->
-  <section class="hero" aria-labelledby="hero-heading">
-    <div class="hero-bg-circle c1" aria-hidden="true"></div>
-    <div class="hero-bg-circle c2" aria-hidden="true"></div>
-    <div class="hero-bg-circle c3" aria-hidden="true"></div>
-    <div class="sparkle" style="width:7px;height:7px;top:22%;left:44%;animation-delay:0s;" aria-hidden="true"></div>
-    <div class="sparkle" style="width:5px;height:5px;top:58%;left:52%;animation-delay:1.4s;" aria-hidden="true"></div>
-    <div class="sparkle" style="width:9px;height:9px;top:32%;left:68%;animation-delay:2.8s;" aria-hidden="true"></div>
+  <section class="hero">
+    <div class="hero-bg-circle c1"></div>
+    <div class="hero-bg-circle c2"></div>
+    <div class="sparkle" style="width:8px;height:8px;top:25%;left:42%;animation-delay:0s;"></div>
+    <div class="sparkle" style="width:6px;height:6px;top:60%;left:55%;animation-delay:1.2s;"></div>
+    <div class="sparkle" style="width:10px;height:10px;top:35%;left:70%;animation-delay:2.5s;"></div>
 
     <div class="hero-content">
       <div class="hero-tag">&#10022; Glazenwasser Nijmegen &amp; omstreken</div>
-      <div class="free-offer-strip">Nieuwe klanten &mdash; eerste wasbeurt 100% gratis</div>
-      <h1 id="hero-heading">
-        <span class="hero-sub-line">Glazenwasser Nijmegen</span>
+      <div class="free-offer-strip">&#127381; Nieuwe klanten: eerste wasbeurt gratis &mdash; geen verplichtingen</div>
+      <h1>
+        <span class="hero-sub-line">Glazenwasser Nijmegen &mdash;</span><br>
         Ramen die <em><span class="underline-wave">&eacute;cht</span> schitteren.</em>
       </h1>
-      <p>Lappers wast ramen en kozijnen bij particulieren in Nijmegen, Beuningen, Wijchen, Groesbeek en omgeving. Eenmalig of op vaste basis &mdash; altijd op afspraak, altijd streeploos resultaat.</p>
+      <p>Lappers wast ramen en kozijnen bij particulieren in Nijmegen, Beuningen, Wijchen, Groesbeek en omgeving. Eenmalig of op vaste basis &mdash; altijd op afspraak en streeploos resultaat.</p>
       <div class="hero-actions">
         <a href="gratis-wasbeurt.html" class="btn-free">Claim gratis wasbeurt &rarr;</a>
         <a href="#contact" class="btn-secondary">Offerte aanvragen</a>
       </div>
-      <div class="hero-trust">
-        <span class="star-row">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <strong>4.9 op Google</strong>
-        <span class="sep">&middot;</span>
-        127 beoordelingen
-        <span class="sep">&middot;</span>
-        Verzekerd
-        <span class="sep">&middot;</span>
-        Geen verborgen kosten
-      </div>
+      <div class="hero-trust">&#9733;&#9733;&#9733;&#9733;&#9733;&ensp;4.9 op Google &middot; 127 beoordelingen &middot; Verzekerd &middot; Geen verborgen kosten</div>
     </div>
 
-    <div class="hero-visual" aria-hidden="true">
+    <div class="hero-visual">
       <div class="window-frame">
         <div class="window-sky">
           <div class="cloud cloud1"></div>
@@ -117,10 +86,7 @@
           <div class="shine-bar"></div>
           <div class="window-cross"></div>
         </div>
-        <a href="tel:+31629010630" class="window-badge">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Bel direct: 06 290 106 30
-        </a>
+        <a href="tel:+31629010630" class="window-badge">&#128222; Bel direct: 06 290 106 30</a>
         <div class="window-stat-row">
           <div class="window-stat">
             <div class="num">500+</div>
@@ -139,124 +105,66 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════
-       MARQUEE – social proof ticker
-  ═══════════════════════════════════════════════════ -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="marquee-inner">
-        <span class="marquee-item accent">&#9733; 4.9 op Google</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">127 beoordelingen</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Geen strepen</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item accent">&#127873; Eerste beurt gratis</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Verzekerd bedrijf</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">500+ tevreden klanten</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Kozijnen gratis mee</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Geen verborgen kosten</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">Actief in Nijmegen &amp; omstreken</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item accent">Maandelijks, 6-wekelijks of per kwartaal</span>
-        <span class="marquee-dot">&middot;</span>
-      </span>
-      <span class="marquee-inner" aria-hidden="true">
-        <span class="marquee-item accent">&#9733; 4.9 op Google</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">127 beoordelingen</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Geen strepen</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item accent">&#127873; Eerste beurt gratis</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Verzekerd bedrijf</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">500+ tevreden klanten</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Kozijnen gratis mee</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">&#10003; Geen verborgen kosten</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item">Actief in Nijmegen &amp; omstreken</span>
-        <span class="marquee-dot">&middot;</span>
-        <span class="marquee-item accent">Maandelijks, 6-wekelijks of per kwartaal</span>
-        <span class="marquee-dot">&middot;</span>
-      </span>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════════════════════════
-       DIENSTEN
-  ═══════════════════════════════════════════════════ -->
-  <section class="services" id="diensten" aria-labelledby="diensten-heading">
+  <section class="services" id="diensten">
     <div class="section-label">Wat ik doe</div>
-    <h2 class="section-title" id="diensten-heading">Alles voor <em>stralend</em> heldere ramen</h2>
+    <h2 class="section-title">Alles voor <em>stralend</em> heldere ramen</h2>
     <div class="services-grid">
-      <div class="service-card fade-up">
+      <div class="service-card">
         <div class="service-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
         </div>
         <h3>Ramen lappen</h3>
-        <p>Binnen &eacute;n buiten, van begane grond tot verdieping. Professioneel materiaal, streeploos resultaat &mdash; gegarandeerd.</p>
+        <p>Binnen &eacute;n buiten, van begane grond tot verdieping. Professioneel materiaal, streeploos resultaat.</p>
         <span class="service-tag tag-abo">Abonnement mogelijk</span>
       </div>
-      <div class="service-card fade-up" style="transition-delay:.07s">
+      <div class="service-card">
         <div class="service-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <h3>Kozijnen &amp; omlijsting</h3>
-        <p>Ramen zijn maar de helft van het plaatje. Kozijnen en omlijstingen maak ik tegelijk mee schoon, zonder meerprijs.</p>
+        <p>Ramen zijn maar de helft van het plaatje. De kozijnen en omlijstingen maak ik tegelijk schoon.</p>
         <span class="service-tag tag-abo">Abonnement mogelijk</span>
       </div>
-      <div class="service-card service-card--featured fade-up" style="transition-delay:.14s">
+      <div class="service-card service-card--featured">
         <div class="service-card__most-chosen">Meest gekozen</div>
         <div class="service-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
         <h3>Vaste schoonmaakbeurt</h3>
-        <p>Kies zelf de frequentie: maandelijks, om de zes weken of elk kwartaal. Ik kom op vaste tijden langs &mdash; u hoeft er niet voor thuis te zijn.</p>
+        <p>Kies zelf de frequentie: maandelijks, om de zes weken of elk kwartaal. Ik kom op vaste tijden langs.</p>
         <span class="service-tag tag-abo">Abonnement</span>
       </div>
-      <div class="service-card fade-up" style="transition-delay:.21s">
+      <div class="service-card">
         <div class="service-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <h3>Eenmalige beurt</h3>
-        <p>Verbouwing afgerond? Voorjaarsschoonmaak? Gewoon zin in schone ramen? Ik kom langs, ook voor een eenmalig klusje.</p>
+        <p>Verbouwing afgerond? Voorjaarsschoonmaak? Gewoon zin in schone ramen? Ik kom gewoon langs.</p>
         <span class="service-tag tag-once">Eenmalig</span>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════
-       WERKWIJZE
-  ═══════════════════════════════════════════════════ -->
-  <section class="how" id="werkwijze" aria-labelledby="werkwijze-heading">
+  <section class="how" id="werkwijze">
     <div class="section-label">Zo werkt het</div>
-    <h2 class="section-title" id="werkwijze-heading">Van aanvraag naar <em>blinkende</em> ramen</h2>
+    <h2 class="section-title">Van aanvraag naar <em>blinkende</em> ramen</h2>
     <div class="steps">
-      <div class="step fade-up">
+      <div class="step">
         <div class="step-num">01</div>
         <h4>Neem contact op</h4>
-        <p>Bel me op of vul het formulier in. Ik reageer snel en zonder omhaal.</p>
+        <p>Bel me op of vul het contactformulier in. Ik reageer snel en zonder gedoe.</p>
       </div>
-      <div class="step fade-up" style="transition-delay:.07s">
+      <div class="step">
         <div class="step-num">02</div>
         <h4>Korte afstemming</h4>
-        <p>Ik geef een eerlijke prijs op basis van uw woning. Geen verborgen kosten.</p>
+        <p>Ik geef een eerlijke prijs, gebaseerd op uw woning. Geen verborgen kosten.</p>
       </div>
-      <div class="step fade-up" style="transition-delay:.14s">
+      <div class="step">
         <div class="step-num">03</div>
         <h4>Ik kom langs</h4>
         <p>Op het afgesproken moment sta ik voor de deur. U hoeft er niet voor thuis te zijn.</p>
       </div>
-      <div class="step fade-up" style="transition-delay:.21s">
+      <div class="step">
         <div class="step-num">04</div>
         <h4>Kraakhelder resultaat</h4>
         <p>Ramen spiksplinternieuw, kozijnen mee. Klaar. Zo simpel is het.</p>
@@ -264,117 +172,43 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════
-       BEOORDELINGEN
-  ═══════════════════════════════════════════════════ -->
-  <section class="reviews" id="beoordelingen" aria-labelledby="reviews-heading">
-    <div class="reviews-header">
-      <div class="section-label">Beoordelingen</div>
-      <div class="google-badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-        </svg>
-        <span class="google-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <strong>4.9</strong> &mdash; 127 Google-beoordelingen
-      </div>
-      <h2 class="section-title" id="reviews-heading">Nijmegen over <em>Lappers</em></h2>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card review-card--featured fade-up">
-        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="review-quote">Eindelijk een glazenwasser die ook echt de kozijnen meeneemt. Het hele huis ziet er compleet anders uit. En via de gratis wasbeurt gestart &mdash; nooit meer weggegaan.</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">S</div>
-          <div class="reviewer-info">
-            <strong>Sandra V.</strong>
-            <span>Nijmegen &mdash; vaste klant</span>
-          </div>
-        </div>
-      </div>
-      <div class="review-card fade-up" style="transition-delay:.07s">
-        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="review-quote">Geen gedoe, geen strepen, geen verrassingen. Gewoon wat er beloofd wordt. Dat is zeldzamer dan je denkt.</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">A</div>
-          <div class="reviewer-info">
-            <strong>Anita K.</strong>
-            <span>Wijchen &mdash; vaste klant</span>
-          </div>
-        </div>
-      </div>
-      <div class="review-card fade-up" style="transition-delay:.14s">
-        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="review-quote">Hij weet wanneer hij komt, doet zijn werk en het ziet er altijd perfect uit. Prijs precies zoals afgesproken. Geen extra rekening.</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">P</div>
-          <div class="reviewer-info">
-            <strong>Peter L.</strong>
-            <span>Groesbeek &mdash; abonnement</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════
-       CTA BANNER
-  ═══════════════════════════════════════════════════ -->
-  <section class="cta-banner" aria-labelledby="cta-heading">
-    <div class="cta-banner-inner">
-      <h2 id="cta-heading">Nog geen klant?<br>Uw eerste wasbeurt is <em>gratis.</em></h2>
-      <div style="margin-top:2rem;">
-        <a href="gratis-wasbeurt.html" class="btn-free" style="font-size:1.05rem;padding:1rem 2.2rem;">Claim gratis wasbeurt &rarr;</a>
-      </div>
-      <p>Geen verplichtingen &middot; Binnen 24 uur reactie &middot; Streeploos resultaat gegarandeerd</p>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════
-       CONTACT
-  ═══════════════════════════════════════════════════ -->
-  <section class="contact" id="contact" aria-labelledby="contact-heading">
+  <section class="contact" id="contact">
     <div class="section-label">Contact</div>
-    <h2 class="section-title" id="contact-heading">Klaar voor <em>schone ramen</em>?</h2>
+    <h2 class="section-title">Klaar voor <em>schone ramen</em>?</h2>
     <div class="contact-box">
-      <a href="tel:+31629010630" aria-label="Bel 06 290 106 30">
+      <a href="tel:+31629010630" style="text-decoration:none;">
         <div class="phone-big">06 290 106 30</div>
       </a>
-      <div class="phone-sub">Bel gerust &mdash; ik neem altijd op of bel snel terug.</div>
+      <div class="phone-sub">Bel mij gerust &mdash; ik neem altijd op of bel snel terug.</div>
       <a href="tel:+31629010630" class="btn-primary">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         Direct bellen
       </a>
       <div class="divider">of stuur een bericht</div>
       <form id="contactForm" novalidate>
         <div class="form-row">
           <div class="form-group">
-            <input type="text" name="naam" id="naam" placeholder="Uw naam" required autocomplete="name" />
+            <input type="text" name="naam" placeholder="Uw naam" required />
           </div>
           <div class="form-group">
-            <input type="tel" name="telefoon" id="telefoon" placeholder="Telefoonnummer" required autocomplete="tel" />
+            <input type="tel" name="telefoon" placeholder="Telefoonnummer" required />
           </div>
         </div>
         <div class="form-group">
-          <input type="text" name="adres" placeholder="Adres (straat + woonplaats)" autocomplete="street-address" />
+          <input type="text" name="adres" placeholder="Adres (straat + woonplaats)" />
         </div>
         <div class="form-group">
           <textarea name="bericht" rows="3" placeholder="Eventuele opmerking of vraag..."></textarea>
         </div>
         <button type="submit" class="submit-btn">Verstuur aanvraag &rarr;</button>
       </form>
-      <div class="success-msg" id="successMsg" role="status">
+      <div class="success-msg" id="successMsg">
         &#10003; Bedankt voor uw aanvraag! Ik neem zo snel mogelijk contact met u op.
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════
-       WERKGEBIED
-  ═══════════════════════════════════════════════════ -->
-  <section class="area" aria-label="Werkgebied">
+  <section class="area">
     <p><strong>Actief in Nijmegen en omstreken</strong></p>
     <div class="area-tags">
       <span class="area-tag">Nijmegen</span>
@@ -388,122 +222,25 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════════════════ -->
   <footer>
-    <a href="/" class="logo">Lap<span>pers</span></a>
+    <div class="logo">Lap<span>pers</span></div>
     <div>Glazenwasser Nijmegen &amp; omstreken</div>
     <div><a href="tel:+31629010630">06 290 106 30</a></div>
-    <div style="font-size:.76rem;margin-top:.25rem;">KVK: 12345678 &middot; Verzekerd</div>
   </footer>
 
-  <!-- Mobile sticky bel-knop -->
-  <a href="tel:+31629010630" class="mobile-call-cta" aria-label="Bel direct">
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  <a href="tel:+31629010630" class="mobile-call-cta">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
     Bel direct: 06 290 106 30
   </a>
 
-  <!-- Cookie banner -->
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookiemelding">
-    <p>Wij gebruiken cookies om de website te laten functioneren en bezoekersstatistieken bij te houden.</p>
+  <div class="cookie-banner" id="cookieBanner">
+    <p>Wij gebruiken cookies om de website te laten functioneren en bezoekersstatistieken te verzamelen.</p>
     <div class="cookie-banner-actions">
       <button class="cookie-btn cookie-btn-decline" onclick="cookieChoice(false)">Alleen noodzakelijk</button>
       <button class="cookie-btn cookie-btn-accept" onclick="cookieChoice(true)">Accepteren</button>
     </div>
   </div>
 
-  <script>
-    /* Cookie banner */
-    window.cookieChoice = function (accepted) {
-      try { localStorage.setItem('cookieChoice', accepted ? 'accepted' : 'declined'); } catch (e) {}
-      var b = document.getElementById('cookieBanner');
-      if (b) { b.classList.remove('visible'); }
-    };
-    try {
-      if (!localStorage.getItem('cookieChoice')) {
-        setTimeout(function () {
-          var b = document.getElementById('cookieBanner');
-          if (b) b.classList.add('visible');
-        }, 1500);
-      }
-    } catch (e) {}
-
-    /* Topbar dismiss */
-    var topbar = document.getElementById('topbar');
-    var nav    = document.getElementById('nav');
-    document.getElementById('topbarClose').addEventListener('click', function () {
-      topbar.classList.add('hidden');
-      try { sessionStorage.setItem('topbar-closed', '1'); } catch (_) {}
-    });
-    try { if (sessionStorage.getItem('topbar-closed')) topbar.classList.add('hidden'); } catch (_) {}
-
-    /* Nav scroll shadow */
-    window.addEventListener('scroll', function () {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
-
-    /* Mobile hamburger */
-    var navToggle = document.getElementById('navToggle');
-    var navLinks  = document.getElementById('navLinks');
-    navToggle.addEventListener('click', function () {
-      var open = navLinks.classList.toggle('open');
-      navToggle.classList.toggle('open', open);
-      navToggle.setAttribute('aria-expanded', String(open));
-    });
-    navLinks.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-    document.addEventListener('click', function (e) {
-      if (navLinks.classList.contains('open') && !nav.contains(e.target)) {
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    /* Contact form */
-    var form = document.getElementById('contactForm');
-    if (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var naam = form.querySelector('[name="naam"]');
-        var tel  = form.querySelector('[name="telefoon"]');
-        var valid = true;
-        if (!naam.value.trim() || naam.value.trim().length < 2) { naam.classList.add('error'); valid = false; }
-        if (!tel.value.trim() || tel.value.replace(/\s/g,'').length < 9) { tel.classList.add('error'); valid = false; }
-        if (!valid) return;
-        var btn = form.querySelector('[type="submit"]');
-        btn.disabled = true; btn.textContent = 'Versturen…';
-        fetch('https://formspree.io/f/mzdwpyqb', {
-          method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form)
-        }).then(function (res) {
-          if (res.ok) {
-            form.style.display = 'none';
-            document.getElementById('successMsg').classList.add('visible');
-          } else { btn.disabled = false; btn.textContent = 'Verstuur aanvraag →'; }
-        }).catch(function () { btn.disabled = false; btn.textContent = 'Verstuur aanvraag →'; });
-      });
-      form.querySelectorAll('input, textarea').forEach(function (el) {
-        el.addEventListener('input', function () { el.classList.remove('error'); });
-      });
-    }
-
-    /* Scroll fade-up */
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
-        });
-      }, { threshold: 0.08 });
-      document.querySelectorAll('.fade-up').forEach(function (el) { io.observe(el); });
-    } else {
-      document.querySelectorAll('.fade-up').forEach(function (el) { el.classList.add('visible'); });
-    }
-  </script>
+  <script src="js/site.js"></script>
 </body>
 </html>
