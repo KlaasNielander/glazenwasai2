@@ -367,7 +367,7 @@ em { font-style: italic; color: var(--blue-em); }
 .service-card__icon {
   width: 48px;
   height: 48px;
-  background: var(--off-white);
+  background: var(--border);
   border-radius: var(--radius);
   display: flex;
   align-items: center;
@@ -477,7 +477,7 @@ em { font-style: italic; color: var(--blue-em); }
   justify-content: center;
 }
 .area-tag {
-  background: var(--off-white);
+  background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   padding: .45rem 1rem;
