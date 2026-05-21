@@ -1,286 +1,712 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gratis eerste wasbeurt – Lappers Glazenwasser Nijmegen</title>
-    <meta name="description" content="Nieuwe klant? Uw eerste wasbeurt is volledig gratis. Lappers – betrouwbare glazenwasser in Nijmegen en omgeving. Geen verplichtingen, geen verborgen kosten.">
-    <link rel="canonical" href="https://lappers.nl/gratis-wasbeurt">
-    <meta name="robots" content="noindex">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gratis Wasbeurt — Glazenwasser Nijmegen | Lappers</title>
+  <meta name="description" content="Nieuwe klanten krijgen de eerste wasbeurt 100% gratis bij Lappers, glazenwasser in Nijmegen. Geen verplichtingen, binnen 24 uur reactie. Claim direct." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lappers.nl/gratis-wasbeurt/" />
+  <meta property="og:title" content="Gratis Wasbeurt Aanvragen – Lappers Nijmegen" />
+  <meta property="og:description" content="Nieuwe klanten krijgen de eerste wasbeurt 100% gratis. Claim nu jouw gratis beurt bij Lappers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lappers.nl/gratis-wasbeurt/" />
+  <meta property="og:locale" content="nl_NL" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sky: #d6eeff;
+      --sky-mid: #a8d8f8;
+      --blue: #1a6fb5;
+      --blue-dark: #0e4a7e;
+      --ink: #0d1b2a;
+      --cream: #f7f3ec;
+      --sun: #f9c84a;
+      --clean: #ffffff;
+      --muted: #4a6070;
+    }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/lp.css">
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+    /* TOPBAR */
+    .topbar { background: var(--sun); color: var(--ink); text-align: center; padding: 0.7rem 1rem; font-size: 0.88rem; font-weight: 600; }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 2rem 4vw 1rem;
+      background: var(--cream);
+    }
+
+    .offer-badge {
+      display: inline-block;
+      background: var(--sun);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 50px;
+      margin-bottom: 0;
+      letter-spacing: 0.02em;
+    }
+
+    .offer-badge-btn {
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 6px 22px rgba(249,200,74,0.4);
+    }
+    .offer-badge-btn:hover {
+      background: #f0b800;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(249,200,74,0.55);
+    }
+
+    .area-tags-hero {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .area-label {
+      font-size: 0.72rem;
+      color: #6a8099;
+      font-weight: 500;
+      margin-right: 0.2rem;
+    }
+
+    .area-tag {
+      background: var(--clean);
+      border: 1px solid rgba(26,111,181,0.15);
+      color: var(--blue-dark);
+      font-size: 0.68rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    /* VSL */
+    .vsl-section { max-width: 820px; margin: 0 auto; padding: 1rem 4vw 0; background: var(--cream); }
+
+    .vsl-wrapper {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255,255,255,0.08);
+      background: #000;
+      cursor: pointer;
+    }
+
+    #vslCanvas { width: 100%; height: 100%; display: block; }
+
+    .vsl-play-overlay {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
+      background: rgba(10,25,40,0.5);
+      transition: opacity 0.3s;
+    }
+    .vsl-play-overlay.hidden { opacity: 0; pointer-events: none; }
+
+    .play-btn {
+      width: 72px; height: 72px; background: var(--sun); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(249,200,74,0.5); transition: transform 0.2s;
+    }
+    .play-btn::after { content: ''; width: 0; height: 0; border-style: solid; border-width: 12px 0 12px 22px; border-color: transparent transparent transparent var(--ink); margin-left: 4px; }
+    .vsl-play-overlay:hover .play-btn { transform: scale(1.1); }
+
+    .play-label { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: var(--clean); text-align: center; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+
+    /* LEAD FORM */
+    .form-section {
+      background: linear-gradient(160deg, var(--sky) 0%, var(--cream) 100%);
+      padding: 4rem 4vw;
+      text-align: center;
+    }
+
+    .form-section h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      color: var(--ink);
+      margin-bottom: 0.7rem;
+    }
+
+    .form-section h2 em { font-style: italic; color: var(--blue); }
+
+    .form-section > p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .lead-form-box {
+      background: var(--clean);
+      border-radius: 24px;
+      padding: 2.5rem;
+      max-width: 440px;
+      margin: 0 auto;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+    }
+
+    .lead-form-box h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 900; color: var(--ink); margin-bottom: 0.4rem; }
+    .form-intro { font-size: 0.84rem; color: #6a8099; margin-bottom: 1.8rem; font-weight: 300; line-height: 1.5; }
+
+    .form-group { margin-bottom: 1rem; }
+    .form-group input { width: 100%; padding: 0.95rem 1.2rem; border: 2px solid rgba(26,111,181,0.15); border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; background: #f4f7fa; color: var(--ink); outline: none; transition: border-color 0.2s, background 0.2s; }
+    .form-group input:focus { border-color: var(--blue); background: var(--clean); }
+    .form-group input::placeholder { color: #9ab0c4; }
+
+    .submit-btn { width: 100%; padding: 1.15rem; background: var(--sun); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 6px 24px rgba(249,200,74,0.35); margin-top: 0.5rem; }
+    .submit-btn:hover { background: #f0b800; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(249,200,74,0.5); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-fine { font-size: 0.75rem; color: #9ab0c4; text-align: center; margin-top: 0.9rem; line-height: 1.5; }
+
+    .success-box { display: none; text-align: center; padding: 1.5rem 0; }
+    .success-box .icon { font-size: 3rem; margin-bottom: 1rem; }
+    .success-box h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 900; color: var(--ink); margin-bottom: 0.5rem; }
+    .success-box p { font-size: 0.9rem; color: #6a8099; line-height: 1.6; }
+
+    /* LIGHT + DARK sections */
+    .light { background: var(--cream); color: var(--ink); }
+    .dark  { background: var(--ink); }
+
+    .section { max-width: 820px; margin: 0 auto; padding: 4.5rem 4vw; }
+
+    .section-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.8rem; display: block; }
+    .light .section-label { color: var(--blue); }
+    .dark  .section-label { color: #a8d8f8; }
+
+    .section-title { font-family: 'Fraunces', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 0.8rem; }
+    .light .section-title { color: var(--ink); }
+    .dark  .section-title { color: var(--clean); }
+    .section-title em { font-style: italic; color: var(--blue); }
+    .dark .section-title em { color: var(--sky-mid); }
+
+    /* MODEL STEPS */
+    .model-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; }
+    .model-step { background: var(--clean); border-radius: 16px; padding: 1.5rem; border: 2px solid rgba(26,111,181,0.1); text-align: center; transition: border-color 0.2s, transform 0.2s; }
+    .model-step:hover { border-color: var(--blue); transform: translateY(-3px); }
+    .model-step .icon { font-size: 1.8rem; margin-bottom: 0.7rem; }
+    .model-step h4 { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+    .model-step p { font-size: 0.82rem; color: #5a7080; line-height: 1.55; font-weight: 300; }
+
+    /* OBJECTIONS */
+    .objection { margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; }
+    .objection-q { padding: 1.2rem 1.5rem; font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); color: var(--clean); transition: background 0.2s; user-select: none; gap: 1rem; }
+    .objection-q:hover { background: rgba(255,255,255,0.09); }
+    .arrow { font-size: 0.9rem; transition: transform 0.25s; color: rgba(255,255,255,0.4); flex-shrink: 0; }
+    .objection.open .arrow { transform: rotate(180deg); }
+    .objection-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .objection.open .objection-body { max-height: 600px; }
+    .objection-inner { padding: 1.2rem 1.5rem 1.5rem; }
+    .obj-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .obj-box { padding: 1rem; border-radius: 10px; font-size: 0.85rem; line-height: 1.55; font-weight: 300; }
+    .obj-wrong { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); color: rgba(255,255,255,0.8); }
+    .obj-wrong strong { color: #f87171; font-size: 0.72rem; display: block; margin-bottom: 0.3rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .obj-right { background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.25); color: rgba(255,255,255,0.8); }
+    .obj-right strong { color: #4ade80; font-size: 0.72rem; display: block; margin-bottom: 0.3rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .obj-proof { font-size: 0.82rem; color: rgba(255,255,255,0.4); font-style: italic; padding-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.07); font-weight: 300; }
+
+    /* REVIEWS */
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
+    .review-card { background: var(--clean); border: 1.5px solid rgba(13,27,42,0.07); border-radius: 16px; padding: 1.6rem; }
+    .stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 0.8rem; }
+    .review-card p { font-size: 0.9rem; line-height: 1.65; color: #3a5060; font-weight: 300; font-style: italic; margin-bottom: 1rem; }
+    .reviewer { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+    .reviewer span { display: block; font-weight: 300; font-size: 0.75rem; color: #7a95aa; margin-top: 0.1rem; }
+
+    /* FOOTER */
+    footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem 4vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+    footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
+    footer a:hover { color: #a8d8f8; }
+
+    /* COOKIE BANNER */
+    .cookie-banner {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      max-width: 480px;
+      background: var(--ink);
+      color: var(--clean);
+      padding: 1.1rem 1.3rem;
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      z-index: 1000;
+      display: none;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .cookie-banner.show { display: block; animation: slide-up-cookie 0.4s ease both; }
+    .cookie-banner p { margin: 0 0 0.8rem; color: rgba(255,255,255,0.85); }
+    .cookie-banner a { color: #a8d8f8; text-decoration: underline; }
+    .cookie-banner-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .cookie-btn { flex: 1; padding: 0.6rem 1rem; border-radius: 50px; border: none; font-family: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s, transform 0.15s; min-width: 110px; }
+    .cookie-btn-accept { background: var(--sun); color: var(--ink); }
+    .cookie-btn-decline { background: rgba(255,255,255,0.1); color: var(--clean); }
+    .cookie-btn:hover { transform: translateY(-1px); }
+    @keyframes slide-up-cookie {
+      from { transform: translateY(100%); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    @media (max-width: 600px) {
+      .obj-row        { grid-template-columns: 1fr; }
+      .lead-form-box  { padding: 1.8rem; }
+    }
+  </style>
 </head>
-<body class="lp-body">
+<body>
 
-    <!-- Urgency bar -->
-    <div class="urgency-bar">
-        <span class="urgency-dot" aria-hidden="true"></span>
-        Exclusief voor nieuwe klanten &mdash; beperkte plaatsen beschikbaar
+  <div class="topbar">&#127873; Exclusief voor nieuwe klanten &mdash; eerste wasbeurt volledig gratis</div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <a href="#aanvragen" class="offer-badge offer-badge-btn">&#10022; Gratis wasbeurt aanvragen</a>
+    <div class="area-tags-hero">
+      <span class="area-label">Actief in:</span>
+      <span class="area-tag">Nijmegen</span>
+      <span class="area-tag">Beuningen</span>
+      <span class="area-tag">Wijchen</span>
+      <span class="area-tag">Malden</span>
+      <span class="area-tag">Groesbeek</span>
+      <span class="area-tag">Beek</span>
+      <span class="area-tag">Ubbergen</span>
+      <span class="area-tag">en omgeving</span>
     </div>
+  </section>
 
-    <!-- Minimal nav -->
-    <nav class="nav lp-nav" id="nav">
-        <div class="container nav__inner">
-            <a href="/" class="nav__logo">Lappers</a>
-            <a href="tel:0629010650" class="lp-nav__phone">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                06 290 106 50
-            </a>
-        </div>
-    </nav>
-
-    <!-- Hero sectie -->
-    <header class="lp-hero">
-        <div class="lp-hero__glow lp-hero__glow--1" aria-hidden="true"></div>
-        <div class="lp-hero__glow lp-hero__glow--2" aria-hidden="true"></div>
-        <div class="container lp-hero__inner">
-            <div class="lp-hero__content">
-                <p class="eyebrow eyebrow--light">Exclusief voor nieuwe klanten</p>
-                <h1>Claim jouw<br><em>gratis wasbeurt</em></h1>
-                <p class="lp-hero__sub">Laat uw gegevens achter. Ik bel u persoonlijk op om een moment af te spreken — zonder verplichtingen.</p>
-                <div class="lp-hero__usps">
-                    <div class="lp-usp">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                        Volledig gratis — geen verborgen kosten
-                    </div>
-                    <div class="lp-usp">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                        Geen verplichtingen, geen abonnement
-                    </div>
-                    <div class="lp-usp">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                        Ik bel u terug binnen 24 uur
-                    </div>
-                </div>
-            </div>
-            <div class="lp-form-wrap">
-                <div class="lp-form-card">
-                    <p class="lp-form-card__title">Ja, ik wil gratis schone ramen</p>
-                    <p class="lp-form-card__sub">Geen verplichtingen. Ik bel u terug. Binnen 24 uur.</p>
-                    <form class="lp-form" id="lpForm" novalidate>
-                        <div class="form-field">
-                            <label for="lpName">Uw naam</label>
-                            <input type="text" id="lpName" name="name" required autocomplete="name" placeholder="Jan de Vries">
-                        </div>
-                        <div class="form-field">
-                            <label for="lpPhone">Telefoonnummer</label>
-                            <input type="tel" id="lpPhone" name="phone" required autocomplete="tel" placeholder="06 12 34 56 78">
-                        </div>
-                        <button type="submit" class="btn btn--gold btn--lg btn--full btn--shimmer lp-submit">
-                            Claim mijn gratis wasbeurt <span aria-hidden="true">&rarr;</span>
-                        </button>
-                        <p class="form__notice">Geen spam. Alleen gebruikt om contact op te nemen.</p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- VSL + uitgebreide form sectie -->
-    <section class="section lp-vsl-section">
-        <div class="container lp-vsl-inner">
-            <!-- VSL video player -->
-            <div class="vsl-player-wrap">
-                <div class="vsl-player" id="vslPlayer">
-                    <div class="vsl-thumbnail">
-                        <div class="vsl-play-btn" id="vslPlayBtn" role="button" tabindex="0" aria-label="Bekijk de video over Lappers">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                        </div>
-                        <div class="vsl-overlay-grid" aria-hidden="true"></div>
-                    </div>
-                    <div class="vsl-iframe-wrap" id="vslIframeWrap" hidden>
-                        <!-- Iframe wordt hier door JS geladen bij klik op play -->
-                    </div>
-                </div>
-                <p class="vsl-label">Bekijk hoe Lappers werkt &mdash; 2 min.</p>
-            </div>
-
-            <!-- Uitgebreid formulier -->
-            <div class="lp-form-full glass-card">
-                <p class="lp-form-card__title">Claim jouw gratis wasbeurt</p>
-                <p class="lp-form-card__sub">Vul uw gegevens in — ik bel u persoonlijk terug.</p>
-                <form class="lp-form" id="lpFormFull" novalidate>
-                    <div class="form-field">
-                        <label for="lpFullName">Uw naam</label>
-                        <input type="text" id="lpFullName" name="name" required autocomplete="name" placeholder="Jan de Vries">
-                    </div>
-                    <div class="form-field">
-                        <label for="lpFullPhone">Telefoonnummer</label>
-                        <input type="tel" id="lpFullPhone" name="phone" required autocomplete="tel" placeholder="06 12 34 56 78">
-                    </div>
-                    <button type="submit" class="btn btn--gold btn--lg btn--full btn--shimmer">
-                        Ja, ik wil gratis schone ramen <span aria-hidden="true">&rarr;</span>
-                    </button>
-                    <p class="form__notice">Geen spam. Ik bel u terug binnen 24 uur.</p>
-                </form>
-            </div>
-        </div>
-        <!-- data-src voor YouTube embed — vervang VIDEO_ID door het juiste ID -->
-        <div data-vsl-src="https://www.youtube.com/embed/VIDEO_ID" hidden id="vslData"></div>
-    </section>
-
-    <!-- Social proof balk -->
-    <div class="social-proof-bar">
-        <div class="container social-proof-bar__inner">
-            <div class="social-proof-stars" aria-label="4.9 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <span class="social-proof-text"><strong>127 tevreden klanten</strong> in Nijmegen en omgeving</span>
-            <span class="social-proof-sep" aria-hidden="true">&middot;</span>
-            <span class="social-proof-rating">4.9 / 5</span>
-        </div>
+  <!-- VSL -->
+  <section class="vsl-section">
+    <div class="vsl-wrapper" id="vslWrapper">
+      <canvas id="vslCanvas"></canvas>
+      <div class="vsl-play-overlay" id="playOverlay">
+        <div class="play-btn"></div>
+        <div class="play-label">Bekijk hoe Lappers jouw ramen transformeert<br><span style="font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:300;opacity:0.7;">&#177; 90 seconden &middot; Geen verplichtingen</span></div>
+      </div>
     </div>
+  </section>
 
-    <!-- Stappen -->
-    <section class="section lp-steps-section">
-        <div class="container">
-            <div class="section__header">
-                <p class="eyebrow eyebrow--light">Hoe het werkt</p>
-                <h2>In 3 stappen naar <em>stralende ramen</em></h2>
-            </div>
-            <div class="lp-steps">
-                <div class="lp-step glass-card">
-                    <div class="lp-step__num">Stap 1</div>
-                    <h3>U laat uw gegevens achter</h3>
-                    <p>Vul het formulier in of bel direct. Ik plan samen met u een moment in dat uitkomt.</p>
-                </div>
-                <div class="lp-step glass-card">
-                    <div class="lp-step__num">Stap 2</div>
-                    <h3>Ik neem contact op</h3>
-                    <p>Kort telefonisch afstemmen: wanneer kom ik langs, wat zijn de wensen, wat kunt u verwachten.</p>
-                </div>
-                <div class="lp-step glass-card">
-                    <div class="lp-step__num">Stap 3</div>
-                    <h3>Ik kom langs</h3>
-                    <p>We maken kennis, ik ga direct aan de slag. De eerste beurt is volledig gratis — geen rekening, geen addertje.</p>
-                </div>
-            </div>
+  <!-- LEAD FORM -->
+  <section class="form-section" id="aanvragen">
+    <h2>Claim jouw <em>gratis</em> wasbeurt</h2>
+    <p>Laat je gegevens achter. Ik bel je persoonlijk op om een moment af te spreken.</p>
+
+    <div class="lead-form-box">
+      <h3>Ja, ik wil gratis schone ramen</h3>
+      <p class="form-intro">Geen verplichtingen &middot; Ik bel je terug &middot; Binnen 24 uur</p>
+      <form id="leadForm">
+        <div class="form-group"><input type="text"  name="naam"     placeholder="Jouw naam"      required autocomplete="name" /></div>
+        <div class="form-group"><input type="tel"   name="telefoon" placeholder="Telefoonnummer" required autocomplete="tel" /></div>
+        <div class="form-group"><input type="email" name="email"    placeholder="E-mailadres"    required autocomplete="email" /></div>
+        <button type="submit" class="submit-btn" id="submitBtn">&#127873; Claim mijn gratis wasbeurt &rarr;</button>
+        <p class="form-fine">Geen spam. Alleen gebruikt om contact op te nemen.</p>
+      </form>
+      <div class="success-box" id="successBox">
+        <div class="icon">&#127881;</div>
+        <h3>Gelukt! Ik neem snel contact op.</h3>
+        <p>Je hoort binnen 24 uur van mij om een moment af te spreken. Tot snel!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAPPEN -->
+  <div class="light">
+    <section class="section">
+      <span class="section-label">Hoe het werkt</span>
+      <h2 class="section-title">In drie stappen naar<br><em>stralende ramen.</em></h2>
+      <div class="model-steps">
+        <div class="model-step">
+          <div class="icon">&#128203;</div>
+          <h4>Stap 1 &mdash; Jij laat je gegevens achter</h4>
+          <p>Ik bel je terug en we plannen samen een moment in dat jou uitkomt.</p>
         </div>
+        <div class="model-step">
+          <div class="icon">&#128222;</div>
+          <h4>Stap 2 &mdash; Ik neem contact op</h4>
+          <p>Kort telefonisch afstemmen: wanneer kom ik langs, wat zijn de wensen, wat kun je verwachten.</p>
+        </div>
+        <div class="model-step">
+          <div class="icon">&#129309;</div>
+          <h4>Stap 3 &mdash; Ik kom langs</h4>
+          <p>We maken even kennis, ik kijk de situatie door en ga direct aan de slag. De eerste beurt is gratis.</p>
+        </div>
+      </div>
     </section>
+  </div>
 
-    <!-- Reviews -->
-    <section class="section reviews-section">
-        <div class="container">
-            <div class="section__header">
-                <p class="eyebrow eyebrow--light">Wat klanten zeggen</p>
-                <h2>Nijmegen over <em>Lappers</em></h2>
-            </div>
-            <div class="reviews-grid">
-                <div class="review-card glass-card">
-                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <blockquote>"Via de gratis wasbeurt begonnen en nooit meer weggegaan. Betrouwbaar, punctueel, kristalheldere resultaten."</blockquote>
-                    <div class="review-card__author">
-                        <strong>Mark de B.</strong>
-                        <span>Beuningen &middot; Vaste klant</span>
-                    </div>
-                </div>
-                <div class="review-card glass-card">
-                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <blockquote>"Geen gedoe, geen strepen, geen verrassingen. Gewoon wat er beloofd wordt. Dat is zeldzaam."</blockquote>
-                    <div class="review-card__author">
-                        <strong>Anita K.</strong>
-                        <span>Nijmegen &middot; Vaste klant</span>
-                    </div>
-                </div>
-                <div class="review-card glass-card">
-                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <blockquote>"Eindelijk een glazenwasser die ook echt de kozijnen meeneemt. Huis ziet er compleet anders uit."</blockquote>
-                    <div class="review-card__author">
-                        <strong>Sandra V.</strong>
-                        <span>Nijmegen &middot; Vaste klant</span>
-                    </div>
-                </div>
-                <div class="review-card glass-card">
-                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <blockquote>"Hij weet wanneer hij komt, doet zijn werk en het ziet er altijd perfect uit. Precies wat je zoekt."</blockquote>
-                    <div class="review-card__author">
-                        <strong>Peter L.</strong>
-                        <span>Druten</span>
-                    </div>
-                </div>
-            </div>
+  <!-- BEZWAREN / FAQ -->
+  <div class="dark">
+    <section class="section">
+      <span class="section-label">Veelgestelde vragen</span>
+      <h2 class="section-title">Eerlijk antwoord op<br>de meest gestelde vragen</h2>
+
+      <div class="objection" id="obj0">
+        <div class="objection-q" onclick="toggleObj('obj0')">
+          <span>&#8220;Waarom is de eerste wasbeurt gratis?&#8221;</span>
+          <span class="arrow">&#9660;</span>
         </div>
+        <div class="objection-body"><div class="objection-inner">
+          <p style="font-size:0.93rem;line-height:1.75;color:rgba(255,255,255,0.75);font-weight:300;">
+            Ik begrijp dat je iemand niet zomaar vertrouwt met je huis. Een glazenwasser die je niet kent, die zomaar langskomt &mdash; dat voelt onbekend. <strong style="color:#fff;">Daarom vraag ik je niets te betalen voor de eerste keer.</strong><br><br>
+            Ik kom langs, lap de ramen, en laat het resultaat voor zichzelf spreken. Geen verplichtingen achteraf. Je beslist daarna zelf of je verder wilt.<br><br>
+            <span style="color:rgba(255,255,255,0.4);font-style:italic;">&mdash; Lappers</span>
+          </p>
+        </div></div>
+      </div>
+
+      <div class="objection" id="obj1">
+        <div class="objection-q" onclick="toggleObj('obj1')">
+          <span>&#8220;Is die gratis beurt echt gratis, of zit er iets aan vast?&#8221;</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="objection-body"><div class="objection-inner">
+          <div class="obj-row">
+            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ik moet daarna wel een abonnement nemen, anders telt het niet.</div>
+            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>De eerste beurt is &eacute;cht gratis, zonder voorwaarden. Ik kom langs, lap de ramen, en daarna beslis jij. Geen abonnementsverplichting.</div>
+          </div>
+          <p class="obj-proof">&#128172; "Ik verwachtte een verkooppraatje, maar dat was er niet. Hij deed gewoon zijn werk en liet het resultaat spreken." &mdash; Sandra, Nijmegen</p>
+        </div></div>
+      </div>
+
+      <div class="objection" id="obj2">
+        <div class="objection-q" onclick="toggleObj('obj2')">
+          <span>&#8220;Moet ik thuis zijn als je langskomt?&#8221;</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="objection-body"><div class="objection-inner">
+          <div class="obj-row">
+            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ik moet een halve dag thuisblijven of vrij nemen. Dat is te veel gedoe.</div>
+            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>Voor de eerste kennismaking ben ik blij als je er even bij bent. Ik loop samen met je langs de ramen, kijk de situatie door en leg uit wat ik ga doen. Dat duurt maar 10 minuten &mdash; daarna kun je gewoon verder met je dag.</div>
+          </div>
+          <p class="obj-proof">&#128172; "Ik dacht dat ik de hele ochtend moest thuisblijven, maar hij was binnen twintig minuten klaar." &mdash; Mark, Beuningen</p>
+        </div></div>
+      </div>
+
+      <div class="objection" id="obj3">
+        <div class="objection-q" onclick="toggleObj('obj3')">
+          <span>&#8220;Glazenwassers laten altijd strepen achter&#8221;</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="objection-body"><div class="objection-inner">
+          <div class="obj-row">
+            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ik heb het eerder geprobeerd en het viel tegen. Strepen, vegen, niet echt schoon.</div>
+            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>Met professioneel materiaal en de juiste werkwijze zijn strepen te vermijden. Ik doe geen haastwerk &mdash; kwaliteit gaat voor snelheid.</div>
+          </div>
+          <p class="obj-proof">&#128172; "Geen enkel streepje. Ik was sceptisch, maar dit is &eacute;cht een andere wereld." &mdash; Anita, Wijchen</p>
+        </div></div>
+      </div>
+
+      <div class="objection" id="obj4">
+        <div class="objection-q" onclick="toggleObj('obj4')">
+          <span>&#8220;Wat kost het daarna als ik verder wil?&#8221;</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="objection-body"><div class="objection-inner">
+          <div class="obj-row">
+            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ze vragen vast veel meer dan ik denk, met verborgen extra&rsquo;s.</div>
+            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>Tijdens het eerste bezoek leg ik alles eerlijk uit &mdash; prijs, mogelijkheden, frequentie. Geen verrassingen achteraf. Jij beslist.</div>
+          </div>
+          <p class="obj-proof">&#128172; "Prijs precies zoals afgesproken. Geen gedoe, geen extra rekening." &mdash; Peter, Groesbeek</p>
+        </div></div>
+      </div>
+
+      <div class="objection" id="obj5">
+        <div class="objection-q" onclick="toggleObj('obj5')">
+          <span>&#8220;Werkt dit ook voor mijn type woning?&#8221;</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="objection-body"><div class="objection-inner">
+          <div class="obj-row">
+            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ik heb een appartement, dakkapel of moeilijk bereikbare ramen &mdash; dat lukt vast niet.</div>
+            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>Rijtjeswoning, vrijstaand, appartement &mdash; ik werk voor alle woningtypes in Nijmegen en omstreken. Twijfel je? Gewoon even bellen.</div>
+          </div>
+          <p class="obj-proof">&#128172; "Ik had een dakkapel waarvan ik dacht dat niemand dat aankon. Geen probleem voor Lappers." &mdash; Roos, Malden</p>
+        </div></div>
+      </div>
     </section>
+  </div>
 
-    <!-- FAQ -->
-    <section class="section section--alt lp-faq-section">
-        <div class="container">
-            <div class="section__header">
-                <p class="eyebrow">Veelgestelde vragen</p>
-                <h2>Eerlijk antwoord op de <em>meest gestelde vragen</em></h2>
-            </div>
-            <div class="faq" role="list">
-                <div class="faq__item" role="listitem">
-                    <button class="faq__q" aria-expanded="false">
-                        Waarom is de eerste wasbeurt gratis?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq__a" hidden>
-                        <p>Ik werk liever met klanten die tevreden zijn dan met klanten die verplicht zijn. Eén gratis beurt — zodat u zelf ervaart wat de kwaliteit is. Geen verplichtingen.</p>
-                    </div>
-                </div>
-                <div class="faq__item" role="listitem">
-                    <button class="faq__q" aria-expanded="false">
-                        Is die gratis beurt echt gratis, of zit er iets aan vast?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq__a" hidden>
-                        <p>Echt gratis. Geen abonnementsverplichtingen, geen verborgen kosten. Na de gratis beurt beslist u zelf of u wilt doorgaan en op welke basis.</p>
-                    </div>
-                </div>
-                <div class="faq__item" role="listitem">
-                    <button class="faq__q" aria-expanded="false">
-                        Moet ik thuis zijn als u langskomt?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq__a" hidden>
-                        <p>Voor de buitenkant hoeft u niet thuis te zijn. Voor de binnenkant wel. We stemmen dat vooraf af.</p>
-                    </div>
-                </div>
-                <div class="faq__item" role="listitem">
-                    <button class="faq__q" aria-expanded="false">
-                        Wat kost het daarna als ik verder wil?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq__a" hidden>
-                        <p>Na de gratis beurt geef ik een vaste prijs op basis van uw woning. Geen verrassingen achteraf. U beslist zelf of en hoe u verder gaat.</p>
-                    </div>
-                </div>
-                <div class="faq__item" role="listitem">
-                    <button class="faq__q" aria-expanded="false">
-                        Hoe snel word ik teruggebeld?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq__a" hidden>
-                        <p>Normaal gesproken binnen 24 uur op werkdagen. Vaak eerder. U ontvangt een telefoontje van mij persoonlijk — geen callcenter.</p>
-                    </div>
-                </div>
-                <div class="faq__item" role="listitem">
-                    <button class="faq__q" aria-expanded="false">
-                        Werkt dit ook voor mijn type woning?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq__a" hidden>
-                        <p>Voor rijtjeshuizen, vrijstaande woningen en appartementen is dit vrijwel altijd mogelijk. Bij bijzondere situaties — zoals dakramen of hoge verdiepingen — stemmen we vooraf af.</p>
-                    </div>
-                </div>
-            </div>
+  <!-- REVIEWS -->
+  <div class="light">
+    <section class="section">
+      <span class="section-label">Wat klanten zeggen</span>
+      <h2 class="section-title">Nijmegen over <em>Lappers</em></h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&#8220;Eindelijk een glazenwasser die ook echt de kozijnen meeneemt. Huis ziet er compleet anders uit.&#8221;</p>
+          <div class="reviewer">Sandra V.<span>Nijmegen &mdash; vaste klant</span></div>
         </div>
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&#8220;Via de gratis wasbeurt begonnen en nooit meer weggegaan. Betrouwbaar, punctueel, kraakhelder resultaat.&#8221;</p>
+          <div class="reviewer">Mark de B.<span>Beuningen &mdash; abonnement</span></div>
+        </div>
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&#8220;Geen gedoe, geen strepen, geen verrassingen. Gewoon wat er beloofd wordt. Dat is zeldzaam.&#8221;</p>
+          <div class="reviewer">Anita K.<span>Wijchen &mdash; vaste klant</span></div>
+        </div>
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&#8220;Hij weet wanneer hij komt, doet zijn werk en het ziet er altijd perfect uit. Ideaal.&#8221;</p>
+          <div class="reviewer">Peter L.<span>Groesbeek &mdash; abonnement</span></div>
+        </div>
+      </div>
     </section>
+  </div>
 
-    <!-- Minimal footer -->
-    <footer class="footer lp-footer">
-        <div class="footer__bottom">
-            <div class="container lp-footer__inner">
-                <p>&copy; 2025 Lappers &mdash; Glazenwasser Nijmegen &amp; omgeving</p>
-                <a href="/" class="lp-footer__back">Terug naar de hoofdpagina</a>
-            </div>
-        </div>
-    </footer>
+  <footer>
+    <a href="/" style="font-size:1.1rem;color:rgba(255,255,255,0.7);font-family:'Fraunces',serif;font-weight:900;">Lap<span style="color:#a8d8f8;">pers</span></a>
+    <span>Glazenwasser Nijmegen &amp; omstreken</span>
+    <a href="tel:+31629010630">06 290 106 30</a>
+  </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/lp.js"></script>
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p>Wij gebruiken cookies om de website te laten functioneren en bezoekersstatistieken te verzamelen.</p>
+    <div class="cookie-banner-actions">
+      <button class="cookie-btn cookie-btn-decline" onclick="cookieChoice(false)">Alleen noodzakelijk</button>
+      <button class="cookie-btn cookie-btn-accept"  onclick="cookieChoice(true)">Accepteren</button>
+    </div>
+  </div>
+
+  <script>
+    /* ── OBJECTION ACCORDION ── */
+    function toggleObj(id) {
+      document.getElementById(id).classList.toggle('open');
+    }
+
+    /* ── CANVAS VSL ANIMATION ── */
+    var canvas    = document.getElementById('vslCanvas');
+    var ctx       = canvas.getContext('2d');
+    var animFrame, t = 0, startTime = null;
+    var particles = [];
+
+    function initParticles() {
+      particles = [];
+      var W = canvas.width  / (window.devicePixelRatio || 1);
+      var H = canvas.height / (window.devicePixelRatio || 1);
+      for (var i = 0; i < 28; i++) {
+        particles.push({
+          x:  Math.random() * W,
+          y:  Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: (Math.random() - 0.5) * 0.18,
+          r:  Math.random() * 1.4 + 0.3,
+          a:  Math.random() * 0.35 + 0.08
+        });
+      }
+    }
+
+    function resizeCanvas() {
+      var rect = canvas.parentElement.getBoundingClientRect();
+      var dpr  = window.devicePixelRatio || 1;
+      canvas.width  = rect.width  * dpr;
+      canvas.height = rect.height * dpr;
+      canvas.style.width  = rect.width  + 'px';
+      canvas.style.height = rect.height + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      initParticles();
+    }
+
+    function drawFrame() {
+      var dpr = window.devicePixelRatio || 1;
+      var W   = canvas.width  / dpr;
+      var H   = canvas.height / dpr;
+
+      /* Background */
+      var bg = ctx.createLinearGradient(0, 0, W, H);
+      bg.addColorStop(0, '#050a14');
+      bg.addColorStop(1, '#0a1628');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, W, H);
+
+      /* Orb 1 — blue */
+      var o1x = W * (0.28 + 0.07 * Math.sin(t * 0.30));
+      var o1y = H * (0.40 + 0.05 * Math.cos(t * 0.38));
+      var g1  = ctx.createRadialGradient(o1x, o1y, 0, o1x, o1y, W * 0.52);
+      g1.addColorStop(0, 'rgba(26,111,181,0.22)');
+      g1.addColorStop(1, 'transparent');
+      ctx.fillStyle = g1;
+      ctx.fillRect(0, 0, W, H);
+
+      /* Orb 2 — gold */
+      var o2x = W * (0.76 + 0.05 * Math.cos(t * 0.33));
+      var o2y = H * (0.62 + 0.05 * Math.sin(t * 0.28));
+      var g2  = ctx.createRadialGradient(o2x, o2y, 0, o2x, o2y, W * 0.42);
+      g2.addColorStop(0, 'rgba(249,200,74,0.16)');
+      g2.addColorStop(1, 'transparent');
+      ctx.fillStyle = g2;
+      ctx.fillRect(0, 0, W, H);
+
+      /* Particles */
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+        ctx.fillStyle = 'rgba(168,216,248,' + p.a + ')';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      /* Text — centered */
+      var cx     = W / 2;
+      var cy     = H / 2;
+      var pulse  = 1 + 0.014 * Math.sin(t * 1.4);
+      var fScale = Math.min(1, W / 600);
+
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.scale(pulse, pulse);
+      ctx.textAlign = 'center';
+
+      /* Label */
+      ctx.font      = '600 ' + Math.max(11, 13 * fScale) + 'px "DM Sans", sans-serif';
+      ctx.fillStyle = 'rgba(168,216,248,0.85)';
+      ctx.fillText('GRATIS WASBEURT', 0, -H * 0.18);
+
+      /* Headline */
+      ctx.font      = '900 ' + Math.max(22, 50 * fScale) + 'px "Fraunces", serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText('Claim hieronder', 0, -H * 0.04);
+
+      /* Yellow rule */
+      var lw = Math.min(260, W * 0.38);
+      ctx.fillStyle = 'rgba(249,200,74,0.9)';
+      ctx.fillRect(-lw / 2, H * 0.02, lw, 3);
+
+      /* Sub-line */
+      ctx.font      = '300 ' + Math.max(14, 24 * fScale) + 'px "DM Sans", sans-serif';
+      ctx.fillStyle = 'rgba(255,255,255,0.82)';
+      ctx.fillText('je gratis wasbeurt.', 0, H * 0.10);
+
+      ctx.restore();
+
+      /* Down arrow with bounce */
+      var arrY   = H - 56 + Math.sin(t * 2) * 5;
+      ctx.strokeStyle = '#f9c84a';
+      ctx.lineWidth   = 2.5;
+      ctx.lineCap     = 'round';
+      ctx.lineJoin    = 'round';
+      ctx.beginPath();
+      ctx.moveTo(cx - 12, arrY - 6);
+      ctx.lineTo(cx,      arrY + 4);
+      ctx.lineTo(cx + 12, arrY - 6);
+      ctx.stroke();
+
+      /* Watermark */
+      ctx.font      = '900 ' + Math.max(11, 13 * fScale) + 'px "Fraunces", serif';
+      ctx.textAlign = 'left';
+      ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      ctx.fillText('Lap', 20, H - 16);
+      var lw2 = ctx.measureText('Lap').width;
+      ctx.fillStyle = 'rgba(168,216,248,0.65)';
+      ctx.fillText('pers', 20 + lw2, H - 16);
+    }
+
+    function animate(ts) {
+      if (!startTime) startTime = ts;
+      t = (ts - startTime) / 1000;
+      drawFrame();
+      animFrame = requestAnimationFrame(animate);
+    }
+
+    function startVSL() {
+      document.getElementById('playOverlay').classList.add('hidden');
+      startTime = null;
+      animFrame = requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', function () { resizeCanvas(); drawFrame(); });
+    resizeCanvas();
+    /* Animate directly — no play needed for placeholder */
+    document.getElementById('playOverlay').classList.add('hidden');
+    animFrame = requestAnimationFrame(animate);
+
+    /* ── LEAD FORM ── */
+    document.getElementById('leadForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var form    = this;
+      var btn     = document.getElementById('submitBtn');
+      var naam    = form.querySelector('[name="naam"]').value.trim();
+      var tel     = form.querySelector('[name="telefoon"]').value.trim();
+      var email   = form.querySelector('[name="email"]').value.trim();
+
+      btn.textContent = 'Versturen…';
+      btn.disabled    = true;
+
+      /* CallMeBot WhatsApp — activeer via: stuur "I allow callmebot to send me messages"
+         naar +34 644 82 35 55 op WhatsApp, vervang YOUR_API_KEY door je eigen sleutel */
+      var apiKey = 'YOUR_API_KEY';
+      var msg    = encodeURIComponent(
+        '🔔 NIEUWE LEAD — Lappers\n\n' +
+        '👤 ' + naam  + '\n' +
+        '📞 ' + tel   + '\n' +
+        '📧 ' + email + '\n\n' +
+        'Bron: gratis wasbeurt aanvraag'
+      );
+      fetch('https://api.callmebot.com/whatsapp.php?phone=31629010630&text=' + msg + '&apikey=' + apiKey, { mode: 'no-cors' }).catch(function () {});
+
+      /* Formspree */
+      fetch('https://formspree.io/f/mzdwpyqb', {
+        method:  'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ naam: naam, telefoon: tel, email: email, bron: 'gratis-wasbeurt' })
+      })
+      .then(function (res) {
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('successBox').style.display = 'block';
+        } else {
+          btn.disabled    = false;
+          btn.textContent = '🎁 Claim mijn gratis wasbeurt →';
+          alert('Er ging iets mis. Probeer het opnieuw of bel direct: 06 290 106 30');
+        }
+      })
+      .catch(function () {
+        btn.disabled    = false;
+        btn.textContent = '🎁 Claim mijn gratis wasbeurt →';
+        alert('Er ging iets mis. Probeer het opnieuw of bel direct: 06 290 106 30');
+      });
+    });
+
+    /* ── COOKIE BANNER ── */
+    (function () {
+      try {
+        if (!localStorage.getItem('cookieChoice')) {
+          setTimeout(function () {
+            document.getElementById('cookieBanner').classList.add('show');
+          }, 1200);
+        }
+      } catch (e) {}
+    })();
+
+    function cookieChoice(accepted) {
+      try { localStorage.setItem('cookieChoice', accepted ? 'accepted' : 'declined'); } catch (e) {}
+      document.getElementById('cookieBanner').classList.remove('show');
+    }
+  </script>
+
 </body>
 </html>
