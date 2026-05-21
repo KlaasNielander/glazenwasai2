@@ -1,2160 +1,712 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gratis eerste wasbeurt – Lappers Glazenwasser Nijmegen</title>
-    <meta name="description" content="Nieuwe klant? Uw eerste wasbeurt is volledig gratis. Lappers – betrouwbare glazenwasser in Nijmegen en omgeving. Geen verplichtingen, geen verborgen kosten.">
-    <link rel="canonical" href="https://lappers.nl/gratis-wasbeurt">
-    <meta name="robots" content="noindex">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
-    <style>
-/* ==========================================================================
-   Lappers – Glazenwasserij Nijmegen
-   style.css — Licht design systeem
-   ========================================================================== */
-
-:root {
-  /* Dark (hero/footer/contact) */
-  --bg-dark:      #07080F;
-  --bg-dark-2:    #0D0F1C;
-  --bg-card-dark: rgba(255,255,255,.05);
-  --border-dark:  rgba(255,255,255,.08);
-
-  /* Light (hoofdkleuren) */
-  --bg:           #FFFFFF;
-  --bg-alt:       #F5F6FA;
-  --bg-card:      #FFFFFF;
-  --border:       #E4E6EF;
-  --text:         #111827;
-  --text-muted:   #6B7280;
-  --text-light:   #9CA3AF;
-
-  /* Accent */
-  --gold:         #F5C518;
-  --gold-hover:   #e0b210;
-  --blue:         #2563EB;
-  --blue-light:   #3B82F6;
-  --purple:       #7C3AED;
-  --green:        #16A34A;
-
-  /* Glassmorphism (dark sections) */
-  --glass-bg:     rgba(255,255,255,.06);
-  --glass-border: rgba(255,255,255,.1);
-  --glass-blur:   18px;
-
-  --font: 'Inter', system-ui, -apple-system, sans-serif;
-  --radius:       10px;
-  --radius-lg:    16px;
-  --radius-xl:    24px;
-  --radius-full:  999px;
-
-  --shadow-sm:    0 1px 4px rgba(0,0,0,.06);
-  --shadow:       0 4px 16px rgba(0,0,0,.08);
-  --shadow-md:    0 8px 28px rgba(0,0,0,.1);
-  --shadow-lg:    0 16px 48px rgba(0,0,0,.14);
-
-  --nav-h:        64px;
-  --topbar-h:     44px;
-}
-
-/* ===== Reset ===== */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
-body {
-  font-family: var(--font);
-  color: var(--text);
-  background: var(--bg);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-img, svg { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-ul { list-style: none; }
-button { font: inherit; cursor: pointer; border: none; background: none; }
-input, textarea { font: inherit; }
-
-/* ===== Gradient em (werkt op lichte EN donkere achtergrond) ===== */
-em {
-  font-style: italic;
-  background: linear-gradient(100deg, var(--blue) 0%, var(--purple) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ===== Container ===== */
-.container {
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 28px;
-}
-
-/* ===== Typography ===== */
-h1 {
-  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -.025em;
-}
-h2 {
-  font-size: clamp(1.9rem, 3.8vw, 3rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -.02em;
-  color: var(--text);
-}
-h3 { font-size: 1.1rem; font-weight: 700; line-height: 1.35; color: var(--text); }
-p  { line-height: 1.72; }
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--blue);
-  margin-bottom: .85rem;
-}
-.eyebrow--light { color: rgba(255,255,255,.45); }
-
-.eyebrow__dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 0 0 rgba(22,163,74,.4);
-  animation: pulse-dot 2s infinite;
-}
-@keyframes pulse-dot {
-  0%   { box-shadow: 0 0 0 0 rgba(22,163,74,.4); }
-  70%  { box-shadow: 0 0 0 8px rgba(22,163,74,0); }
-  100% { box-shadow: 0 0 0 0 rgba(22,163,74,0); }
-}
-
-.section__header { text-align: center; margin-bottom: 3.5rem; }
-.section__sub {
-  margin-top: .85rem;
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ===== Buttons ===== */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  font-weight: 600;
-  font-size: 1rem;
-  border-radius: var(--r-full, var(--radius-full));
-  padding: .7rem 1.5rem;
-  border: 2px solid transparent;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: transform .15s, box-shadow .15s, background .15s, border-color .15s;
-  position: relative;
-  overflow: hidden;
-  text-decoration: none;
-  border-radius: var(--radius-full);
-}
-.btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.2) 50%, transparent 100%);
-  transform: translateX(-100%);
-  transition: transform .4s;
-}
-.btn:hover::after  { transform: translateX(100%); }
-.btn:hover  { transform: translateY(-2px); }
-.btn:active { transform: translateY(0); }
-
-.btn--gold {
-  background: var(--gold);
-  color: #07080F;
-  border-color: var(--gold);
-  font-weight: 700;
-  box-shadow: 0 4px 20px rgba(245,197,24,.35);
-}
-.btn--gold:hover {
-  background: #FFD93D;
-  border-color: #FFD93D;
-  box-shadow: 0 6px 28px rgba(245,197,24,.5);
-}
-.btn--ghost {
-  background: rgba(255,255,255,.08);
-  color: #FFFFFF;
-  border-color: rgba(255,255,255,.2);
-}
-.btn--ghost:hover {
-  background: rgba(255,255,255,.14);
-  border-color: rgba(255,255,255,.35);
-}
-.btn--outline {
-  background: transparent;
-  color: var(--text);
-  border-color: var(--border);
-}
-.btn--outline:hover { border-color: #9CA3AF; box-shadow: var(--shadow-sm); }
-.btn--nav {
-  background: var(--gold);
-  color: #07080F;
-  padding: .5rem 1.15rem;
-  font-size: .875rem;
-  font-weight: 700;
-  border-color: var(--gold);
-}
-.btn--nav:hover { background: #FFD93D; border-color: #FFD93D; }
-.btn--lg   { padding: .9rem 2rem; font-size: 1.05rem; }
-.btn--sm   { padding: .45rem 1rem; font-size: .875rem; }
-.btn--full { width: 100%; justify-content: center; }
-
-/* ===== Topbar ===== */
-.topbar {
-  background: var(--gold);
-  height: var(--topbar-h);
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  overflow: hidden;
-  transition: height .25s, opacity .25s;
-}
-.topbar.hidden { height: 0; opacity: 0; pointer-events: none; }
-.topbar__inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .85rem;
-  height: 100%;
-}
-.topbar__text { font-size: .875rem; font-weight: 500; color: #07080F; }
-.topbar__text strong { font-weight: 800; }
-.topbar__btn {
-  background: #07080F;
-  color: #FFFFFF;
-  padding: .3rem .9rem;
-  border-radius: var(--radius-full);
-  font-size: .78rem;
-  font-weight: 700;
-  white-space: nowrap;
-  transition: opacity .15s;
-}
-.topbar__btn:hover { opacity: .82; }
-.topbar__close {
-  position: absolute;
-  right: 18px;
-  font-size: 1.3rem;
-  line-height: 1;
-  color: #07080F;
-  opacity: .5;
-  padding: 4px;
-  transition: opacity .15s;
-}
-.topbar__close:hover { opacity: 1; }
-
-/* ===== Navigation ===== */
-.nav {
-  position: sticky;
-  top: var(--topbar-h);
-  z-index: 100;
-  height: var(--nav-h);
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  transition: top .25s, box-shadow .2s;
-}
-.nav.topbar-hidden { top: 0; }
-.nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
-.nav__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-}
-.nav__logo {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--text);
-  letter-spacing: -.03em;
-}
-.nav__links {
-  display: flex;
-  align-items: center;
-  gap: 1.75rem;
-}
-.nav__links > li > a:not(.btn) {
-  color: var(--text-muted);
-  font-size: .9rem;
-  font-weight: 500;
-  transition: color .15s;
-}
-.nav__links > li > a:not(.btn):hover { color: var(--text); }
-.nav__toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  padding: 8px;
-}
-.nav__toggle span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--text);
-  border-radius: 2px;
-  transition: transform .22s, opacity .22s;
-}
-.nav__toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav__toggle.open span:nth-child(2) { opacity: 0; }
-.nav__toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* ===== Hero (blijft donker) ===== */
-.hero {
-  position: relative;
-  padding: 100px 0 120px;
-  overflow: hidden;
-  isolation: isolate;
-  background: var(--bg-dark);
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 60% -10%, rgba(79,142,247,.14) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 40% at 95% 70%, rgba(124,58,237,.1) 0%, transparent 55%);
-  z-index: -2;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-  background-size: 56px 56px;
-  z-index: -1;
-}
-.hero__glow {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(90px);
-  z-index: -1;
-}
-.hero__glow--1 {
-  width: 600px; height: 500px;
-  top: -200px; right: -100px;
-  background: radial-gradient(circle, rgba(37,99,235,.18) 0%, transparent 70%);
-}
-.hero__glow--2 {
-  width: 400px; height: 400px;
-  bottom: -150px; left: -80px;
-  background: radial-gradient(circle, rgba(124,58,237,.12) 0%, transparent 70%);
-}
-.hero__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
-}
-.hero__content { color: #FFFFFF; }
-.hero__content h1 { color: #FFFFFF; margin-bottom: 1.25rem; }
-.hero__body {
-  font-size: 1.1rem;
-  color: rgba(255,255,255,.65);
-  max-width: 480px;
-  margin-bottom: 2rem;
-}
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .85rem;
-  margin-bottom: 3rem;
-}
-.hero__stats {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,.1);
-}
-.hero__stat strong {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #FFFFFF;
-  line-height: 1;
-  margin-bottom: .2rem;
-}
-.hero__stat span {
-  font-size: .72rem;
-  color: rgba(255,255,255,.4);
-  text-transform: uppercase;
-  letter-spacing: .08em;
-}
-.hero__stat-divider {
-  width: 1px;
-  height: 38px;
-  background: rgba(255,255,255,.12);
-  flex-shrink: 0;
-}
-
-/* Window illustration */
-.hero__visual { display: flex; justify-content: center; align-items: center; }
-.window-wrap {
-  position: relative;
-  width: 300px;
-  height: 340px;
-  filter: drop-shadow(0 0 60px rgba(37,99,235,.2));
-}
-.window-svg { width: 100%; height: 100%; }
-.sparkle {
-  position: absolute;
-  color: var(--gold);
-  animation: sparkle-anim 2.8s ease-in-out infinite;
-  line-height: 1;
-  user-select: none;
-}
-.sp1 { font-size: 1.3rem; top: 6%;   right: 4%;  animation-delay: 0s; }
-.sp2 { font-size: .95rem; top: 42%;  right: -5%; animation-delay: .7s; }
-.sp3 { font-size: 1.1rem; bottom: 10%; right: 8%; animation-delay: 1.4s; }
-.sp4 { font-size: .8rem;  top: 22%;  left: 0%;   animation-delay: 2.1s; }
-@keyframes sparkle-anim {
-  0%,100% { opacity: .2; transform: scale(.75) rotate(0deg); }
-  50%      { opacity: 1;  transform: scale(1.15) rotate(15deg); }
-}
-
-/* ===== Marquee ticker (licht) ===== */
-.ticker {
-  background: var(--bg-alt);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: .85rem 0;
-  overflow: hidden;
-}
-.ticker__track {
-  display: flex;
-  gap: 0;
-  animation: ticker-scroll 24s linear infinite;
-  width: max-content;
-}
-.ticker__track:hover { animation-play-state: paused; }
-.ticker__item {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  padding: 0 2rem;
-  font-size: .78rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  white-space: nowrap;
-}
-.ticker__item::after {
-  content: '·';
-  color: var(--gold);
-  font-size: 1.2rem;
-}
-@keyframes ticker-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* ===== Section base ===== */
-.section { padding: 96px 0; background: var(--bg); }
-.section--alt { background: var(--bg-alt); }
-.section--dark {
-  background: var(--bg-dark);
-  color: #FFFFFF;
-}
-.section--dark h2 { color: #FFFFFF; }
-.section--dark h3 { color: #FFFFFF; }
-.section--dark .eyebrow { color: rgba(255,255,255,.45); }
-.section--dark .section__sub { color: rgba(255,255,255,.5); }
-
-/* ===== USP bar ===== */
-.usp-bar {
-  background: var(--bg-alt);
-  border-bottom: 1px solid var(--border);
-  padding: 1rem 0;
-}
-.usp-bar__inner {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem 2.5rem;
-}
-.usp-item {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  color: var(--text-muted);
-  font-size: .875rem;
-  font-weight: 500;
-}
-.usp-item svg { color: var(--green); flex-shrink: 0; }
-
-/* ===== Services — Bento ===== */
-.bento {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1rem;
-}
-.bento-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  position: relative;
-  transition: box-shadow .22s, transform .22s, border-color .22s;
-}
-.bento-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
-  border-color: #CBD5E1;
-}
-.bento-card--a { grid-column: span 7; }
-.bento-card--b { grid-column: span 5; }
-.bento-card--c { grid-column: span 5; }
-.bento-card--d {
-  grid-column: span 7;
-  background: var(--bg-dark);
-  border-color: rgba(245,197,24,.25);
-  color: #FFFFFF;
-}
-.bento-card--d h3 { color: #FFFFFF; }
-.bento-card--d p  { color: rgba(255,255,255,.58); }
-
-.bento-badge {
-  position: absolute;
-  top: -12px;
-  left: 1.75rem;
-  background: var(--gold);
-  color: #07080F;
-  font-size: .68rem;
-  font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  padding: .25rem .8rem;
-  border-radius: var(--radius-full);
-}
-.bento-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius);
-  background: #EFF6FF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.1rem;
-  color: var(--blue);
-}
-.bento-card--d .bento-icon {
-  background: rgba(255,255,255,.08);
-  color: var(--gold);
-}
-.bento-card h3 { margin-bottom: .5rem; }
-.bento-card p  { font-size: .92rem; color: var(--text-muted); margin-bottom: 1.1rem; }
-.bento-link {
-  display: inline-flex;
-  align-items: center;
-  gap: .3rem;
-  font-size: .875rem;
-  font-weight: 600;
-  color: var(--blue);
-  transition: gap .15s;
-}
-.bento-card--d .bento-link { color: var(--gold); }
-.bento-link:hover { gap: .55rem; }
-
-/* ===== Waarom Lappers ===== */
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.benefit-item {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  text-align: center;
-  transition: box-shadow .2s, transform .2s;
-}
-.benefit-item:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-.benefit-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #EFF6FF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.1rem;
-  color: var(--blue);
-}
-.benefit-item h3 { margin-bottom: .5rem; }
-.benefit-item p  { font-size: .9rem; color: var(--text-muted); }
-
-/* ===== CTA Banner (donker accent) ===== */
-.cta-banner {
-  background: var(--bg-dark);
-  padding: 80px 0;
-  position: relative;
-  overflow: hidden;
-}
-.cta-banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 70% 100% at 50% 50%, rgba(37,99,235,.08) 0%, transparent 70%);
-}
-.cta-banner__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-  position: relative;
-}
-.cta-banner__content h2 { color: #FFFFFF; margin-bottom: .75rem; }
-.cta-banner__content p  { color: rgba(255,255,255,.55); max-width: 440px; }
-
-/* ===== Steps (licht) ===== */
-.steps {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2.5rem 3rem;
-  max-width: 820px;
-  margin: 0 auto;
-}
-.step { display: flex; gap: 1.25rem; align-items: flex-start; }
-.step__num {
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--gold);
-  line-height: 1;
-  flex-shrink: 0;
-  width: 60px;
-  text-shadow: 0 2px 12px rgba(245,197,24,.3);
-}
-.step__content h3 { margin-bottom: .4rem; }
-.step__content p  { color: var(--text-muted); font-size: .92rem; }
-
-/* ===== Reviews (licht) ===== */
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.1rem;
-}
-.review-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  transition: box-shadow .2s, transform .2s, border-color .2s;
-}
-.review-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-  border-color: #CBD5E1;
-}
-.review-card__stars {
-  color: var(--gold);
-  letter-spacing: .1em;
-  font-size: 1rem;
-  margin-bottom: .85rem;
-}
-.review-card blockquote {
-  font-size: .95rem;
-  font-style: italic;
-  color: var(--text-muted);
-  line-height: 1.72;
-  margin-bottom: 1.25rem;
-}
-.review-card__author strong {
-  display: block;
-  font-size: .875rem;
-  color: var(--text);
-}
-.review-card__author span {
-  font-size: .78rem;
-  color: var(--text-light);
-}
-
-/* ===== Service areas ===== */
-.areas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .65rem;
-  justify-content: center;
-}
-.area-tag {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-full);
-  padding: .45rem 1.1rem;
-  font-size: .875rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  transition: border-color .15s, color .15s, box-shadow .15s;
-}
-.area-tag:hover { border-color: #94A3B8; color: var(--text); }
-.area-tag--cta {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: #07080F;
-  font-weight: 700;
-  cursor: pointer;
-}
-.area-tag--cta:hover { background: #FFD93D; border-color: #FFD93D; }
-
-/* ===== FAQ (licht) ===== */
-.faq { max-width: 720px; margin: 0 auto; }
-.faq__item { border-bottom: 1px solid var(--border); }
-.faq__item:first-child { border-top: 1px solid var(--border); }
-.faq__q {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.25rem 0;
-  font-size: .975rem;
-  font-weight: 600;
-  color: var(--text);
-  text-align: left;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: color .15s;
-}
-.faq__q:hover { color: var(--blue); }
-.faq__q svg { flex-shrink: 0; color: var(--text-light); transition: transform .25s; }
-.faq__q[aria-expanded="true"] { color: var(--blue); }
-.faq__q[aria-expanded="true"] svg { transform: rotate(180deg); }
-.faq__a { padding-bottom: 1.25rem; }
-.faq__a p { font-size: .92rem; color: var(--text-muted); }
-
-/* ===== Contact (donker) ===== */
-.contact-section {
-  background: var(--bg-dark);
-  padding: 100px 0;
-  position: relative;
-  overflow: hidden;
-}
-.contact-section__glow {
-  position: absolute;
-  width: 600px; height: 400px;
-  top: 50%; right: -100px;
-  transform: translateY(-50%);
-  background: radial-gradient(circle, rgba(37,99,235,.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-.contact__inner {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 5rem;
-  align-items: start;
-}
-.contact__info h2 { color: #FFFFFF; margin-bottom: 1rem; }
-.contact__info > p { color: rgba(255,255,255,.55); margin-bottom: 2rem; font-size: 1.05rem; }
-.contact__phone {
-  display: inline-flex;
-  align-items: center;
-  gap: .65rem;
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: #FFFFFF;
-  transition: color .15s;
-}
-.contact__phone:hover { color: var(--gold); }
-.contact__phone svg { color: var(--gold); }
-
-/* Form */
-.contact-form {
-  background: #FFFFFF;
-  border-radius: var(--radius-xl);
-  padding: 2.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-  box-shadow: 0 24px 64px rgba(0,0,0,.3);
-}
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-.form-field { display: flex; flex-direction: column; gap: .35rem; }
-.form-field label {
-  font-size: .82rem;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: .01em;
-}
-.form-field input,
-.form-field textarea {
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius);
-  padding: .75rem 1rem;
-  font-size: .95rem;
-  color: var(--text);
-  background: #FAFBFE;
-  outline: none;
-  resize: vertical;
-  transition: border-color .15s, box-shadow .15s, background .15s;
-}
-.form-field input::placeholder,
-.form-field textarea::placeholder { color: #C4C7D6; }
-.form-field input:focus,
-.form-field textarea:focus {
-  border-color: var(--blue-light);
-  box-shadow: 0 0 0 3px rgba(59,130,246,.15);
-  background: #FFFFFF;
-}
-.form-field input.error,
-.form-field textarea.error {
-  border-color: #EF4444;
-  box-shadow: 0 0 0 3px rgba(239,68,68,.1);
-}
-.form__notice {
-  text-align: center;
-  font-size: .76rem;
-  color: var(--text-light);
-}
-
-/* ===== Footer ===== */
-.footer {
-  background: #04050A;
-  border-top: 1px solid rgba(255,255,255,.06);
-  padding-top: 64px;
-}
-.footer__inner {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 3rem;
-  padding-bottom: 3rem;
-}
-.footer__brand .nav__logo { display: block; margin-bottom: .5rem; color: #FFFFFF; }
-.footer__brand p { font-size: .875rem; color: rgba(255,255,255,.35); margin-bottom: .85rem; }
-.footer__phone {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: rgba(255,255,255,.75);
-  transition: color .15s;
-}
-.footer__phone:hover { color: var(--gold); }
-.footer__col-title {
-  font-size: .7rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.3);
-  margin-bottom: .9rem;
-}
-.footer__col ul { display: flex; flex-direction: column; gap: .5rem; }
-.footer__col li { font-size: .875rem; color: rgba(255,255,255,.45); }
-.footer__col a { transition: color .15s; }
-.footer__col a:hover { color: rgba(255,255,255,.85); }
-.footer__bottom {
-  border-top: 1px solid rgba(255,255,255,.06);
-  padding: 1.25rem 0;
-}
-.footer__bottom p { font-size: .78rem; color: rgba(255,255,255,.25); text-align: center; }
-
-/* ===== Glassmorphism card (dark sections) ===== */
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-xl);
-}
-
-/* ===== Fade-in ===== */
-.fade-in {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity .55s ease, transform .55s ease;
-}
-.fade-in.visible { opacity: 1; transform: none; }
-
-/* ===== Responsive ===== */
-@media (max-width: 960px) {
-  .hero__inner     { grid-template-columns: 1fr; }
-  .hero__visual    { display: none; }
-  .hero            { padding: 72px 0 88px; }
-  .bento           { grid-template-columns: 1fr 1fr; }
-  .bento-card--a,
-  .bento-card--b,
-  .bento-card--c,
-  .bento-card--d   { grid-column: span 1; }
-  .reviews-grid    { grid-template-columns: 1fr; }
-  .benefits-grid   { grid-template-columns: 1fr; }
-  .steps           { grid-template-columns: 1fr; gap: 2rem; }
-  .contact__inner  { grid-template-columns: 1fr; gap: 3rem; }
-  .footer__inner   { grid-template-columns: 1fr; gap: 2rem; }
-  .cta-banner__inner { flex-direction: column; text-align: center; }
-  .cta-banner__content p { margin: 0 auto; }
-}
-
-@media (max-width: 720px) {
-  :root { --nav-h: 58px; --topbar-h: 40px; }
-  .nav__links { display: none; }
-  .nav__links.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: var(--nav-h);
-    left: 0; right: 0;
-    background: rgba(255,255,255,.97);
-    backdrop-filter: blur(20px);
-    padding: 1.5rem 28px;
-    gap: 1rem;
-    border-bottom: 1px solid var(--border);
-    z-index: 99;
-    box-shadow: var(--shadow-md);
-  }
-  .nav__links.open > li > a:not(.btn) { font-size: 1rem; color: var(--text); }
-  .nav__toggle { display: flex; }
-  .bento  { grid-template-columns: 1fr; }
-  .bento-card--a,
-  .bento-card--b,
-  .bento-card--c,
-  .bento-card--d { grid-column: span 1; }
-  .form-row { grid-template-columns: 1fr; }
-  .topbar__text { font-size: .78rem; }
-}
-
-@media (max-width: 480px) {
-  .section { padding: 72px 0; }
-  .hero__actions { flex-direction: column; }
-  .hero__actions .btn { width: 100%; justify-content: center; }
-  .hero__stats { gap: 1rem; }
-  .usp-bar__inner { gap: .75rem 1.75rem; }
-}
-
-/* ==========================================================
-   AANVULLING: Correcte classnames + extra animaties
-   ========================================================== */
-
-/* Topbar CTA (HTML gebruikt topbar__cta) */
-.topbar__cta {
-  background: #07080F;
-  color: #FFFFFF;
-  padding: .3rem .9rem;
-  border-radius: var(--radius-full);
-  font-size: .78rem;
-  font-weight: 700;
-  white-space: nowrap;
-  transition: opacity .15s;
-}
-.topbar__cta:hover { opacity: .82; }
-
-/* Pulse dot in eyebrow */
-.pulse-dot {
-  display: inline-block;
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--green);
-  flex-shrink: 0;
-  animation: pulse-dot 2s infinite;
-}
-
-/* Shimmer button variant */
-.btn--shimmer {
-  background: linear-gradient(90deg, var(--gold) 0%, #FFD93D 50%, var(--gold) 100%);
-  background-size: 200% auto;
-  animation: btn-shimmer 3s linear infinite;
-}
-@keyframes btn-shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position:  200% center; }
-}
-
-/* Marquee bar */
-.marquee-bar {
-  background: var(--bg-alt);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: .85rem 0;
-  overflow: hidden;
-}
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee-scroll 26s linear infinite;
-}
-.marquee-track:hover { animation-play-state: paused; }
-.marquee-inner {
-  display: inline-block;
-  white-space: nowrap;
-  font-size: .78rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  padding-right: 2rem;
-}
-@keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* Bento grid (diensten sectie) */
-.bento-grid {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  grid-template-rows: auto auto;
-  gap: 1rem;
-}
-.bento-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  position: relative;
-  transition: box-shadow .25s, transform .25s, border-color .25s;
-}
-.bento-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
-  border-color: #CBD5E1;
-}
-.bento-card--wide { grid-column: 1 / 2; }
-.bento-card--featured {
-  grid-column: 2 / 3;
-  grid-row: 1 / 3;
-  background: #07080F;
-  border-color: rgba(245,197,24,.3);
-  color: #FFFFFF;
-}
-.bento-card--featured h3 { color: #FFFFFF; }
-.bento-card--featured p  { color: rgba(255,255,255,.58); }
-
-.bento-card__badge {
-  position: absolute;
-  top: -12px;
-  left: 1.75rem;
-  background: var(--gold);
-  color: #07080F;
-  font-size: .68rem;
-  font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  padding: .25rem .8rem;
-  border-radius: var(--radius-full);
-}
-.bento-card__icon {
-  width: 48px; height: 48px;
-  border-radius: var(--radius);
-  background: #EFF6FF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.1rem;
-  color: var(--blue);
-  transition: background .2s, transform .2s;
-}
-.bento-card:hover .bento-card__icon { transform: scale(1.08); }
-.bento-card--featured .bento-card__icon {
-  background: rgba(255,255,255,.1);
-  color: var(--gold);
-}
-.bento-card h3 { margin-bottom: .5rem; }
-.bento-card p  { font-size: .92rem; color: var(--text-muted); margin-bottom: 1.1rem; }
-.bento-card--featured p { color: rgba(255,255,255,.58); }
-.bento-card__link {
-  display: inline-flex;
-  align-items: center;
-  gap: .35rem;
-  font-size: .875rem;
-  font-weight: 600;
-  color: var(--blue);
-  transition: gap .18s;
-}
-.bento-card--featured .bento-card__link { color: var(--gold); }
-.bento-card__link:hover { gap: .6rem; }
-
-/* Benefit items */
-.benefit-item__icon {
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  background: #EFF6FF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.1rem;
-  color: var(--blue);
-  transition: background .2s, transform .25s;
-}
-.benefit-item:hover .benefit-item__icon {
-  background: #DBEAFE;
-  transform: scale(1.1) rotate(5deg);
-}
-
-/* Steps - step__number (HTML gebruikt step__number, niet step__num) */
-.step__number {
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--gold);
-  line-height: 1;
-  flex-shrink: 0;
-  width: 60px;
-  text-shadow: 0 2px 16px rgba(245,197,24,.3);
-  transition: transform .2s;
-}
-.step:hover .step__number { transform: scale(1.05); }
-
-/* Reviews sectie — lichte achtergrond */
-.reviews-section { background: var(--bg-alt); }
-.reviews-section .review-card {
-  background: #FFFFFF;
-  border-color: var(--border);
-}
-/* Overschrijf glass-card op lichte achtergrond */
-.reviews-section .glass-card {
-  background: #FFFFFF !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: 1px solid var(--border) !important;
-}
-.reviews-section .review-card blockquote { color: var(--text-muted); }
-.reviews-section .review-card__author strong { color: var(--text); }
-.reviews-section .review-card__author span  { color: var(--text-light); }
-.reviews-section h2 { color: var(--text); }
-.reviews-section .eyebrow { color: var(--blue); }
-
-/* Section--alt-dark (waarom sectie) */
-.section--alt-dark {
-  background: #F0F4FF;
-}
-.section--alt-dark h2 { color: var(--text); }
-.section--alt-dark h3 { color: var(--text); }
-.section--alt-dark .eyebrow { color: var(--blue); }
-.section--alt-dark .section__sub { color: var(--text-muted); }
-
-/* 5e sparkle */
-.sp5 { font-size: .75rem; bottom: 30%; left: -2%; animation-delay: 2.5s; }
-
-/* ===== Extra animaties ===== */
-
-/* Hero content slide-in */
-@keyframes slide-up {
-  from { opacity: 0; transform: translateY(32px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.hero__content {
-  animation: slide-up .7s cubic-bezier(.16,1,.3,1) both;
-}
-.hero__visual {
-  animation: slide-up .7s cubic-bezier(.16,1,.3,1) .15s both;
-}
-
-/* Window float animatie */
-.window-wrap {
-  animation: window-float 5s ease-in-out infinite;
-}
-@keyframes window-float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-12px); }
-}
-
-/* Stagger fade-in voor cards */
-.bento-card:nth-child(1) { transition-delay: 0s; }
-.bento-card:nth-child(2) { transition-delay: .08s; }
-.bento-card:nth-child(3) { transition-delay: .16s; }
-.bento-card:nth-child(4) { transition-delay: .24s; }
-
-.review-card:nth-child(1) { transition-delay: 0s; }
-.review-card:nth-child(2) { transition-delay: .1s; }
-.review-card:nth-child(3) { transition-delay: .2s; }
-.review-card:nth-child(4) { transition-delay: .3s; }
-
-.benefit-item:nth-child(1) { transition-delay: 0s; }
-.benefit-item:nth-child(2) { transition-delay: .12s; }
-.benefit-item:nth-child(3) { transition-delay: .24s; }
-
-/* Stap reveal met slide-right */
-.step:nth-child(1) { transition-delay: 0s; }
-.step:nth-child(2) { transition-delay: .1s; }
-.step:nth-child(3) { transition-delay: .2s; }
-.step:nth-child(4) { transition-delay: .3s; }
-
-/* Gradient border op featured card (geanimeerd) */
-.bento-card--featured {
-  background-image: linear-gradient(#07080F, #07080F),
-    linear-gradient(135deg, rgba(245,197,24,.6), rgba(79,142,247,.4), rgba(245,197,24,.6));
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  border: 2px solid transparent;
-  animation: gradient-border 4s linear infinite;
-}
-@keyframes gradient-border {
-  0%   { background-image: linear-gradient(#07080F, #07080F), linear-gradient(135deg, rgba(245,197,24,.6), rgba(79,142,247,.4), rgba(245,197,24,.6)); }
-  50%  { background-image: linear-gradient(#07080F, #07080F), linear-gradient(315deg, rgba(245,197,24,.6), rgba(79,142,247,.4), rgba(245,197,24,.6)); }
-  100% { background-image: linear-gradient(#07080F, #07080F), linear-gradient(135deg, rgba(245,197,24,.6), rgba(79,142,247,.4), rgba(245,197,24,.6)); }
-}
-
-/* Counter animatie class (ingesteld via JS) */
-.count-animated {
-  display: inline-block;
-  transition: opacity .3s;
-}
-
-/* Sectie reveal (extra IntersectionObserver klasse) */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
-}
-.reveal.visible { opacity: 1; transform: none; }
-
-/* Responsive aanvulling */
-@media (max-width: 900px) {
-  .bento-grid {
-    grid-template-columns: 1fr;
-  }
-  .bento-card--wide,
-  .bento-card--featured { grid-column: 1; grid-row: auto; }
-}
-
-/* ==========================================================================
-   Lappers – lp.css
-   Landingspagina-specifieke styles (gratis-wasbeurt.html)
-   ========================================================================== */
-
-/* ===== Urgency bar ===== */
-.urgency-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .65rem;
-  background: rgba(239,68,68,0.12);
-  border-bottom: 1px solid rgba(239,68,68,0.2);
-  color: rgba(255,255,255,0.82);
-  font-size: .82rem;
-  font-weight: 600;
-  letter-spacing: .02em;
-  padding: .65rem 1rem;
-  text-align: center;
-}
-.urgency-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background: #EF4444;
-  border-radius: 50%;
-  flex-shrink: 0;
-  animation: urgency-pulse 1.8s ease-in-out infinite;
-}
-@keyframes urgency-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.55); opacity: 1; }
-  50%       { box-shadow: 0 0 0 5px rgba(239,68,68,0); opacity: .75; }
-}
-
-/* ===== LP Nav ===== */
-.lp-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(7,8,15,0.9) !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-}
-.lp-nav__phone {
-  display: flex;
-  align-items: center;
-  gap: .45rem;
-  color: rgba(255,255,255,0.72);
-  font-size: .9rem;
-  font-weight: 600;
-  transition: color .15s;
-}
-.lp-nav__phone:hover { color: #FFFFFF; }
-.lp-nav .nav__toggle { display: none !important; }
-
-/* ===== LP Hero ===== */
-.lp-hero {
-  background: var(--bg);
-  padding: 88px 0 100px;
-  overflow: hidden;
-  position: relative;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-.lp-hero__glow {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(80px);
-}
-.lp-hero__glow--1 {
-  width: 550px;
-  height: 550px;
-  top: -200px;
-  right: -80px;
-  background: radial-gradient(circle, rgba(79,142,247,0.16) 0%, transparent 70%);
-}
-.lp-hero__glow--2 {
-  width: 400px;
-  height: 400px;
-  bottom: -150px;
-  left: -80px;
-  background: radial-gradient(circle, rgba(167,139,250,0.1) 0%, transparent 70%);
-}
-.lp-hero__inner {
-  display: grid;
-  grid-template-columns: 1fr 1.05fr;
-  gap: 4rem;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-.lp-hero__content { color: #FFFFFF; }
-.lp-hero__content h1 { color: #FFFFFF; margin-bottom: 1rem; }
-.lp-hero__sub {
-  color: rgba(255,255,255,0.62);
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  max-width: 420px;
-}
-.lp-hero__usps {
-  display: flex;
-  flex-direction: column;
-  gap: .7rem;
-}
-.lp-usp {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  color: rgba(255,255,255,0.72);
-  font-size: .93rem;
-  font-weight: 500;
-}
-.lp-usp svg { color: var(--green); flex-shrink: 0; }
-
-/* LP hero form card */
-.lp-form-wrap { display: flex; justify-content: center; }
-.lp-form-card {
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius-xl);
-  padding: 2.25rem;
-  width: 100%;
-  max-width: 440px;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.45);
-}
-.lp-form-card__title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin-bottom: .4rem;
-}
-.lp-form-card__sub {
-  font-size: .875rem;
-  color: rgba(255,255,255,0.48);
-  margin-bottom: 1.6rem;
-}
-.lp-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-}
-.lp-submit { margin-top: .25rem; }
-
-/* ===== VSL sectie ===== */
-.lp-vsl-section { background: var(--bg-card); border-top: 1px solid var(--bg-border); border-bottom: 1px solid var(--bg-border); }
-.lp-vsl-inner {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 3.5rem;
-  align-items: start;
-}
-.vsl-player-wrap { display: flex; flex-direction: column; gap: .85rem; }
-
-/* VSL Player */
-.vsl-player {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  background: #0A0B18;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 16px 56px rgba(0,0,0,0.5);
-}
-.vsl-thumbnail {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  /* Subtle texture */
-  background: linear-gradient(135deg, rgba(79,142,247,0.06) 0%, rgba(167,139,250,0.06) 100%);
-}
-.vsl-overlay-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-  background-size: 32px 32px;
-  pointer-events: none;
-}
-.vsl-play-btn {
-  width: 72px;
-  height: 72px;
-  background: var(--gold);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #07080F;
-  position: relative;
-  z-index: 2;
-  cursor: pointer;
-  animation: vsl-pulse 2.2s ease-in-out infinite;
-  transition: transform .15s, background .15s;
-}
-.vsl-play-btn:hover { transform: scale(1.08); background: var(--gold-hover); }
-.vsl-play-btn:focus-visible {
-  outline: 3px solid var(--blue);
-  outline-offset: 4px;
-}
-.vsl-play-btn svg { margin-left: 4px; }
-@keyframes vsl-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(245,197,24,0.4); }
-  50%       { box-shadow: 0 0 0 14px rgba(245,197,24,0); }
-}
-
-.vsl-iframe-wrap {
-  position: absolute;
-  inset: 0;
-}
-.vsl-iframe-wrap iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-.vsl-label {
-  text-align: center;
-  font-size: .82rem;
-  color: rgba(255,255,255,0.38);
-  font-weight: 500;
-}
-
-/* VSL rechterkant — uitgebreid formulier */
-.lp-form-full {
-  padding: 2.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-  position: sticky;
-  top: 80px;
-}
-
-/* ===== Social proof balk ===== */
-.social-proof-bar {
-  background: rgba(245,197,24,0.07);
-  border-top: 1px solid rgba(245,197,24,0.15);
-  border-bottom: 1px solid rgba(245,197,24,0.15);
-  padding: 1rem 0;
-}
-.social-proof-bar__inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .85rem;
-  flex-wrap: wrap;
-}
-.social-proof-stars {
-  color: var(--gold);
-  font-size: 1.05rem;
-  letter-spacing: .08em;
-}
-.social-proof-text {
-  font-size: .92rem;
-  color: rgba(255,255,255,0.72);
-}
-.social-proof-text strong { color: #FFFFFF; }
-.social-proof-sep { color: rgba(255,255,255,0.28); }
-.social-proof-rating {
-  font-size: .88rem;
-  font-weight: 700;
-  color: var(--gold);
-}
-
-/* ===== LP Stappen ===== */
-.lp-steps-section { background: var(--bg); }
-.lp-steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.lp-step {
-  padding: 1.85rem;
-  transition: transform .2s, box-shadow .2s;
-}
-.lp-step:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-}
-.lp-step__num {
-  display: inline-block;
-  background: var(--gold);
-  color: #07080F;
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  padding: .3rem .8rem;
-  border-radius: var(--radius-full);
-  margin-bottom: 1rem;
-}
-.lp-step h3 { color: #FFFFFF; margin-bottom: .5rem; font-size: 1rem; }
-.lp-step p  { color: rgba(255,255,255,0.52); font-size: .9rem; }
-
-/* ===== LP FAQ ===== */
-.lp-faq-section .faq { max-width: 720px; }
-
-/* ===== LP Footer ===== */
-.lp-footer { padding-top: 0; }
-.lp-footer__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.lp-footer__back {
-  font-size: .82rem;
-  color: rgba(255,255,255,0.38);
-  transition: color .15s;
-}
-.lp-footer__back:hover { color: rgba(255,255,255,0.7); }
-
-/* ===== Responsive 900px ===== */
-@media (max-width: 900px) {
-  .lp-hero__inner  { grid-template-columns: 1fr; }
-  .lp-form-wrap    { justify-content: stretch; }
-  .lp-form-card    { max-width: 100%; }
-
-  .lp-vsl-inner    { grid-template-columns: 1fr; }
-  .lp-form-full    { position: static; }
-
-  .lp-steps        { grid-template-columns: 1fr; }
-  .lp-hero         { padding: 64px 0 80px; }
-}
-
-/* ===== Responsive 720px ===== */
-@media (max-width: 720px) {
-  .lp-hero         { padding: 56px 0 72px; }
-  .lp-form-card    { padding: 1.75rem; border-radius: var(--radius-lg); }
-  .lp-form-full    { padding: 1.5rem; }
-  .social-proof-bar__inner { gap: .55rem; }
-  .social-proof-sep { display: none; }
-  .social-proof-rating { display: none; }
-  .urgency-bar     { font-size: .78rem; padding: .55rem .75rem; }
-}
-
-/* ===== Responsive 480px ===== */
-@media (max-width: 480px) {
-  .vsl-play-btn    { width: 58px; height: 58px; }
-  .lp-step         { padding: 1.35rem; }
-  .lp-footer__inner { flex-direction: column; text-align: center; }
-}
-
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gratis Wasbeurt — Glazenwasser Nijmegen | Lappers</title>
+  <meta name="description" content="Nieuwe klanten krijgen de eerste wasbeurt 100% gratis bij Lappers, glazenwasser in Nijmegen. Geen verplichtingen, binnen 24 uur reactie. Claim direct." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lappers.nl/gratis-wasbeurt/" />
+  <meta property="og:title" content="Gratis Wasbeurt Aanvragen – Lappers Nijmegen" />
+  <meta property="og:description" content="Nieuwe klanten krijgen de eerste wasbeurt 100% gratis. Claim nu jouw gratis beurt bij Lappers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lappers.nl/gratis-wasbeurt/" />
+  <meta property="og:locale" content="nl_NL" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sky: #d6eeff;
+      --sky-mid: #a8d8f8;
+      --blue: #1a6fb5;
+      --blue-dark: #0e4a7e;
+      --ink: #0d1b2a;
+      --cream: #f7f3ec;
+      --sun: #f9c84a;
+      --clean: #ffffff;
+      --muted: #4a6070;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+    /* TOPBAR */
+    .topbar { background: var(--sun); color: var(--ink); text-align: center; padding: 0.7rem 1rem; font-size: 0.88rem; font-weight: 600; }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 2rem 4vw 1rem;
+      background: var(--cream);
+    }
+
+    .offer-badge {
+      display: inline-block;
+      background: var(--sun);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 50px;
+      margin-bottom: 0;
+      letter-spacing: 0.02em;
+    }
+
+    .offer-badge-btn {
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 6px 22px rgba(249,200,74,0.4);
+    }
+    .offer-badge-btn:hover {
+      background: #f0b800;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(249,200,74,0.55);
+    }
+
+    .area-tags-hero {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .area-label {
+      font-size: 0.72rem;
+      color: #6a8099;
+      font-weight: 500;
+      margin-right: 0.2rem;
+    }
+
+    .area-tag {
+      background: var(--clean);
+      border: 1px solid rgba(26,111,181,0.15);
+      color: var(--blue-dark);
+      font-size: 0.68rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    /* VSL */
+    .vsl-section { max-width: 820px; margin: 0 auto; padding: 1rem 4vw 0; background: var(--cream); }
+
+    .vsl-wrapper {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255,255,255,0.08);
+      background: #000;
+      cursor: pointer;
+    }
+
+    #vslCanvas { width: 100%; height: 100%; display: block; }
+
+    .vsl-play-overlay {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
+      background: rgba(10,25,40,0.5);
+      transition: opacity 0.3s;
+    }
+    .vsl-play-overlay.hidden { opacity: 0; pointer-events: none; }
+
+    .play-btn {
+      width: 72px; height: 72px; background: var(--sun); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(249,200,74,0.5); transition: transform 0.2s;
+    }
+    .play-btn::after { content: ''; width: 0; height: 0; border-style: solid; border-width: 12px 0 12px 22px; border-color: transparent transparent transparent var(--ink); margin-left: 4px; }
+    .vsl-play-overlay:hover .play-btn { transform: scale(1.1); }
+
+    .play-label { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: var(--clean); text-align: center; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+
+    /* LEAD FORM */
+    .form-section {
+      background: linear-gradient(160deg, var(--sky) 0%, var(--cream) 100%);
+      padding: 4rem 4vw;
+      text-align: center;
+    }
+
+    .form-section h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      color: var(--ink);
+      margin-bottom: 0.7rem;
+    }
+
+    .form-section h2 em { font-style: italic; color: var(--blue); }
+
+    .form-section > p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .lead-form-box {
+      background: var(--clean);
+      border-radius: 24px;
+      padding: 2.5rem;
+      max-width: 440px;
+      margin: 0 auto;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+    }
+
+    .lead-form-box h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 900; color: var(--ink); margin-bottom: 0.4rem; }
+    .form-intro { font-size: 0.84rem; color: #6a8099; margin-bottom: 1.8rem; font-weight: 300; line-height: 1.5; }
+
+    .form-group { margin-bottom: 1rem; }
+    .form-group input { width: 100%; padding: 0.95rem 1.2rem; border: 2px solid rgba(26,111,181,0.15); border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; background: #f4f7fa; color: var(--ink); outline: none; transition: border-color 0.2s, background 0.2s; }
+    .form-group input:focus { border-color: var(--blue); background: var(--clean); }
+    .form-group input::placeholder { color: #9ab0c4; }
+
+    .submit-btn { width: 100%; padding: 1.15rem; background: var(--sun); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 6px 24px rgba(249,200,74,0.35); margin-top: 0.5rem; }
+    .submit-btn:hover { background: #f0b800; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(249,200,74,0.5); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-fine { font-size: 0.75rem; color: #9ab0c4; text-align: center; margin-top: 0.9rem; line-height: 1.5; }
+
+    .success-box { display: none; text-align: center; padding: 1.5rem 0; }
+    .success-box .icon { font-size: 3rem; margin-bottom: 1rem; }
+    .success-box h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 900; color: var(--ink); margin-bottom: 0.5rem; }
+    .success-box p { font-size: 0.9rem; color: #6a8099; line-height: 1.6; }
+
+    /* LIGHT + DARK sections */
+    .light { background: var(--cream); color: var(--ink); }
+    .dark  { background: var(--ink); }
+
+    .section { max-width: 820px; margin: 0 auto; padding: 4.5rem 4vw; }
+
+    .section-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.8rem; display: block; }
+    .light .section-label { color: var(--blue); }
+    .dark  .section-label { color: #a8d8f8; }
+
+    .section-title { font-family: 'Fraunces', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 0.8rem; }
+    .light .section-title { color: var(--ink); }
+    .dark  .section-title { color: var(--clean); }
+    .section-title em { font-style: italic; color: var(--blue); }
+    .dark .section-title em { color: var(--sky-mid); }
+
+    /* MODEL STEPS */
+    .model-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; }
+    .model-step { background: var(--clean); border-radius: 16px; padding: 1.5rem; border: 2px solid rgba(26,111,181,0.1); text-align: center; transition: border-color 0.2s, transform 0.2s; }
+    .model-step:hover { border-color: var(--blue); transform: translateY(-3px); }
+    .model-step .icon { font-size: 1.8rem; margin-bottom: 0.7rem; }
+    .model-step h4 { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+    .model-step p { font-size: 0.82rem; color: #5a7080; line-height: 1.55; font-weight: 300; }
+
+    /* OBJECTIONS */
+    .objection { margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; }
+    .objection-q { padding: 1.2rem 1.5rem; font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); color: var(--clean); transition: background 0.2s; user-select: none; gap: 1rem; }
+    .objection-q:hover { background: rgba(255,255,255,0.09); }
+    .arrow { font-size: 0.9rem; transition: transform 0.25s; color: rgba(255,255,255,0.4); flex-shrink: 0; }
+    .objection.open .arrow { transform: rotate(180deg); }
+    .objection-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .objection.open .objection-body { max-height: 600px; }
+    .objection-inner { padding: 1.2rem 1.5rem 1.5rem; }
+    .obj-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .obj-box { padding: 1rem; border-radius: 10px; font-size: 0.85rem; line-height: 1.55; font-weight: 300; }
+    .obj-wrong { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); color: rgba(255,255,255,0.8); }
+    .obj-wrong strong { color: #f87171; font-size: 0.72rem; display: block; margin-bottom: 0.3rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .obj-right { background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.25); color: rgba(255,255,255,0.8); }
+    .obj-right strong { color: #4ade80; font-size: 0.72rem; display: block; margin-bottom: 0.3rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .obj-proof { font-size: 0.82rem; color: rgba(255,255,255,0.4); font-style: italic; padding-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.07); font-weight: 300; }
+
+    /* REVIEWS */
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
+    .review-card { background: var(--clean); border: 1.5px solid rgba(13,27,42,0.07); border-radius: 16px; padding: 1.6rem; }
+    .stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 0.8rem; }
+    .review-card p { font-size: 0.9rem; line-height: 1.65; color: #3a5060; font-weight: 300; font-style: italic; margin-bottom: 1rem; }
+    .reviewer { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+    .reviewer span { display: block; font-weight: 300; font-size: 0.75rem; color: #7a95aa; margin-top: 0.1rem; }
+
+    /* FOOTER */
+    footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem 4vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+    footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
+    footer a:hover { color: #a8d8f8; }
+
+    /* COOKIE BANNER */
+    .cookie-banner {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      max-width: 480px;
+      background: var(--ink);
+      color: var(--clean);
+      padding: 1.1rem 1.3rem;
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      z-index: 1000;
+      display: none;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .cookie-banner.show { display: block; animation: slide-up-cookie 0.4s ease both; }
+    .cookie-banner p { margin: 0 0 0.8rem; color: rgba(255,255,255,0.85); }
+    .cookie-banner a { color: #a8d8f8; text-decoration: underline; }
+    .cookie-banner-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .cookie-btn { flex: 1; padding: 0.6rem 1rem; border-radius: 50px; border: none; font-family: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s, transform 0.15s; min-width: 110px; }
+    .cookie-btn-accept { background: var(--sun); color: var(--ink); }
+    .cookie-btn-decline { background: rgba(255,255,255,0.1); color: var(--clean); }
+    .cookie-btn:hover { transform: translateY(-1px); }
+    @keyframes slide-up-cookie {
+      from { transform: translateY(100%); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    @media (max-width: 600px) {
+      .obj-row        { grid-template-columns: 1fr; }
+      .lead-form-box  { padding: 1.8rem; }
+    }
+  </style>
 </head>
-<body class="lp-body">
+<body>
 
-    <!-- Urgency bar -->
-    <div class="urgency-bar">
-        <span class="urgency-dot" aria-hidden="true"></span>
-        Exclusief voor nieuwe klanten &mdash; beperkte plaatsen beschikbaar
+  <div class="topbar">&#127873; Exclusief voor nieuwe klanten &mdash; eerste wasbeurt volledig gratis</div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <a href="#aanvragen" class="offer-badge offer-badge-btn">&#10022; Gratis wasbeurt aanvragen</a>
+    <div class="area-tags-hero">
+      <span class="area-label">Actief in:</span>
+      <span class="area-tag">Nijmegen</span>
+      <span class="area-tag">Beuningen</span>
+      <span class="area-tag">Wijchen</span>
+      <span class="area-tag">Malden</span>
+      <span class="area-tag">Groesbeek</span>
+      <span class="area-tag">Beek</span>
+      <span class="area-tag">Ubbergen</span>
+      <span class="area-tag">en omgeving</span>
     </div>
+  </section>
 
-    <!-- Minimal nav -->
-    <nav class="nav lp-nav" id="nav">
-        <div class="container nav__inner">
-            <a href="/" class="nav__logo">Lappers</a>
-            <a href="tel:0629010650" class="lp-nav__phone">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                06 290 106 50
-            </a>
-        </div>
-    </nav>
-
-    <!-- Hero sectie -->
-    <header class="lp-hero">
-        <div class="lp-hero__glow lp-hero__glow--1" aria-hidden="true"></div>
-        <div class="lp-hero__glow lp-hero__glow--2" aria-hidden="true"></div>
-        <div class="container lp-hero__inner">
-            <div class="lp-hero__content">
-                <p class="eyebrow eyebrow--light">Exclusief voor nieuwe klanten</p>
-                <h1>Claim jouw<br><em>gratis wasbeurt</em></h1>
-                <p class="lp-hero__sub">Laat uw gegevens achter. Ik bel u persoonlijk op om een moment af te spreken — zonder verplichtingen.</p>
-                <div class="lp-hero__usps">
-                    <div class="lp-usp">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                        Volledig gratis — geen verborgen kosten
-                    </div>
-                    <div class="lp-usp">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                        Geen verplichtingen, geen abonnement
-                    </div>
-                    <div class="lp-usp">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                        Ik bel u terug binnen 24 uur
-                    </div>
-                </div>
-            </div>
-            <div class="lp-form-wrap">
-                <div class="lp-form-card">
-                    <p class="lp-form-card__title">Ja, ik wil gratis schone ramen</p>
-                    <p class="lp-form-card__sub">Geen verplichtingen. Ik bel u terug. Binnen 24 uur.</p>
-                    <form class="lp-form" id="lpForm" novalidate>
-                        <div class="form-field">
-                            <label for="lpName">Uw naam</label>
-                            <input type="text" id="lpName" name="name" required autocomplete="name" placeholder="Jan de Vries">
-                        </div>
-                        <div class="form-field">
-                            <label for="lpPhone">Telefoonnummer</label>
-                            <input type="tel" id="lpPhone" name="phone" required autocomplete="tel" placeholder="06 12 34 56 78">
-                        </div>
-                        <button type="submit" class="btn btn--gold btn--lg btn--full btn--shimmer lp-submit">
-                            Claim mijn gratis wasbeurt <span aria-hidden="true">&rarr;</span>
-                        </button>
-                        <p class="form__notice">Geen spam. Alleen gebruikt om contact op te nemen.</p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- VSL + uitgebreide form sectie -->
-    <section class="section lp-vsl-section">
-        <div class="container lp-vsl-inner">
-            <!-- VSL video player -->
-            <div class="vsl-player-wrap">
-                <div class="vsl-player" id="vslPlayer">
-                    <div class="vsl-thumbnail">
-                        <div class="vsl-play-btn" id="vslPlayBtn" role="button" tabindex="0" aria-label="Bekijk de video over Lappers">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                        </div>
-                        <div class="vsl-overlay-grid" aria-hidden="true"></div>
-                    </div>
-                    <div class="vsl-iframe-wrap" id="vslIframeWrap" hidden>
-                        <!-- Iframe wordt hier door JS geladen bij klik op play -->
-                    </div>
-                </div>
-                <p class="vsl-label">Bekijk hoe Lappers werkt &mdash; 2 min.</p>
-            </div>
-
-            <!-- Uitgebreid formulier -->
-            <div class="lp-form-full glass-card">
-                <p class="lp-form-card__title">Claim jouw gratis wasbeurt</p>
-                <p class="lp-form-card__sub">Vul uw gegevens in — ik bel u persoonlijk terug.</p>
-                <form class="lp-form" id="lpFormFull" novalidate>
-                    <div class="form-field">
-                        <label for="lpFullName">Uw naam</label>
-                        <input type="text" id="lpFullName" name="name" required autocomplete="name" placeholder="Jan de Vries">
-                    </div>
-                    <div class="form-field">
-                        <label for="lpFullPhone">Telefoonnummer</label>
-                        <input type="tel" id="lpFullPhone" name="phone" required autocomplete="tel" placeholder="06 12 34 56 78">
-                    </div>
-                    <button type="submit" class="btn btn--gold btn--lg btn--full btn--shimmer">
-                        Ja, ik wil gratis schone ramen <span aria-hidden="true">&rarr;</span>
-                    </button>
-                    <p class="form__notice">Geen spam. Ik bel u terug binnen 24 uur.</p>
-                </form>
-            </div>
-        </div>
-        <!-- data-src voor YouTube embed — vervang VIDEO_ID door het juiste ID -->
-        <div data-vsl-src="https://www.youtube.com/embed/VIDEO_ID" hidden id="vslData"></div>
-    </section>
-
-    <!-- Social proof balk -->
-    <div class="social-proof-bar">
-        <div class="container social-proof-bar__inner">
-            <div class="social-proof-stars" aria-label="4.9 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <span class="social-proof-text"><strong>127 tevreden klanten</strong> in Nijmegen en omgeving</span>
-            <span class="social-proof-sep" aria-hidden="true">&middot;</span>
-            <span class="social-proof-rating">4.9 / 5</span>
-        </div>
+  <!-- VSL -->
+  <section class="vsl-section">
+    <div class="vsl-wrapper" id="vslWrapper">
+      <canvas id="vslCanvas"></canvas>
+      <div class="vsl-play-overlay" id="playOverlay">
+        <div class="play-btn"></div>
+        <div class="play-label">Bekijk hoe Lappers jouw ramen transformeert<br><span style="font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:300;opacity:0.7;">&#177; 90 seconden &middot; Geen verplichtingen</span></div>
+      </div>
     </div>
+  </section>
 
-    <!-- Stappen -->
-    <section class="section lp-steps-section">
-        <div class="container">
-            <div class="section__header">
-                <p class="eyebrow eyebrow--light">Hoe het werkt</p>
-                <h2>In 3 stappen naar <em>stralende ramen</em></h2>
-            </div>
-            <div class="lp-steps">
-                <div class="lp-step glass-card">
-                    <div class="lp-step__num">Stap 1</div>
-                    <h3>U laat uw gegevens achter</h3>
-                    <p>Vul het formulier in of bel direct. Ik plan samen met u een moment in dat uitkomt.</p>
-                </div>
-                <div class="lp-step glass-card">
-                    <div class="lp-step__num">Stap 2</div>
-                    <h3>Ik neem contact op</h3>
-                    <p>Kort telefonisch afstemmen: wanneer kom ik langs, wat zijn de wensen, wat kunt u verwachten.</p>
-                </div>
-                <div class="lp-step glass-card">
-                    <div class="lp-step__num">Stap 3</div>
-                    <h3>Ik kom langs</h3>
-                    <p>We maken kennis, ik ga direct aan de slag. De eerste beurt is volledig gratis — geen rekening, geen addertje.</p>
-                </div>
-            </div>
+  <!-- LEAD FORM -->
+  <section class="form-section" id="aanvragen">
+    <h2>Claim jouw <em>gratis</em> wasbeurt</h2>
+    <p>Laat je gegevens achter. Ik bel je persoonlijk op om een moment af te spreken.</p>
+
+    <div class="lead-form-box">
+      <h3>Ja, ik wil gratis schone ramen</h3>
+      <p class="form-intro">Geen verplichtingen &middot; Ik bel je terug &middot; Binnen 24 uur</p>
+      <form id="leadForm">
+        <div class="form-group"><input type="text"  name="naam"     placeholder="Jouw naam"      required autocomplete="name" /></div>
+        <div class="form-group"><input type="tel"   name="telefoon" placeholder="Telefoonnummer" required autocomplete="tel" /></div>
+        <div class="form-group"><input type="email" name="email"    placeholder="E-mailadres"    required autocomplete="email" /></div>
+        <button type="submit" class="submit-btn" id="submitBtn">&#127873; Claim mijn gratis wasbeurt &rarr;</button>
+        <p class="form-fine">Geen spam. Alleen gebruikt om contact op te nemen.</p>
+      </form>
+      <div class="success-box" id="successBox">
+        <div class="icon">&#127881;</div>
+        <h3>Gelukt! Ik neem snel contact op.</h3>
+        <p>Je hoort binnen 24 uur van mij om een moment af te spreken. Tot snel!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAPPEN -->
+  <div class="light">
+    <section class="section">
+      <span class="section-label">Hoe het werkt</span>
+      <h2 class="section-title">In drie stappen naar<br><em>stralende ramen.</em></h2>
+      <div class="model-steps">
+        <div class="model-step">
+          <div class="icon">&#128203;</div>
+          <h4>Stap 1 &mdash; Jij laat je gegevens achter</h4>
+          <p>Ik bel je terug en we plannen samen een moment in dat jou uitkomt.</p>
         </div>
+        <div class="model-step">
+          <div class="icon">&#128222;</div>
+          <h4>Stap 2 &mdash; Ik neem contact op</h4>
+          <p>Kort telefonisch afstemmen: wanneer kom ik langs, wat zijn de wensen, wat kun je verwachten.</p>
+        </div>
+        <div class="model-step">
+          <div class="icon">&#129309;</div>
+          <h4>Stap 3 &mdash; Ik kom langs</h4>
+          <p>We maken even kennis, ik kijk de situatie door en ga direct aan de slag. De eerste beurt is gratis.</p>
+        </div>
+      </div>
     </section>
+  </div>
 
-    <!-- Reviews -->
-    <section class="section reviews-section">
-        <div class="container">
-            <div class="section__header">
-                <p class="eyebrow eyebrow--light">Wat klanten zeggen</p>
-                <h2>Nijmegen over <em>Lappers</em></h2>
-            </div>
-            <div class="reviews-grid">
-                <div class="review-card glass-card">
-                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <blockquote>"Via de gratis wasbeurt begonnen en nooit meer weggegaan. Betrouwbaar, punctueel, kristalheldere resultaten."</blockquote>
-                    <div class="review-card__author">
-                        <strong>Mark de B.</strong>
-                        <span>Beuningen &middot; Vaste klant</span>
-                    </div>
-                </div>
-                <div class="review-card glass-card">
-                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <blockquote>"Geen gedoe, geen strepen, geen verrassingen. Gewoon wat er beloofd wordt. Dat is zeldzaam."</blockquote>
-                    <div class="review-card__author">
-                        <strong>Anita K.</strong>
-                        <span>Nijmegen &middot; Vaste klant</span>
-                    </div>
-                </div>
-                <div class="review-card glass-card">
-                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <blockquote>"Eindelijk een glazenwasser die ook echt de kozijnen meeneemt. Huis ziet er compleet anders uit."</blockquote>
-                    <div class="review-card__author">
-                        <strong>Sandra V.</strong>
-                        <span>Nijmegen &middot; Vaste klant</span>
-                    </div>
-                </div>
-                <div class="review-card glass-card">
-                    <div class="review-card__stars" aria-label="5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <blockquote>"Hij weet wanneer hij komt, doet zijn werk en het ziet er altijd perfect uit. Precies wat je zoekt."</blockquote>
-                    <div class="review-card__author">
-                        <strong>Peter L.</strong>
-                        <span>Druten</span>
-                    </div>
-                </div>
-            </div>
+  <!-- BEZWAREN / FAQ -->
+  <div class="dark">
+    <section class="section">
+      <span class="section-label">Veelgestelde vragen</span>
+      <h2 class="section-title">Eerlijk antwoord op<br>de meest gestelde vragen</h2>
+
+      <div class="objection" id="obj0">
+        <div class="objection-q" onclick="toggleObj('obj0')">
+          <span>&#8220;Waarom is de eerste wasbeurt gratis?&#8221;</span>
+          <span class="arrow">&#9660;</span>
         </div>
+        <div class="objection-body"><div class="objection-inner">
+          <p style="font-size:0.93rem;line-height:1.75;color:rgba(255,255,255,0.75);font-weight:300;">
+            Ik begrijp dat je iemand niet zomaar vertrouwt met je huis. Een glazenwasser die je niet kent, die zomaar langskomt &mdash; dat voelt onbekend. <strong style="color:#fff;">Daarom vraag ik je niets te betalen voor de eerste keer.</strong><br><br>
+            Ik kom langs, lap de ramen, en laat het resultaat voor zichzelf spreken. Geen verplichtingen achteraf. Je beslist daarna zelf of je verder wilt.<br><br>
+            <span style="color:rgba(255,255,255,0.4);font-style:italic;">&mdash; Lappers</span>
+          </p>
+        </div></div>
+      </div>
+
+      <div class="objection" id="obj1">
+        <div class="objection-q" onclick="toggleObj('obj1')">
+          <span>&#8220;Is die gratis beurt echt gratis, of zit er iets aan vast?&#8221;</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="objection-body"><div class="objection-inner">
+          <div class="obj-row">
+            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ik moet daarna wel een abonnement nemen, anders telt het niet.</div>
+            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>De eerste beurt is &eacute;cht gratis, zonder voorwaarden. Ik kom langs, lap de ramen, en daarna beslis jij. Geen abonnementsverplichting.</div>
+          </div>
+          <p class="obj-proof">&#128172; "Ik verwachtte een verkooppraatje, maar dat was er niet. Hij deed gewoon zijn werk en liet het resultaat spreken." &mdash; Sandra, Nijmegen</p>
+        </div></div>
+      </div>
+
+      <div class="objection" id="obj2">
+        <div class="objection-q" onclick="toggleObj('obj2')">
+          <span>&#8220;Moet ik thuis zijn als je langskomt?&#8221;</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="objection-body"><div class="objection-inner">
+          <div class="obj-row">
+            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ik moet een halve dag thuisblijven of vrij nemen. Dat is te veel gedoe.</div>
+            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>Voor de eerste kennismaking ben ik blij als je er even bij bent. Ik loop samen met je langs de ramen, kijk de situatie door en leg uit wat ik ga doen. Dat duurt maar 10 minuten &mdash; daarna kun je gewoon verder met je dag.</div>
+          </div>
+          <p class="obj-proof">&#128172; "Ik dacht dat ik de hele ochtend moest thuisblijven, maar hij was binnen twintig minuten klaar." &mdash; Mark, Beuningen</p>
+        </div></div>
+      </div>
+
+      <div class="objection" id="obj3">
+        <div class="objection-q" onclick="toggleObj('obj3')">
+          <span>&#8220;Glazenwassers laten altijd strepen achter&#8221;</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="objection-body"><div class="objection-inner">
+          <div class="obj-row">
+            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ik heb het eerder geprobeerd en het viel tegen. Strepen, vegen, niet echt schoon.</div>
+            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>Met professioneel materiaal en de juiste werkwijze zijn strepen te vermijden. Ik doe geen haastwerk &mdash; kwaliteit gaat voor snelheid.</div>
+          </div>
+          <p class="obj-proof">&#128172; "Geen enkel streepje. Ik was sceptisch, maar dit is &eacute;cht een andere wereld." &mdash; Anita, Wijchen</p>
+        </div></div>
+      </div>
+
+      <div class="objection" id="obj4">
+        <div class="objection-q" onclick="toggleObj('obj4')">
+          <span>&#8220;Wat kost het daarna als ik verder wil?&#8221;</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="objection-body"><div class="objection-inner">
+          <div class="obj-row">
+            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ze vragen vast veel meer dan ik denk, met verborgen extra&rsquo;s.</div>
+            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>Tijdens het eerste bezoek leg ik alles eerlijk uit &mdash; prijs, mogelijkheden, frequentie. Geen verrassingen achteraf. Jij beslist.</div>
+          </div>
+          <p class="obj-proof">&#128172; "Prijs precies zoals afgesproken. Geen gedoe, geen extra rekening." &mdash; Peter, Groesbeek</p>
+        </div></div>
+      </div>
+
+      <div class="objection" id="obj5">
+        <div class="objection-q" onclick="toggleObj('obj5')">
+          <span>&#8220;Werkt dit ook voor mijn type woning?&#8221;</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="objection-body"><div class="objection-inner">
+          <div class="obj-row">
+            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ik heb een appartement, dakkapel of moeilijk bereikbare ramen &mdash; dat lukt vast niet.</div>
+            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>Rijtjeswoning, vrijstaand, appartement &mdash; ik werk voor alle woningtypes in Nijmegen en omstreken. Twijfel je? Gewoon even bellen.</div>
+          </div>
+          <p class="obj-proof">&#128172; "Ik had een dakkapel waarvan ik dacht dat niemand dat aankon. Geen probleem voor Lappers." &mdash; Roos, Malden</p>
+        </div></div>
+      </div>
     </section>
+  </div>
 
-    <!-- FAQ -->
-    <section class="section section--alt lp-faq-section">
-        <div class="container">
-            <div class="section__header">
-                <p class="eyebrow">Veelgestelde vragen</p>
-                <h2>Eerlijk antwoord op de <em>meest gestelde vragen</em></h2>
-            </div>
-            <div class="faq" role="list">
-                <div class="faq__item" role="listitem">
-                    <button class="faq__q" aria-expanded="false">
-                        Waarom is de eerste wasbeurt gratis?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq__a" hidden>
-                        <p>Ik werk liever met klanten die tevreden zijn dan met klanten die verplicht zijn. Eén gratis beurt — zodat u zelf ervaart wat de kwaliteit is. Geen verplichtingen.</p>
-                    </div>
-                </div>
-                <div class="faq__item" role="listitem">
-                    <button class="faq__q" aria-expanded="false">
-                        Is die gratis beurt echt gratis, of zit er iets aan vast?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq__a" hidden>
-                        <p>Echt gratis. Geen abonnementsverplichtingen, geen verborgen kosten. Na de gratis beurt beslist u zelf of u wilt doorgaan en op welke basis.</p>
-                    </div>
-                </div>
-                <div class="faq__item" role="listitem">
-                    <button class="faq__q" aria-expanded="false">
-                        Moet ik thuis zijn als u langskomt?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq__a" hidden>
-                        <p>Voor de buitenkant hoeft u niet thuis te zijn. Voor de binnenkant wel. We stemmen dat vooraf af.</p>
-                    </div>
-                </div>
-                <div class="faq__item" role="listitem">
-                    <button class="faq__q" aria-expanded="false">
-                        Wat kost het daarna als ik verder wil?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq__a" hidden>
-                        <p>Na de gratis beurt geef ik een vaste prijs op basis van uw woning. Geen verrassingen achteraf. U beslist zelf of en hoe u verder gaat.</p>
-                    </div>
-                </div>
-                <div class="faq__item" role="listitem">
-                    <button class="faq__q" aria-expanded="false">
-                        Hoe snel word ik teruggebeld?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq__a" hidden>
-                        <p>Normaal gesproken binnen 24 uur op werkdagen. Vaak eerder. U ontvangt een telefoontje van mij persoonlijk — geen callcenter.</p>
-                    </div>
-                </div>
-                <div class="faq__item" role="listitem">
-                    <button class="faq__q" aria-expanded="false">
-                        Werkt dit ook voor mijn type woning?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq__a" hidden>
-                        <p>Voor rijtjeshuizen, vrijstaande woningen en appartementen is dit vrijwel altijd mogelijk. Bij bijzondere situaties — zoals dakramen of hoge verdiepingen — stemmen we vooraf af.</p>
-                    </div>
-                </div>
-            </div>
+  <!-- REVIEWS -->
+  <div class="light">
+    <section class="section">
+      <span class="section-label">Wat klanten zeggen</span>
+      <h2 class="section-title">Nijmegen over <em>Lappers</em></h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&#8220;Eindelijk een glazenwasser die ook echt de kozijnen meeneemt. Huis ziet er compleet anders uit.&#8221;</p>
+          <div class="reviewer">Sandra V.<span>Nijmegen &mdash; vaste klant</span></div>
         </div>
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&#8220;Via de gratis wasbeurt begonnen en nooit meer weggegaan. Betrouwbaar, punctueel, kraakhelder resultaat.&#8221;</p>
+          <div class="reviewer">Mark de B.<span>Beuningen &mdash; abonnement</span></div>
+        </div>
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&#8220;Geen gedoe, geen strepen, geen verrassingen. Gewoon wat er beloofd wordt. Dat is zeldzaam.&#8221;</p>
+          <div class="reviewer">Anita K.<span>Wijchen &mdash; vaste klant</span></div>
+        </div>
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&#8220;Hij weet wanneer hij komt, doet zijn werk en het ziet er altijd perfect uit. Ideaal.&#8221;</p>
+          <div class="reviewer">Peter L.<span>Groesbeek &mdash; abonnement</span></div>
+        </div>
+      </div>
     </section>
+  </div>
 
-    <!-- Minimal footer -->
-    <footer class="footer lp-footer">
-        <div class="footer__bottom">
-            <div class="container lp-footer__inner">
-                <p>&copy; 2025 Lappers &mdash; Glazenwasser Nijmegen &amp; omgeving</p>
-                <a href="/" class="lp-footer__back">Terug naar de hoofdpagina</a>
-            </div>
-        </div>
-    </footer>
+  <footer>
+    <a href="/" style="font-size:1.1rem;color:rgba(255,255,255,0.7);font-family:'Fraunces',serif;font-weight:900;">Lap<span style="color:#a8d8f8;">pers</span></a>
+    <span>Glazenwasser Nijmegen &amp; omstreken</span>
+    <a href="tel:+31629010630">06 290 106 30</a>
+  </footer>
 
-    <script>
-(function () {
-  'use strict';
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p>Wij gebruiken cookies om de website te laten functioneren en bezoekersstatistieken te verzamelen.</p>
+    <div class="cookie-banner-actions">
+      <button class="cookie-btn cookie-btn-decline" onclick="cookieChoice(false)">Alleen noodzakelijk</button>
+      <button class="cookie-btn cookie-btn-accept"  onclick="cookieChoice(true)">Accepteren</button>
+    </div>
+  </div>
 
-  /* ===================================================
-     1. Topbar close + sessionStorage
-  =================================================== */
-  var topbar     = document.getElementById('topbar');
-  var topbarClose = document.getElementById('topbarClose');
-  var nav        = document.getElementById('nav');
-
-  function hideTopbar() {
-    if (!topbar) return;
-    topbar.classList.add('hidden');
-    if (nav) nav.classList.add('topbar-hidden');
-    try { sessionStorage.setItem('topbar-closed', '1'); } catch (_) {}
-  }
-
-  if (topbarClose) topbarClose.addEventListener('click', hideTopbar);
-
-  try {
-    if (sessionStorage.getItem('topbar-closed')) hideTopbar();
-  } catch (_) {}
-
-  /* ===================================================
-     2. Nav: transparent → scrolled class op scroll
-  =================================================== */
-  if (nav) {
-    window.addEventListener('scroll', function () {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
-  }
-
-  /* ===================================================
-     3. Mobile menu toggle
-  =================================================== */
-  var navToggle = document.getElementById('navToggle');
-  var navLinks  = document.getElementById('navLinks');
-
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', function () {
-      var isOpen = navLinks.classList.toggle('open');
-      navToggle.classList.toggle('open', isOpen);
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    // Sluit menu bij klik op een link
-    navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // Sluit menu bij klik buiten de nav
-    document.addEventListener('click', function (e) {
-      if (navLinks.classList.contains('open') && !nav.contains(e.target)) {
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-  /* ===================================================
-     4. FAQ accordion
-  =================================================== */
-  document.querySelectorAll('.faq__q').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var answer  = btn.nextElementSibling;
-      var isOpen  = btn.getAttribute('aria-expanded') === 'true';
-
-      // Sluit alle andere items
-      document.querySelectorAll('.faq__q').forEach(function (b) {
-        if (b !== btn) {
-          b.setAttribute('aria-expanded', 'false');
-          var a = b.nextElementSibling;
-          if (a) a.hidden = true;
-        }
-      });
-
-      // Toggle huidig item
-      var newState = !isOpen;
-      btn.setAttribute('aria-expanded', String(newState));
-      if (answer) answer.hidden = !newState;
-    });
-  });
-
-  /* ===================================================
-     5. Contactformulier validatie + submit feedback
-  =================================================== */
-  var contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var valid = true;
-
-      var required = ['firstName', 'lastName', 'phone', 'email'];
-      required.forEach(function (id) {
-        var field = document.getElementById(id);
-        if (!field) return;
-
-        var value = field.value.trim();
-        var ok = value.length > 0;
-
-        if (id === 'email') {
-          ok = ok && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-        }
-        if (id === 'phone') {
-          ok = ok && value.replace(/\s/g, '').length >= 9;
-        }
-
-        field.classList.toggle('error', !ok);
-        if (!ok) valid = false;
-      });
-
-      if (valid) {
-        var submitBtn = contactForm.querySelector('[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Aanvraag verstuurd!';
-        submitBtn.style.background = '#22C55E';
-        submitBtn.style.borderColor = '#22C55E';
-
-        // Toon succesbericht
-        var notice = contactForm.querySelector('.form__notice');
-        if (notice) {
-          notice.textContent = 'Bedankt. Ik neem binnen 24 uur contact met u op.';
-          notice.style.color = '#22C55E';
-        }
-      }
-    });
-
-    // Verwijder error class bij typen
-    contactForm.querySelectorAll('input, textarea').forEach(function (el) {
-      el.addEventListener('input', function () { el.classList.remove('error'); });
-    });
-  }
-
-  /* ===================================================
-     6. IntersectionObserver fade-in voor cards & stappen
-  =================================================== */
-  if ('IntersectionObserver' in window) {
-    var targets = document.querySelectorAll(
-      '.bento-card, .review-card, .step, .faq__item, .area-tag, .benefit-item, .lp-step'
-    );
-
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-
-    targets.forEach(function (el, i) {
-      el.classList.add('fade-in');
-      // Stagger vertraging voor grid-items
-      el.style.transitionDelay = (i % 4) * 0.07 + 's';
-      observer.observe(el);
-    });
-  }
-
-  /* ===================================================
-     7. Marquee: dupliceer content voor naadloze loop
-     (HTML heeft al twee .marquee-inner spans; dit is
-     een veiligheidsmaatregel voor browsers die no-wrap
-     trunceren)
-  =================================================== */
-  var marqueeTrack = document.querySelector('.marquee-track');
-  if (marqueeTrack) {
-    var inners = marqueeTrack.querySelectorAll('.marquee-inner');
-    // Zorg dat er minstens 2 kopieën zijn voor de loop
-    if (inners.length === 1) {
-      var clone = inners[0].cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      marqueeTrack.appendChild(clone);
-    }
-  }
-
-})();
-
-(function () {
-  'use strict';
-
-  /* ===================================================
-     1. VSL play button — laad YouTube iframe bij klik
-        Gebruik data-src op #vslData voor de YouTube URL
-  =================================================== */
-  var vslPlayBtn   = document.getElementById('vslPlayBtn');
-  var vslPlayer    = document.getElementById('vslPlayer');
-  var vslIframeWrap = document.getElementById('vslIframeWrap');
-  var vslData      = document.getElementById('vslData');
-
-  function loadVsl() {
-    if (!vslData || !vslIframeWrap || !vslPlayer) return;
-
-    var src = vslData.getAttribute('data-vsl-src');
-    if (!src || src.indexOf('VIDEO_ID') !== -1) {
-      // Geen echte YouTube URL ingesteld — toon placeholder bericht
-      var msg = document.createElement('div');
-      msg.style.cssText = 'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-size:.9rem;text-align:center;padding:1rem;';
-      msg.textContent = 'Video binnenkort beschikbaar.';
-      vslPlayer.appendChild(msg);
-      // Verberg thumbnail
-      var thumb = vslPlayer.querySelector('.vsl-thumbnail');
-      if (thumb) thumb.style.display = 'none';
-      return;
+  <script>
+    /* ── OBJECTION ACCORDION ── */
+    function toggleObj(id) {
+      document.getElementById(id).classList.toggle('open');
     }
 
-    // Bouw iframe met autoplay
-    var separator = src.indexOf('?') !== -1 ? '&' : '?';
-    var autoplaySrc = src + separator + 'autoplay=1&rel=0&modestbranding=1';
+    /* ── CANVAS VSL ANIMATION ── */
+    var canvas    = document.getElementById('vslCanvas');
+    var ctx       = canvas.getContext('2d');
+    var animFrame, t = 0, startTime = null;
+    var particles = [];
 
-    var iframe = document.createElement('iframe');
-    iframe.src = autoplaySrc;
-    iframe.title = 'Lappers – Glazenwasser Nijmegen';
-    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-    iframe.allowFullscreen = true;
-    iframe.loading = 'lazy';
-
-    vslIframeWrap.innerHTML = '';
-    vslIframeWrap.appendChild(iframe);
-    vslIframeWrap.hidden = false;
-
-    // Verberg de thumbnail
-    var thumb = vslPlayer.querySelector('.vsl-thumbnail');
-    if (thumb) thumb.style.display = 'none';
-  }
-
-  if (vslPlayBtn) {
-    vslPlayBtn.addEventListener('click', loadVsl);
-    vslPlayBtn.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        loadVsl();
+    function initParticles() {
+      particles = [];
+      var W = canvas.width  / (window.devicePixelRatio || 1);
+      var H = canvas.height / (window.devicePixelRatio || 1);
+      for (var i = 0; i < 28; i++) {
+        particles.push({
+          x:  Math.random() * W,
+          y:  Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: (Math.random() - 0.5) * 0.18,
+          r:  Math.random() * 1.4 + 0.3,
+          a:  Math.random() * 0.35 + 0.08
+        });
       }
-    });
-  }
+    }
 
-  /* ===================================================
-     2. Formulier validatie + submit feedback
-        Werkt op zowel #lpForm (hero) als #lpFormFull
-  =================================================== */
-  function setupLpForm(formId) {
-    var form = document.getElementById(formId);
-    if (!form) return;
+    function resizeCanvas() {
+      var rect = canvas.parentElement.getBoundingClientRect();
+      var dpr  = window.devicePixelRatio || 1;
+      canvas.width  = rect.width  * dpr;
+      canvas.height = rect.height * dpr;
+      canvas.style.width  = rect.width  + 'px';
+      canvas.style.height = rect.height + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      initParticles();
+    }
 
-    form.addEventListener('submit', function (e) {
+    function drawFrame() {
+      var dpr = window.devicePixelRatio || 1;
+      var W   = canvas.width  / dpr;
+      var H   = canvas.height / dpr;
+
+      /* Background */
+      var bg = ctx.createLinearGradient(0, 0, W, H);
+      bg.addColorStop(0, '#050a14');
+      bg.addColorStop(1, '#0a1628');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, W, H);
+
+      /* Orb 1 — blue */
+      var o1x = W * (0.28 + 0.07 * Math.sin(t * 0.30));
+      var o1y = H * (0.40 + 0.05 * Math.cos(t * 0.38));
+      var g1  = ctx.createRadialGradient(o1x, o1y, 0, o1x, o1y, W * 0.52);
+      g1.addColorStop(0, 'rgba(26,111,181,0.22)');
+      g1.addColorStop(1, 'transparent');
+      ctx.fillStyle = g1;
+      ctx.fillRect(0, 0, W, H);
+
+      /* Orb 2 — gold */
+      var o2x = W * (0.76 + 0.05 * Math.cos(t * 0.33));
+      var o2y = H * (0.62 + 0.05 * Math.sin(t * 0.28));
+      var g2  = ctx.createRadialGradient(o2x, o2y, 0, o2x, o2y, W * 0.42);
+      g2.addColorStop(0, 'rgba(249,200,74,0.16)');
+      g2.addColorStop(1, 'transparent');
+      ctx.fillStyle = g2;
+      ctx.fillRect(0, 0, W, H);
+
+      /* Particles */
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+        ctx.fillStyle = 'rgba(168,216,248,' + p.a + ')';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      /* Text — centered */
+      var cx     = W / 2;
+      var cy     = H / 2;
+      var pulse  = 1 + 0.014 * Math.sin(t * 1.4);
+      var fScale = Math.min(1, W / 600);
+
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.scale(pulse, pulse);
+      ctx.textAlign = 'center';
+
+      /* Label */
+      ctx.font      = '600 ' + Math.max(11, 13 * fScale) + 'px "DM Sans", sans-serif';
+      ctx.fillStyle = 'rgba(168,216,248,0.85)';
+      ctx.fillText('GRATIS WASBEURT', 0, -H * 0.18);
+
+      /* Headline */
+      ctx.font      = '900 ' + Math.max(22, 50 * fScale) + 'px "Fraunces", serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText('Claim hieronder', 0, -H * 0.04);
+
+      /* Yellow rule */
+      var lw = Math.min(260, W * 0.38);
+      ctx.fillStyle = 'rgba(249,200,74,0.9)';
+      ctx.fillRect(-lw / 2, H * 0.02, lw, 3);
+
+      /* Sub-line */
+      ctx.font      = '300 ' + Math.max(14, 24 * fScale) + 'px "DM Sans", sans-serif';
+      ctx.fillStyle = 'rgba(255,255,255,0.82)';
+      ctx.fillText('je gratis wasbeurt.', 0, H * 0.10);
+
+      ctx.restore();
+
+      /* Down arrow with bounce */
+      var arrY   = H - 56 + Math.sin(t * 2) * 5;
+      ctx.strokeStyle = '#f9c84a';
+      ctx.lineWidth   = 2.5;
+      ctx.lineCap     = 'round';
+      ctx.lineJoin    = 'round';
+      ctx.beginPath();
+      ctx.moveTo(cx - 12, arrY - 6);
+      ctx.lineTo(cx,      arrY + 4);
+      ctx.lineTo(cx + 12, arrY - 6);
+      ctx.stroke();
+
+      /* Watermark */
+      ctx.font      = '900 ' + Math.max(11, 13 * fScale) + 'px "Fraunces", serif';
+      ctx.textAlign = 'left';
+      ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      ctx.fillText('Lap', 20, H - 16);
+      var lw2 = ctx.measureText('Lap').width;
+      ctx.fillStyle = 'rgba(168,216,248,0.65)';
+      ctx.fillText('pers', 20 + lw2, H - 16);
+    }
+
+    function animate(ts) {
+      if (!startTime) startTime = ts;
+      t = (ts - startTime) / 1000;
+      drawFrame();
+      animFrame = requestAnimationFrame(animate);
+    }
+
+    function startVSL() {
+      document.getElementById('playOverlay').classList.add('hidden');
+      startTime = null;
+      animFrame = requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', function () { resizeCanvas(); drawFrame(); });
+    resizeCanvas();
+    /* Animate directly — no play needed for placeholder */
+    document.getElementById('playOverlay').classList.add('hidden');
+    animFrame = requestAnimationFrame(animate);
+
+    /* ── LEAD FORM ── */
+    document.getElementById('leadForm').addEventListener('submit', function (e) {
       e.preventDefault();
-      var valid = true;
 
-      var nameField  = form.querySelector('[name="name"]');
-      var phoneField = form.querySelector('[name="phone"]');
+      var form    = this;
+      var btn     = document.getElementById('submitBtn');
+      var naam    = form.querySelector('[name="naam"]').value.trim();
+      var tel     = form.querySelector('[name="telefoon"]').value.trim();
+      var email   = form.querySelector('[name="email"]').value.trim();
 
-      if (nameField) {
-        var nameOk = nameField.value.trim().length >= 2;
-        nameField.classList.toggle('error', !nameOk);
-        if (!nameOk) valid = false;
-      }
+      btn.textContent = 'Versturen…';
+      btn.disabled    = true;
 
-      if (phoneField) {
-        var phoneVal = phoneField.value.replace(/\s/g, '');
-        var phoneOk = phoneVal.length >= 9 && /^[0-9+\-\s()]+$/.test(phoneField.value);
-        phoneField.classList.toggle('error', !phoneOk);
-        if (!phoneOk) valid = false;
-      }
+      /* CallMeBot WhatsApp — activeer via: stuur "I allow callmebot to send me messages"
+         naar +34 644 82 35 55 op WhatsApp, vervang YOUR_API_KEY door je eigen sleutel */
+      var apiKey = 'YOUR_API_KEY';
+      var msg    = encodeURIComponent(
+        '🔔 NIEUWE LEAD — Lappers\n\n' +
+        '👤 ' + naam  + '\n' +
+        '📞 ' + tel   + '\n' +
+        '📧 ' + email + '\n\n' +
+        'Bron: gratis wasbeurt aanvraag'
+      );
+      fetch('https://api.callmebot.com/whatsapp.php?phone=31629010630&text=' + msg + '&apikey=' + apiKey, { mode: 'no-cors' }).catch(function () {});
 
-      if (valid) {
-        var submitBtn = form.querySelector('[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Aanvraag verstuurd!';
-        submitBtn.style.background = '#22C55E';
-        submitBtn.style.borderColor = '#22C55E';
-
-        var notice = form.querySelector('.form__notice');
-        if (notice) {
-          notice.textContent = 'Bedankt. Ik bel u terug binnen 24 uur.';
-          notice.style.color = '#22C55E';
+      /* Formspree */
+      fetch('https://formspree.io/f/mzdwpyqb', {
+        method:  'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ naam: naam, telefoon: tel, email: email, bron: 'gratis-wasbeurt' })
+      })
+      .then(function (res) {
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('successBox').style.display = 'block';
+        } else {
+          btn.disabled    = false;
+          btn.textContent = '🎁 Claim mijn gratis wasbeurt →';
+          alert('Er ging iets mis. Probeer het opnieuw of bel direct: 06 290 106 30');
         }
-      }
+      })
+      .catch(function () {
+        btn.disabled    = false;
+        btn.textContent = '🎁 Claim mijn gratis wasbeurt →';
+        alert('Er ging iets mis. Probeer het opnieuw of bel direct: 06 290 106 30');
+      });
     });
 
-    // Verwijder error class bij typen
-    form.querySelectorAll('input').forEach(function (el) {
-      el.addEventListener('input', function () { el.classList.remove('error'); });
-    });
-  }
+    /* ── COOKIE BANNER ── */
+    (function () {
+      try {
+        if (!localStorage.getItem('cookieChoice')) {
+          setTimeout(function () {
+            document.getElementById('cookieBanner').classList.add('show');
+          }, 1200);
+        }
+      } catch (e) {}
+    })();
 
-  setupLpForm('lpForm');
-  setupLpForm('lpFormFull');
+    function cookieChoice(accepted) {
+      try { localStorage.setItem('cookieChoice', accepted ? 'accepted' : 'declined'); } catch (e) {}
+      document.getElementById('cookieBanner').classList.remove('show');
+    }
+  </script>
 
-  /* ===================================================
-     3. FAQ accordion (LP-pagina)
-     Hergebruikt dezelfde .faq__q structuur als main.js,
-     maar main.js initialiseert ook de FAQ op deze pagina.
-     Dit bestand doet niets extra's voor FAQ tenzij main.js
-     niet geladen is — dit is een veiligheidsnet.
-  =================================================== */
-  // main.js initialiseert al alle .faq__q elementen op de pagina.
-  // Geen duplicate listener nodig.
-
-})();
-
-</script>
 </body>
 </html>
