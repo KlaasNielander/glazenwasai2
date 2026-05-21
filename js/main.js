@@ -1,37 +1,49 @@
 (function () {
   'use strict';
 
-  // Announce bar close
-  const announceBar = document.getElementById('announceBar');
-  const closeBtn    = document.getElementById('closeAnnounce');
-  const nav         = document.getElementById('nav');
+  /* ===================================================
+     1. Topbar close + sessionStorage
+  =================================================== */
+  var topbar     = document.getElementById('topbar');
+  var topbarClose = document.getElementById('topbarClose');
+  var nav        = document.getElementById('nav');
 
-  function hideAnnounce() {
-    announceBar.classList.add('hidden');
-    nav.classList.add('announce-hidden');
-    try { sessionStorage.setItem('announce-closed', '1'); } catch (_) {}
+  function hideTopbar() {
+    if (!topbar) return;
+    topbar.classList.add('hidden');
+    if (nav) nav.classList.add('topbar-hidden');
+    try { sessionStorage.setItem('topbar-closed', '1'); } catch (_) {}
   }
 
-  if (closeBtn) closeBtn.addEventListener('click', hideAnnounce);
-  if (sessionStorage.getItem('announce-closed')) hideAnnounce();
+  if (topbarClose) topbarClose.addEventListener('click', hideTopbar);
 
-  // Sticky nav shadow on scroll
-  window.addEventListener('scroll', function () {
-    nav.classList.toggle('scrolled', window.scrollY > 10);
-  }, { passive: true });
+  try {
+    if (sessionStorage.getItem('topbar-closed')) hideTopbar();
+  } catch (_) {}
 
-  // Mobile nav toggle
-  const navToggle = document.getElementById('navToggle');
-  const navLinks  = document.getElementById('navLinks');
+  /* ===================================================
+     2. Nav: transparent → scrolled class op scroll
+  =================================================== */
+  if (nav) {
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+  }
+
+  /* ===================================================
+     3. Mobile menu toggle
+  =================================================== */
+  var navToggle = document.getElementById('navToggle');
+  var navLinks  = document.getElementById('navLinks');
 
   if (navToggle && navLinks) {
     navToggle.addEventListener('click', function () {
-      const open = navLinks.classList.toggle('open');
-      navToggle.classList.toggle('open', open);
-      navToggle.setAttribute('aria-expanded', String(open));
+      var isOpen = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', String(isOpen));
     });
 
-    // Close on nav link click
+    // Sluit menu bij klik op een link
     navLinks.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         navLinks.classList.remove('open');
@@ -39,81 +51,131 @@
         navToggle.setAttribute('aria-expanded', 'false');
       });
     });
+
+    // Sluit menu bij klik buiten de nav
+    document.addEventListener('click', function (e) {
+      if (navLinks.classList.contains('open') && !nav.contains(e.target)) {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
-  // FAQ accordion
+  /* ===================================================
+     4. FAQ accordion
+  =================================================== */
   document.querySelectorAll('.faq__q').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      const answer  = btn.nextElementSibling;
-      const open    = btn.getAttribute('aria-expanded') === 'true';
+      var answer  = btn.nextElementSibling;
+      var isOpen  = btn.getAttribute('aria-expanded') === 'true';
 
-      // Close all
+      // Sluit alle andere items
       document.querySelectorAll('.faq__q').forEach(function (b) {
-        b.setAttribute('aria-expanded', 'false');
-        const a = b.nextElementSibling;
-        if (a) {
-          a.hidden = true;
-          a.style.maxHeight = null;
+        if (b !== btn) {
+          b.setAttribute('aria-expanded', 'false');
+          var a = b.nextElementSibling;
+          if (a) a.hidden = true;
         }
       });
 
-      // Open this one if it was closed
-      if (!open) {
-        btn.setAttribute('aria-expanded', 'true');
-        answer.hidden = false;
-      }
+      // Toggle huidig item
+      var newState = !isOpen;
+      btn.setAttribute('aria-expanded', String(newState));
+      if (answer) answer.hidden = !newState;
     });
   });
 
-  // Form validation + feedback
-  const form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', function (e) {
+  /* ===================================================
+     5. Contactformulier validatie + submit feedback
+  =================================================== */
+  var contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      let valid = true;
+      var valid = true;
 
-      ['firstName', 'lastName', 'phone', 'email'].forEach(function (id) {
-        const field = document.getElementById(id);
+      var required = ['firstName', 'lastName', 'phone', 'email'];
+      required.forEach(function (id) {
+        var field = document.getElementById(id);
         if (!field) return;
-        const ok = field.value.trim().length > 0 &&
-          (id !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value));
+
+        var value = field.value.trim();
+        var ok = value.length > 0;
+
+        if (id === 'email') {
+          ok = ok && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        }
+        if (id === 'phone') {
+          ok = ok && value.replace(/\s/g, '').length >= 9;
+        }
+
         field.classList.toggle('error', !ok);
         if (!ok) valid = false;
       });
 
       if (valid) {
-        const btn = form.querySelector('[type="submit"]');
-        btn.disabled = true;
-        btn.textContent = 'Aanvraag verstuurd!';
-        // Replace with actual form submission (e.g. fetch POST) as needed
+        var submitBtn = contactForm.querySelector('[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Aanvraag verstuurd!';
+        submitBtn.style.background = '#22C55E';
+        submitBtn.style.borderColor = '#22C55E';
+
+        // Toon succesbericht
+        var notice = contactForm.querySelector('.form__notice');
+        if (notice) {
+          notice.textContent = 'Bedankt. Ik neem binnen 24 uur contact met u op.';
+          notice.style.color = '#22C55E';
+        }
       }
     });
 
-    // Remove error on input
-    form.querySelectorAll('input, textarea').forEach(function (el) {
+    // Verwijder error class bij typen
+    contactForm.querySelectorAll('input, textarea').forEach(function (el) {
       el.addEventListener('input', function () { el.classList.remove('error'); });
     });
   }
 
-  // Intersection-based fade-in for sections
+  /* ===================================================
+     6. IntersectionObserver fade-in voor cards & stappen
+  =================================================== */
   if ('IntersectionObserver' in window) {
-    var style = document.createElement('style');
-    style.textContent = '.fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}.fade-in.visible{opacity:1;transform:none}';
-    document.head.appendChild(style);
+    var targets = document.querySelectorAll(
+      '.bento-card, .review-card, .step, .faq__item, .area-tag, .benefit-item, .lp-step'
+    );
 
-    var targets = document.querySelectorAll('.service-card, .review-card, .step, .faq__item, .area-tag');
-    var obs = new IntersectionObserver(function (entries) {
+    var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
 
-    targets.forEach(function (el) {
+    targets.forEach(function (el, i) {
       el.classList.add('fade-in');
-      obs.observe(el);
+      // Stagger vertraging voor grid-items
+      el.style.transitionDelay = (i % 4) * 0.07 + 's';
+      observer.observe(el);
     });
   }
+
+  /* ===================================================
+     7. Marquee: dupliceer content voor naadloze loop
+     (HTML heeft al twee .marquee-inner spans; dit is
+     een veiligheidsmaatregel voor browsers die no-wrap
+     trunceren)
+  =================================================== */
+  var marqueeTrack = document.querySelector('.marquee-track');
+  if (marqueeTrack) {
+    var inners = marqueeTrack.querySelectorAll('.marquee-inner');
+    // Zorg dat er minstens 2 kopieën zijn voor de loop
+    if (inners.length === 1) {
+      var clone = inners[0].cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      marqueeTrack.appendChild(clone);
+    }
+  }
+
 })();
