@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gratis Wasbeurt — Glazenwasser Nijmegen | Lappers</title>
+  <title>Gratis Wasbeurt Aanvragen — Glazenwasser Nijmegen | Lappers</title>
   <meta name="description" content="Nieuwe klanten krijgen de eerste wasbeurt 100% gratis bij Lappers, glazenwasser in Nijmegen. Geen verplichtingen, binnen 24 uur reactie. Claim direct." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://lappers.nl/gratis-wasbeurt/" />
@@ -13,505 +13,1220 @@
   <meta property="og:url" content="https://lappers.nl/gratis-wasbeurt/" />
   <meta property="og:locale" content="nl_NL" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
   <style>
+    /* ── Design tokens ── */
     :root {
-      --sky: #d6eeff;
-      --sky-mid: #a8d8f8;
-      --blue: #1a6fb5;
+      --sky:       #d6eeff;
+      --sky-mid:   #a8d8f8;
+      --blue:      #1a6fb5;
       --blue-dark: #0e4a7e;
-      --ink: #0d1b2a;
-      --cream: #f7f3ec;
-      --sun: #f9c84a;
-      --clean: #ffffff;
-      --muted: #4a6070;
+      --ink:       #0d1b2a;
+      --ink-mid:   #1e3a54;
+      --cream:     #f7f3ec;
+      --sun:       #f9c84a;
+      --sun-dark:  #e0a820;
+      --clean:     #ffffff;
+      --green:     #22c55e;
+      --muted:     rgba(13,27,42,.58);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
+      --radius-xl: 32px;
+      --radius-full: 999px;
+      --font-d: 'Fraunces', Georgia, serif;
+      --font-b: 'DM Sans', system-ui, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+    body { font-family: var(--font-b); background: var(--cream); color: var(--ink); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: var(--font-d); line-height: 1.12; }
+    em { font-style: italic; color: var(--blue); }
+    a { color: inherit; text-decoration: none; }
 
-    /* TOPBAR */
-    .topbar { background: var(--sun); color: var(--ink); text-align: center; padding: 0.7rem 1rem; font-size: 0.88rem; font-weight: 600; }
-
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 2rem 4vw 1rem;
-      background: var(--cream);
-    }
-
-    .offer-badge {
-      display: inline-block;
+    /* ── TOPBAR ── */
+    .topbar {
       background: var(--sun);
       color: var(--ink);
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 0.7rem 1.6rem;
-      border-radius: 50px;
-      margin-bottom: 0;
-      letter-spacing: 0.02em;
-    }
-
-    .offer-badge-btn {
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 6px 22px rgba(249,200,74,0.4);
-    }
-    .offer-badge-btn:hover {
-      background: #f0b800;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(249,200,74,0.55);
-    }
-
-    .area-tags-hero {
-      margin-top: 0.9rem;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      padding: 0 1rem;
+      height: 46px;
+      font-size: .84rem;
+      font-weight: 600;
+      gap: .7rem;
+      position: relative;
+      overflow: hidden;
     }
+    .topbar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
+      animation: shimmer 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes shimmer { 0% { transform: translateX(-100%); } 60% { transform: translateX(100%); } 100% { transform: translateX(100%); } }
+    .topbar-pulse {
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .topbar-pulse::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: var(--green);
+      opacity: .3;
+      animation: pulse 1.8s ease-out infinite;
+    }
+    @keyframes pulse { 0% { transform: scale(1); opacity: .3; } 100% { transform: scale(2.4); opacity: 0; } }
+    .topbar-back {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      background: rgba(13,27,42,.15);
+      border-radius: var(--radius-full);
+      padding: .28rem .8rem;
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--ink);
+      flex-shrink: 0;
+      transition: background .15s;
+      position: relative;
+      z-index: 1;
+    }
+    .topbar-back:hover { background: rgba(13,27,42,.25); }
 
-    .area-label {
-      font-size: 0.72rem;
-      color: #6a8099;
+    /* ── MINI NAV ── */
+    .mini-nav {
+      background: rgba(247,243,236,.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(13,27,42,.08);
+      padding: 0 clamp(1rem, 4vw, 2.5rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(13,27,42,.07);
+    }
+    .logo {
+      font-family: var(--font-d);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--ink);
+      letter-spacing: -.02em;
+    }
+    .logo span { color: var(--blue); }
+    .mini-nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: var(--sun);
+      color: var(--ink);
+      font-family: var(--font-b);
+      font-size: .84rem;
+      font-weight: 800;
+      padding: .55rem 1.3rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 3px 14px rgba(249,200,74,.3);
+      transition: background .15s, transform .15s;
+    }
+    .mini-nav-cta:hover { background: var(--sun-dark); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .lp-hero {
+      background: linear-gradient(155deg, var(--cream) 35%, #e8f4ff 100%);
+      padding: 72px clamp(1.25rem, 5vw, 4rem) 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .lp-hero::before {
+      content: '';
+      position: absolute;
+      top: -150px; right: -150px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168,216,248,.45) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .lp-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,200,74,.2) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: var(--sun);
+      color: var(--ink);
+      font-size: .82rem;
+      font-weight: 800;
+      padding: .45rem 1.2rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 1.4rem;
+      box-shadow: 0 4px 18px rgba(249,200,74,.35);
+      position: relative;
+      z-index: 1;
+    }
+    .lp-hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      color: var(--ink);
+      letter-spacing: -.03em;
+      line-height: 1.07;
+      max-width: 760px;
+      margin: 0 auto 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .lp-hero h1 em { color: var(--blue); font-style: italic; }
+    .lp-hero-sub {
+      font-size: 1.08rem;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 520px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-trust-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      flex-wrap: wrap;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+    .hero-trust-row .sep { opacity: .3; }
+    .hero-trust-row .stars { color: #f59e0b; }
+
+    /* Down arrow */
+    .scroll-hint {
+      margin-top: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      color: var(--muted);
+      font-size: .78rem;
       font-weight: 500;
-      margin-right: 0.2rem;
+      position: relative;
+      z-index: 1;
     }
+    .scroll-hint svg { animation: bounce 2s ease-in-out infinite; }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
-    .area-tag {
-      background: var(--clean);
-      border: 1px solid rgba(26,111,181,0.15);
-      color: var(--blue-dark);
-      font-size: 0.68rem;
-      padding: 0.18rem 0.6rem;
-      border-radius: 50px;
-      font-weight: 500;
+    /* ── VSL ── */
+    .vsl-section {
+      background: var(--ink);
+      padding: 0 0 4rem;
     }
-
-    /* VSL */
-    .vsl-section { max-width: 820px; margin: 0 auto; padding: 1rem 4vw 0; background: var(--cream); }
-
+    .vsl-label {
+      text-align: center;
+      padding: 2.4rem 1rem .8rem;
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--sky-mid);
+    }
+    .vsl-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 2.5rem);
+    }
     .vsl-wrapper {
       position: relative;
       border-radius: 20px;
       overflow: hidden;
       aspect-ratio: 16/9;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
-      border: 2px solid rgba(255,255,255,0.08);
+      box-shadow: 0 32px 80px rgba(0,0,0,.6);
       background: #000;
       cursor: pointer;
+      border: 1.5px solid rgba(255,255,255,.08);
     }
-
     #vslCanvas { width: 100%; height: 100%; display: block; }
-
-    .vsl-play-overlay {
+    .vsl-overlay {
       position: absolute; inset: 0;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
-      background: rgba(10,25,40,0.5);
-      transition: opacity 0.3s;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 1.2rem;
+      background: rgba(8,18,32,.45);
+      transition: opacity .3s;
     }
-    .vsl-play-overlay.hidden { opacity: 0; pointer-events: none; }
-
+    .vsl-overlay.hidden { opacity: 0; pointer-events: none; }
     .play-btn {
-      width: 72px; height: 72px; background: var(--sun); border-radius: 50%;
+      width: 76px; height: 76px;
+      background: var(--sun);
+      border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 32px rgba(249,200,74,0.5); transition: transform 0.2s;
+      box-shadow: 0 10px 40px rgba(249,200,74,.55);
+      transition: transform .2s, box-shadow .2s;
     }
-    .play-btn::after { content: ''; width: 0; height: 0; border-style: solid; border-width: 12px 0 12px 22px; border-color: transparent transparent transparent var(--ink); margin-left: 4px; }
-    .vsl-play-overlay:hover .play-btn { transform: scale(1.1); }
+    .play-btn::after {
+      content: '';
+      width: 0; height: 0;
+      border-style: solid;
+      border-width: 13px 0 13px 24px;
+      border-color: transparent transparent transparent var(--ink);
+      margin-left: 5px;
+    }
+    .vsl-overlay:hover .play-btn { transform: scale(1.1); box-shadow: 0 16px 52px rgba(249,200,74,.7); }
+    .play-label {
+      font-family: var(--font-d);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--clean);
+      text-align: center;
+      text-shadow: 0 2px 10px rgba(0,0,0,.5);
+    }
+    .play-sub {
+      font-family: var(--font-b);
+      font-size: .78rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.6);
+      display: block;
+      margin-top: .3rem;
+    }
+    .vsl-cta-row {
+      text-align: center;
+      padding: 2rem 1rem 0;
+    }
+    .vsl-cta-row a {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: var(--sun);
+      color: var(--ink);
+      font-family: var(--font-b);
+      font-size: .97rem;
+      font-weight: 800;
+      padding: .9rem 2rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 6px 24px rgba(249,200,74,.4);
+      transition: background .15s, transform .2s, box-shadow .2s;
+    }
+    .vsl-cta-row a:hover {
+      background: var(--sun-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(249,200,74,.55);
+    }
+    .vsl-caption {
+      text-align: center;
+      font-size: .78rem;
+      color: rgba(255,255,255,.32);
+      margin-top: .85rem;
+      font-weight: 300;
+    }
 
-    .play-label { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: var(--clean); text-align: center; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
-
-    /* LEAD FORM */
-    .form-section {
-      background: linear-gradient(160deg, var(--sky) 0%, var(--cream) 100%);
-      padding: 4rem 4vw;
+    /* ── SOCIAL PROOF BAR ── */
+    .proof-bar {
+      background: var(--sky);
+      padding: 1.8rem clamp(1rem, 4vw, 3rem);
+    }
+    .proof-bar-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
       text-align: center;
     }
-
-    .form-section h2 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
+    .proof-item strong {
+      display: block;
+      font-family: var(--font-d);
+      font-size: 1.7rem;
       font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -1px;
-      color: var(--ink);
-      margin-bottom: 0.7rem;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: .25rem;
+    }
+    .proof-item span {
+      font-size: .8rem;
+      color: rgba(13,27,42,.55);
+      font-weight: 500;
     }
 
-    .form-section h2 em { font-style: italic; color: var(--blue); }
-
-    .form-section > p {
-      font-size: 0.95rem;
+    /* ── FORM SECTION ── */
+    .form-section {
+      padding: 72px clamp(1.25rem, 5vw, 4rem);
+      background: linear-gradient(160deg, var(--sky) 0%, var(--cream) 60%);
+      text-align: center;
+    }
+    .form-section h2 {
+      font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+      color: var(--ink);
+      letter-spacing: -.03em;
+      margin-bottom: .7rem;
+    }
+    .form-section h2 em { color: var(--blue); }
+    .form-intro-text {
+      font-size: .96rem;
       color: var(--muted);
       margin-bottom: 2.5rem;
       font-weight: 300;
-      line-height: 1.65;
+      line-height: 1.7;
     }
 
-    .lead-form-box {
+    .form-box {
       background: var(--clean);
-      border-radius: 24px;
-      padding: 2.5rem;
-      max-width: 440px;
+      border-radius: var(--radius-xl);
+      padding: 2.75rem;
+      max-width: 460px;
       margin: 0 auto;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+      box-shadow: 0 28px 80px rgba(13,27,42,.14), 0 0 0 1.5px rgba(26,111,181,.1);
+      position: relative;
+    }
+    .form-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--sun), var(--blue));
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
     }
 
-    .lead-form-box h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 900; color: var(--ink); margin-bottom: 0.4rem; }
-    .form-intro { font-size: 0.84rem; color: #6a8099; margin-bottom: 1.8rem; font-weight: 300; line-height: 1.5; }
+    .form-box-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: rgba(34,197,94,.1);
+      color: #166534;
+      font-size: .77rem;
+      font-weight: 700;
+      padding: .3rem .8rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 1rem;
+      letter-spacing: .03em;
+    }
+    .form-box h3 {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--ink);
+      margin-bottom: .35rem;
+    }
+    .form-desc {
+      font-size: .84rem;
+      color: rgba(13,27,42,.5);
+      margin-bottom: 1.8rem;
+      font-weight: 300;
+      line-height: 1.55;
+    }
 
     .form-group { margin-bottom: 1rem; }
-    .form-group input { width: 100%; padding: 0.95rem 1.2rem; border: 2px solid rgba(26,111,181,0.15); border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; background: #f4f7fa; color: var(--ink); outline: none; transition: border-color 0.2s, background 0.2s; }
-    .form-group input:focus { border-color: var(--blue); background: var(--clean); }
-    .form-group input::placeholder { color: #9ab0c4; }
+    .form-group input {
+      width: 100%;
+      padding: .9rem 1.15rem;
+      border: 1.5px solid rgba(13,27,42,.1);
+      border-radius: var(--radius-md);
+      font-family: var(--font-b);
+      font-size: .94rem;
+      background: #f3f0eb;
+      color: var(--ink);
+      outline: none;
+      transition: border-color .18s, background .18s, box-shadow .18s;
+    }
+    .form-group input:focus {
+      border-color: var(--blue);
+      background: var(--clean);
+      box-shadow: 0 0 0 3px rgba(26,111,181,.1);
+    }
+    .form-group input::placeholder { color: rgba(13,27,42,.3); }
+    .form-group input.error { border-color: #ef4444; }
 
-    .submit-btn { width: 100%; padding: 1.15rem; background: var(--sun); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 6px 24px rgba(249,200,74,0.35); margin-top: 0.5rem; }
-    .submit-btn:hover { background: #f0b800; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(249,200,74,0.5); }
-    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-    .form-fine { font-size: 0.75rem; color: #9ab0c4; text-align: center; margin-top: 0.9rem; line-height: 1.5; }
+    .submit-btn {
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--sun);
+      color: var(--ink);
+      font-family: var(--font-b);
+      font-size: 1.04rem;
+      font-weight: 800;
+      border: none;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: background .15s, transform .2s, box-shadow .2s;
+      box-shadow: 0 6px 24px rgba(249,200,74,.4);
+      margin-top: .35rem;
+    }
+    .submit-btn:hover {
+      background: var(--sun-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(249,200,74,.52);
+    }
+    .submit-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; box-shadow: none; }
 
-    .success-box { display: none; text-align: center; padding: 1.5rem 0; }
-    .success-box .icon { font-size: 3rem; margin-bottom: 1rem; }
-    .success-box h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 900; color: var(--ink); margin-bottom: 0.5rem; }
-    .success-box p { font-size: 0.9rem; color: #6a8099; line-height: 1.6; }
+    .form-fine {
+      font-size: .74rem;
+      color: rgba(13,27,42,.38);
+      text-align: center;
+      margin-top: 1rem;
+      line-height: 1.55;
+    }
+    .form-fine .check {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      margin: .2rem .4rem;
+    }
+    .form-fine .check::before { content: '✓'; color: var(--green); font-weight: 700; }
 
-    /* LIGHT + DARK sections */
-    .light { background: var(--cream); color: var(--ink); }
-    .dark  { background: var(--ink); }
+    .success-box {
+      display: none;
+      text-align: center;
+      padding: 1.75rem 0;
+    }
+    .success-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .success-box h3 {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--ink);
+      margin-bottom: .55rem;
+    }
+    .success-box p {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
 
-    .section { max-width: 820px; margin: 0 auto; padding: 4.5rem 4vw; }
+    /* ── STEPS ── */
+    .steps-section {
+      background: var(--cream);
+      padding: 72px clamp(1.25rem, 5vw, 4rem);
+    }
+    .steps-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(26,111,181,.1);
+      padding: .32rem .85rem;
+      border-radius: var(--radius-full);
+      margin-bottom: .9rem;
+    }
+    .section-title {
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      color: var(--ink);
+      letter-spacing: -.02em;
+      margin-bottom: 2.5rem;
+    }
+    .section-title em { color: var(--blue); }
 
-    .section-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.8rem; display: block; }
-    .light .section-label { color: var(--blue); }
-    .dark  .section-label { color: #a8d8f8; }
+    .lp-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .lp-step {
+      background: var(--clean);
+      border: 1.5px solid rgba(13,27,42,.07);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      text-align: center;
+      transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s;
+    }
+    .lp-step:hover { transform: translateY(-5px); box-shadow: 0 16px 44px rgba(13,27,42,.1); }
+    .step-icon {
+      font-size: 2.2rem;
+      margin-bottom: .85rem;
+      display: block;
+    }
+    .step-num-label {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .4rem;
+      display: block;
+    }
+    .lp-step h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: .5rem;
+    }
+    .lp-step p {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
 
-    .section-title { font-family: 'Fraunces', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 0.8rem; }
-    .light .section-title { color: var(--ink); }
-    .dark  .section-title { color: var(--clean); }
-    .section-title em { font-style: italic; color: var(--blue); }
-    .dark .section-title em { color: var(--sky-mid); }
+    /* ── FAQ ── */
+    .faq-section {
+      background: var(--ink);
+      padding: 72px clamp(1.25rem, 5vw, 4rem);
+    }
+    .faq-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq-section .section-label { background: rgba(168,216,248,.14); color: var(--sky-mid); }
+    .faq-section .section-title { color: var(--clean); }
+    .faq-section .section-title em { color: var(--sky-mid); }
 
-    /* MODEL STEPS */
-    .model-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; }
-    .model-step { background: var(--clean); border-radius: 16px; padding: 1.5rem; border: 2px solid rgba(26,111,181,0.1); text-align: center; transition: border-color 0.2s, transform 0.2s; }
-    .model-step:hover { border-color: var(--blue); transform: translateY(-3px); }
-    .model-step .icon { font-size: 1.8rem; margin-bottom: 0.7rem; }
-    .model-step h4 { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
-    .model-step p { font-size: 0.82rem; color: #5a7080; line-height: 1.55; font-weight: 300; }
+    .faq-list { margin-top: 2rem; }
+    .faq-item {
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: .85rem;
+      transition: border-color .2s;
+    }
+    .faq-item:hover { border-color: rgba(168,216,248,.25); }
+    .faq-q {
+      padding: 1.25rem 1.5rem;
+      font-family: var(--font-b);
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,.05);
+      color: var(--clean);
+      gap: 1rem;
+      user-select: none;
+      transition: background .2s;
+    }
+    .faq-q:hover { background: rgba(255,255,255,.08); }
+    .faq-arrow {
+      width: 24px; height: 24px;
+      border: 1.5px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: .7rem;
+      color: rgba(255,255,255,.5);
+      transition: transform .25s, border-color .2s;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); border-color: var(--sky-mid); color: var(--sky-mid); }
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    .faq-item.open .faq-body { max-height: 500px; }
+    .faq-inner-content { padding: 1.25rem 1.5rem 1.5rem; }
 
-    /* OBJECTIONS */
-    .objection { margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; }
-    .objection-q { padding: 1.2rem 1.5rem; font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); color: var(--clean); transition: background 0.2s; user-select: none; gap: 1rem; }
-    .objection-q:hover { background: rgba(255,255,255,0.09); }
-    .arrow { font-size: 0.9rem; transition: transform 0.25s; color: rgba(255,255,255,0.4); flex-shrink: 0; }
-    .objection.open .arrow { transform: rotate(180deg); }
-    .objection-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-    .objection.open .objection-body { max-height: 600px; }
-    .objection-inner { padding: 1.2rem 1.5rem 1.5rem; }
-    .obj-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-    .obj-box { padding: 1rem; border-radius: 10px; font-size: 0.85rem; line-height: 1.55; font-weight: 300; }
-    .obj-wrong { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); color: rgba(255,255,255,0.8); }
-    .obj-wrong strong { color: #f87171; font-size: 0.72rem; display: block; margin-bottom: 0.3rem; letter-spacing: 0.06em; text-transform: uppercase; }
-    .obj-right { background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.25); color: rgba(255,255,255,0.8); }
-    .obj-right strong { color: #4ade80; font-size: 0.72rem; display: block; margin-bottom: 0.3rem; letter-spacing: 0.06em; text-transform: uppercase; }
-    .obj-proof { font-size: 0.82rem; color: rgba(255,255,255,0.4); font-style: italic; padding-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.07); font-weight: 300; }
+    .myth-vs-fact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+      margin-bottom: .9rem;
+    }
+    .mvf-box {
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      font-size: .85rem;
+      line-height: 1.6;
+      font-weight: 300;
+      color: rgba(255,255,255,.78);
+    }
+    .mvf-box strong {
+      display: block;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      margin-bottom: .35rem;
+    }
+    .myth { background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.2); }
+    .myth strong { color: #f87171; }
+    .fact  { background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2); }
+    .fact strong { color: #4ade80; }
+    .faq-text { font-size: .9rem; line-height: 1.75; color: rgba(255,255,255,.72); font-weight: 300; }
+    .faq-quote {
+      font-size: .82rem;
+      color: rgba(255,255,255,.38);
+      font-style: italic;
+      padding-top: .9rem;
+      margin-top: .9rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+      font-weight: 300;
+    }
+    .faq-quote::before { content: '\201C'; color: var(--sky-mid); }
+    .faq-quote::after  { content: '\201D'; color: var(--sky-mid); }
 
-    /* REVIEWS */
-    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
-    .review-card { background: var(--clean); border: 1.5px solid rgba(13,27,42,0.07); border-radius: 16px; padding: 1.6rem; }
-    .stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 0.8rem; }
-    .review-card p { font-size: 0.9rem; line-height: 1.65; color: #3a5060; font-weight: 300; font-style: italic; margin-bottom: 1rem; }
-    .reviewer { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
-    .reviewer span { display: block; font-weight: 300; font-size: 0.75rem; color: #7a95aa; margin-top: 0.1rem; }
+    /* ── REVIEWS ── */
+    .reviews-section {
+      background: #f0ece3;
+      padding: 72px clamp(1.25rem, 5vw, 4rem);
+    }
+    .reviews-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.15rem;
+      margin-top: 2.5rem;
+      text-align: left;
+    }
+    .rv-card {
+      background: var(--clean);
+      border: 1.5px solid rgba(13,27,42,.07);
+      border-radius: var(--radius-lg);
+      padding: 1.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .rv-card:hover { transform: translateY(-4px); box-shadow: 0 14px 44px rgba(13,27,42,.1); }
+    .rv-stars { color: #f59e0b; font-size: .92rem; letter-spacing: .06em; }
+    .rv-text {
+      font-size: .9rem;
+      line-height: 1.7;
+      color: rgba(13,27,42,.68);
+      font-style: italic;
+      font-weight: 300;
+      flex: 1;
+    }
+    .rv-text::before { content: '\201C'; }
+    .rv-text::after  { content: '\201D'; }
+    .rv-author {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+    .rv-avatar {
+      width: 38px; height: 38px;
+      background: var(--sky);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-d);
+      font-size: .9rem;
+      font-weight: 900;
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+    .rv-name { font-size: .86rem; font-weight: 700; color: var(--ink); display: block; line-height: 1.2; }
+    .rv-city { font-size: .74rem; color: rgba(13,27,42,.42); font-weight: 400; }
 
-    /* FOOTER */
-    footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem 4vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.82rem; color: rgba(255,255,255,0.35); }
-    footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
-    footer a:hover { color: #a8d8f8; }
+    /* ── FINAL CTA ── */
+    .final-cta {
+      background: linear-gradient(135deg, var(--ink) 0%, var(--ink-mid) 100%);
+      padding: 72px clamp(1.25rem, 5vw, 4rem);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,200,74,.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .final-cta-inner { position: relative; z-index: 1; }
+    .final-cta h2 {
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      color: var(--clean);
+      letter-spacing: -.03em;
+      margin-bottom: .9rem;
+    }
+    .final-cta h2 em { color: var(--sun); }
+    .final-cta p { font-size: .88rem; color: rgba(255,255,255,.42); margin-top: 1rem; font-weight: 300; }
+    .btn-big {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--sun);
+      color: var(--ink);
+      font-family: var(--font-b);
+      font-size: 1.05rem;
+      font-weight: 800;
+      padding: 1rem 2.4rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 8px 32px rgba(249,200,74,.45);
+      transition: background .15s, transform .2s, box-shadow .2s;
+      margin-top: 1.5rem;
+    }
+    .btn-big:hover { background: var(--sun-dark); transform: translateY(-3px); box-shadow: 0 14px 44px rgba(249,200,74,.55); }
 
-    /* COOKIE BANNER */
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 2.5rem clamp(1rem, 4vw, 2.5rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.35);
+    }
+    footer a { color: rgba(255,255,255,.35); text-decoration: none; }
+    footer a:hover { color: var(--sky-mid); }
+    .footer-logo { font-family: var(--font-d); font-size: 1.25rem; font-weight: 900; color: rgba(255,255,255,.7); }
+    .footer-logo span { color: var(--sky-mid); }
+
+    /* ── COOKIE BANNER ── */
     .cookie-banner {
+      display: none;
       position: fixed;
-      bottom: 1rem;
-      left: 1rem;
-      right: 1rem;
-      max-width: 480px;
+      bottom: 1rem; left: 1rem; right: 1rem;
+      max-width: 440px;
       background: var(--ink);
       color: var(--clean);
-      padding: 1.1rem 1.3rem;
-      border-radius: 16px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      padding: 1.25rem 1.5rem;
+      border-radius: 18px;
+      box-shadow: 0 16px 48px rgba(0,0,0,.35);
       z-index: 1000;
-      display: none;
-      font-size: 0.85rem;
+      font-size: .84rem;
       line-height: 1.5;
+      border: 1px solid rgba(255,255,255,.08);
     }
-    .cookie-banner.show { display: block; animation: slide-up-cookie 0.4s ease both; }
-    .cookie-banner p { margin: 0 0 0.8rem; color: rgba(255,255,255,0.85); }
-    .cookie-banner a { color: #a8d8f8; text-decoration: underline; }
-    .cookie-banner-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-    .cookie-btn { flex: 1; padding: 0.6rem 1rem; border-radius: 50px; border: none; font-family: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s, transform 0.15s; min-width: 110px; }
-    .cookie-btn-accept { background: var(--sun); color: var(--ink); }
-    .cookie-btn-decline { background: rgba(255,255,255,0.1); color: var(--clean); }
-    .cookie-btn:hover { transform: translateY(-1px); }
-    @keyframes slide-up-cookie {
-      from { transform: translateY(100%); opacity: 0; }
-      to   { transform: translateY(0);    opacity: 1; }
+    .cookie-banner.show { display: block; animation: cookie-up .4s cubic-bezier(.22,1,.36,1) both; }
+    @keyframes cookie-up { from { transform: translateY(120%); opacity: 0; } to { transform: none; opacity: 1; } }
+    .cookie-banner p { margin-bottom: .9rem; color: rgba(255,255,255,.72); }
+    .cookie-actions { display: flex; gap: .6rem; }
+    .ck-btn {
+      flex: 1; padding: .6rem 1rem;
+      border-radius: var(--radius-full);
+      border: none;
+      font-family: var(--font-b);
+      font-size: .84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .15s;
     }
+    .ck-btn:hover { opacity: .85; }
+    .ck-accept { background: var(--sun); color: var(--ink); }
+    .ck-decline { background: rgba(255,255,255,.1); color: var(--clean); }
 
-    @media (max-width: 600px) {
-      .obj-row        { grid-template-columns: 1fr; }
-      .lead-form-box  { padding: 1.8rem; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 760px) {
+      .proof-bar-inner { grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+      .proof-item strong { font-size: 1.35rem; }
+      .lp-steps { grid-template-columns: 1fr; }
+      .myth-vs-fact { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .form-box { padding: 2rem 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .mini-nav-cta span { display: none; }
+      .lp-hero h1 { font-size: 2rem; }
+      .proof-bar-inner { gap: .5rem; }
+      .proof-item strong { font-size: 1.2rem; }
     }
   </style>
 </head>
 <body>
 
-  <div class="topbar">&#127873; Exclusief voor nieuwe klanten &mdash; eerste wasbeurt volledig gratis</div>
+  <!-- ═══════════════════════════════════════════════════
+       TOPBAR
+  ═══════════════════════════════════════════════════ -->
+  <div class="topbar">
+    <div class="topbar-pulse" aria-hidden="true"></div>
+    <span>Nieuwe klanten &mdash; <strong>eerste wasbeurt 100% gratis</strong></span>
+    <a href="/" class="topbar-back">&#8592; Terug naar site</a>
+  </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <a href="#aanvragen" class="offer-badge offer-badge-btn">&#10022; Gratis wasbeurt aanvragen</a>
-    <div class="area-tags-hero">
-      <span class="area-label">Actief in:</span>
-      <span class="area-tag">Nijmegen</span>
-      <span class="area-tag">Beuningen</span>
-      <span class="area-tag">Wijchen</span>
-      <span class="area-tag">Malden</span>
-      <span class="area-tag">Groesbeek</span>
-      <span class="area-tag">Beek</span>
-      <span class="area-tag">Ubbergen</span>
-      <span class="area-tag">en omgeving</span>
+  <!-- ═══════════════════════════════════════════════════
+       MINI NAV
+  ═══════════════════════════════════════════════════ -->
+  <nav class="mini-nav" aria-label="Navigatie">
+    <a href="/" class="logo">Lap<span>pers</span></a>
+    <a href="#aanvragen" class="mini-nav-cta">
+      <span>&#127873; Claim gratis wasbeurt</span>
+    </a>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════ -->
+  <section class="lp-hero" aria-labelledby="lp-heading">
+    <div class="hero-eyebrow">&#127873; Exclusief voor nieuwe klanten</div>
+    <h1 id="lp-heading">Jouw ramen <em>kraakhelder</em> schoon.<br>De eerste keer betaal je niets.</h1>
+    <p class="lp-hero-sub">Lappers wast ramen en kozijnen bij particulieren in Nijmegen en omgeving. Kijk even de video hieronder &mdash; dan weet je precies wat je kunt verwachten.</p>
+    <div class="hero-trust-row">
+      <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <strong>4.9 op Google</strong>
+      <span class="sep">&middot;</span>
+      127 beoordelingen
+      <span class="sep">&middot;</span>
+      &#10003; Geen verplichtingen
+      <span class="sep">&middot;</span>
+      &#10003; Streeploos resultaat
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      Bekijk de video
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
     </div>
   </section>
 
-  <!-- VSL -->
-  <section class="vsl-section">
-    <div class="vsl-wrapper" id="vslWrapper">
-      <canvas id="vslCanvas"></canvas>
-      <div class="vsl-play-overlay" id="playOverlay">
-        <div class="play-btn"></div>
-        <div class="play-label">Bekijk hoe Lappers jouw ramen transformeert<br><span style="font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:300;opacity:0.7;">&#177; 90 seconden &middot; Geen verplichtingen</span></div>
+  <!-- ═══════════════════════════════════════════════════
+       VSL
+  ═══════════════════════════════════════════════════ -->
+  <section class="vsl-section" aria-label="Video">
+    <div class="vsl-label">Bekijk hoe het werkt</div>
+    <div class="vsl-container">
+      <div class="vsl-wrapper" id="vslWrapper">
+        <canvas id="vslCanvas" aria-hidden="true"></canvas>
+        <div class="vsl-overlay" id="vslOverlay">
+          <div class="play-btn" aria-hidden="true"></div>
+          <div class="play-label">
+            Lappers over de gratis wasbeurt
+            <span class="play-sub">&#177; 90 seconden &middot; Geen verplichtingen</span>
+          </div>
+        </div>
+      </div>
+      <div class="vsl-cta-row">
+        <a href="#aanvragen">&#127873; Claim mijn gratis wasbeurt &rarr;</a>
+      </div>
+      <p class="vsl-caption">Geen spam. Geen verplichtingen. Ik bel je persoonlijk terug.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SOCIAL PROOF BAR
+  ═══════════════════════════════════════════════════ -->
+  <div class="proof-bar" aria-label="Statistieken">
+    <div class="proof-bar-inner">
+      <div class="proof-item">
+        <strong>500+</strong>
+        <span>Tevreden klanten</span>
+      </div>
+      <div class="proof-item">
+        <strong>&#9733; 4.9</strong>
+        <span>Google-score</span>
+      </div>
+      <div class="proof-item">
+        <strong>10 jr</strong>
+        <span>Actief in Nijmegen</span>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- LEAD FORM -->
-  <section class="form-section" id="aanvragen">
-    <h2>Claim jouw <em>gratis</em> wasbeurt</h2>
-    <p>Laat je gegevens achter. Ik bel je persoonlijk op om een moment af te spreken.</p>
+  <!-- ═══════════════════════════════════════════════════
+       FORMULIER
+  ═══════════════════════════════════════════════════ -->
+  <section class="form-section" id="aanvragen" aria-labelledby="form-heading">
+    <h2 id="form-heading">Claim jouw <em>gratis</em> wasbeurt</h2>
+    <p class="form-intro-text">Laat je gegevens achter. Ik bel je persoonlijk terug om een moment af te spreken.</p>
 
-    <div class="lead-form-box">
-      <h3>Ja, ik wil gratis schone ramen</h3>
-      <p class="form-intro">Geen verplichtingen &middot; Ik bel je terug &middot; Binnen 24 uur</p>
-      <form id="leadForm">
-        <div class="form-group"><input type="text"  name="naam"     placeholder="Jouw naam"      required autocomplete="name" /></div>
-        <div class="form-group"><input type="tel"   name="telefoon" placeholder="Telefoonnummer" required autocomplete="tel" /></div>
-        <div class="form-group"><input type="email" name="email"    placeholder="E-mailadres"    required autocomplete="email" /></div>
+    <div class="form-box">
+      <div class="form-box-tag">&#10003; 100% gratis &mdash; zonder verplichtingen</div>
+      <h3>Ja, ik wil schone ramen</h3>
+      <p class="form-desc">Ik neem contact op om een afspraak in te plannen. Geen gedoe, geen verkooppraatje.</p>
+
+      <form id="leadForm" novalidate>
+        <div class="form-group">
+          <input type="text" name="naam" id="naam" placeholder="Jouw naam" required autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <input type="tel" name="telefoon" id="telefoon" placeholder="Telefoonnummer" required autocomplete="tel" />
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" id="email" placeholder="E-mailadres" required autocomplete="email" />
+        </div>
         <button type="submit" class="submit-btn" id="submitBtn">&#127873; Claim mijn gratis wasbeurt &rarr;</button>
-        <p class="form-fine">Geen spam. Alleen gebruikt om contact op te nemen.</p>
+        <div class="form-fine">
+          <span class="check">Geen spam</span>
+          <span class="check">Binnen 24 uur contact</span>
+          <span class="check">Geen verplichtingen</span>
+        </div>
       </form>
+
       <div class="success-box" id="successBox">
-        <div class="icon">&#127881;</div>
+        <span class="success-icon">&#127881;</span>
         <h3>Gelukt! Ik neem snel contact op.</h3>
-        <p>Je hoort binnen 24 uur van mij om een moment af te spreken. Tot snel!</p>
+        <p>Je hoort binnen 24 uur van mij om een moment af te spreken.<br>Tot snel in Nijmegen!</p>
       </div>
     </div>
   </section>
 
-  <!-- STAPPEN -->
-  <div class="light">
-    <section class="section">
+  <!-- ═══════════════════════════════════════════════════
+       STAPPEN
+  ═══════════════════════════════════════════════════ -->
+  <section class="steps-section" aria-labelledby="steps-heading">
+    <div class="steps-inner">
       <span class="section-label">Hoe het werkt</span>
-      <h2 class="section-title">In drie stappen naar<br><em>stralende ramen.</em></h2>
-      <div class="model-steps">
-        <div class="model-step">
-          <div class="icon">&#128203;</div>
-          <h4>Stap 1 &mdash; Jij laat je gegevens achter</h4>
-          <p>Ik bel je terug en we plannen samen een moment in dat jou uitkomt.</p>
+      <h2 class="section-title" id="steps-heading">In drie stappen naar <em>stralende ramen.</em></h2>
+      <div class="lp-steps">
+        <div class="lp-step">
+          <span class="step-icon">&#128203;</span>
+          <span class="step-num-label">Stap 1</span>
+          <h4>Jij laat je gegevens achter</h4>
+          <p>Ik bel je terug en we plannen samen een moment in dat jou uitkomt. Geen gedoe.</p>
         </div>
-        <div class="model-step">
-          <div class="icon">&#128222;</div>
-          <h4>Stap 2 &mdash; Ik neem contact op</h4>
-          <p>Kort telefonisch afstemmen: wanneer kom ik langs, wat zijn de wensen, wat kun je verwachten.</p>
+        <div class="lp-step">
+          <span class="step-icon">&#128222;</span>
+          <span class="step-num-label">Stap 2</span>
+          <h4>Ik neem contact op</h4>
+          <p>Korte afstemming: wanneer kom ik langs, hoe ziet jouw woning eruit, wat zijn de wensen.</p>
         </div>
-        <div class="model-step">
-          <div class="icon">&#129309;</div>
-          <h4>Stap 3 &mdash; Ik kom langs</h4>
-          <p>We maken even kennis, ik kijk de situatie door en ga direct aan de slag. De eerste beurt is gratis.</p>
+        <div class="lp-step">
+          <span class="step-icon">&#128293;</span>
+          <span class="step-num-label">Stap 3</span>
+          <h4>Ik kom langs</h4>
+          <p>We maken kennis, ik lap de ramen en kozijnen. De eerste beurt is volledig gratis.</p>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
-  <!-- BEZWAREN / FAQ -->
-  <div class="dark">
-    <section class="section">
+  <!-- ═══════════════════════════════════════════════════
+       FAQ
+  ═══════════════════════════════════════════════════ -->
+  <section class="faq-section" aria-labelledby="faq-heading">
+    <div class="faq-inner">
       <span class="section-label">Veelgestelde vragen</span>
-      <h2 class="section-title">Eerlijk antwoord op<br>de meest gestelde vragen</h2>
+      <h2 class="section-title" id="faq-heading">Eerlijk antwoord op<br>de meest gestelde vragen</h2>
 
-      <div class="objection" id="obj0">
-        <div class="objection-q" onclick="toggleObj('obj0')">
-          <span>&#8220;Waarom is de eerste wasbeurt gratis?&#8221;</span>
-          <span class="arrow">&#9660;</span>
-        </div>
-        <div class="objection-body"><div class="objection-inner">
-          <p style="font-size:0.93rem;line-height:1.75;color:rgba(255,255,255,0.75);font-weight:300;">
-            Ik begrijp dat je iemand niet zomaar vertrouwt met je huis. Een glazenwasser die je niet kent, die zomaar langskomt &mdash; dat voelt onbekend. <strong style="color:#fff;">Daarom vraag ik je niets te betalen voor de eerste keer.</strong><br><br>
-            Ik kom langs, lap de ramen, en laat het resultaat voor zichzelf spreken. Geen verplichtingen achteraf. Je beslist daarna zelf of je verder wilt.<br><br>
-            <span style="color:rgba(255,255,255,0.4);font-style:italic;">&mdash; Lappers</span>
-          </p>
-        </div></div>
-      </div>
+      <div class="faq-list">
 
-      <div class="objection" id="obj1">
-        <div class="objection-q" onclick="toggleObj('obj1')">
-          <span>&#8220;Is die gratis beurt echt gratis, of zit er iets aan vast?&#8221;</span>
-          <span class="arrow">&#9660;</span>
-        </div>
-        <div class="objection-body"><div class="objection-inner">
-          <div class="obj-row">
-            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ik moet daarna wel een abonnement nemen, anders telt het niet.</div>
-            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>De eerste beurt is &eacute;cht gratis, zonder voorwaarden. Ik kom langs, lap de ramen, en daarna beslis jij. Geen abonnementsverplichting.</div>
+        <div class="faq-item" id="faq0">
+          <button class="faq-q" onclick="toggleFaq('faq0')" aria-expanded="false">
+            <span>&#8220;Waarom is de eerste wasbeurt gratis?&#8221;</span>
+            <span class="faq-arrow">&#9660;</span>
+          </button>
+          <div class="faq-body">
+            <div class="faq-inner-content">
+              <p class="faq-text">Ik begrijp dat je iemand niet zomaar vertrouwt met je huis. Dus vraag ik je niets te betalen voor de eerste keer. <strong style="color:#fff;">Ik kom langs, lap de ramen, en laat het resultaat voor zichzelf spreken.</strong><br><br>Geen verplichtingen achteraf. Jij beslist zelf of je verder wilt.<br><br><span style="color:rgba(255,255,255,.4);font-style:italic;">&mdash; Lappers</span></p>
+            </div>
           </div>
-          <p class="obj-proof">&#128172; "Ik verwachtte een verkooppraatje, maar dat was er niet. Hij deed gewoon zijn werk en liet het resultaat spreken." &mdash; Sandra, Nijmegen</p>
-        </div></div>
-      </div>
-
-      <div class="objection" id="obj2">
-        <div class="objection-q" onclick="toggleObj('obj2')">
-          <span>&#8220;Moet ik thuis zijn als je langskomt?&#8221;</span>
-          <span class="arrow">&#9660;</span>
         </div>
-        <div class="objection-body"><div class="objection-inner">
-          <div class="obj-row">
-            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ik moet een halve dag thuisblijven of vrij nemen. Dat is te veel gedoe.</div>
-            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>Voor de eerste kennismaking ben ik blij als je er even bij bent. Ik loop samen met je langs de ramen, kijk de situatie door en leg uit wat ik ga doen. Dat duurt maar 10 minuten &mdash; daarna kun je gewoon verder met je dag.</div>
-          </div>
-          <p class="obj-proof">&#128172; "Ik dacht dat ik de hele ochtend moest thuisblijven, maar hij was binnen twintig minuten klaar." &mdash; Mark, Beuningen</p>
-        </div></div>
-      </div>
 
-      <div class="objection" id="obj3">
-        <div class="objection-q" onclick="toggleObj('obj3')">
-          <span>&#8220;Glazenwassers laten altijd strepen achter&#8221;</span>
-          <span class="arrow">&#9660;</span>
+        <div class="faq-item" id="faq1">
+          <button class="faq-q" onclick="toggleFaq('faq1')" aria-expanded="false">
+            <span>&#8220;Is die gratis beurt echt gratis, of zit er iets aan vast?&#8221;</span>
+            <span class="faq-arrow">&#9660;</span>
+          </button>
+          <div class="faq-body">
+            <div class="faq-inner-content">
+              <div class="myth-vs-fact">
+                <div class="mvf-box myth"><strong>Wat mensen denken</strong>Ik moet daarna een abonnement nemen, anders telt het niet.</div>
+                <div class="mvf-box fact"><strong>Hoe het echt zit</strong>De eerste beurt is &eacute;cht gratis, zonder voorwaarden. Daarna beslis jij.</div>
+              </div>
+              <p class="faq-quote">Ik verwachtte een verkooppraatje, maar dat was er niet. Hij deed gewoon zijn werk. &mdash; Sandra, Nijmegen</p>
+            </div>
+          </div>
         </div>
-        <div class="objection-body"><div class="objection-inner">
-          <div class="obj-row">
-            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ik heb het eerder geprobeerd en het viel tegen. Strepen, vegen, niet echt schoon.</div>
-            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>Met professioneel materiaal en de juiste werkwijze zijn strepen te vermijden. Ik doe geen haastwerk &mdash; kwaliteit gaat voor snelheid.</div>
-          </div>
-          <p class="obj-proof">&#128172; "Geen enkel streepje. Ik was sceptisch, maar dit is &eacute;cht een andere wereld." &mdash; Anita, Wijchen</p>
-        </div></div>
-      </div>
 
-      <div class="objection" id="obj4">
-        <div class="objection-q" onclick="toggleObj('obj4')">
-          <span>&#8220;Wat kost het daarna als ik verder wil?&#8221;</span>
-          <span class="arrow">&#9660;</span>
+        <div class="faq-item" id="faq2">
+          <button class="faq-q" onclick="toggleFaq('faq2')" aria-expanded="false">
+            <span>&#8220;Moet ik thuis zijn als je langskomt?&#8221;</span>
+            <span class="faq-arrow">&#9660;</span>
+          </button>
+          <div class="faq-body">
+            <div class="faq-inner-content">
+              <div class="myth-vs-fact">
+                <div class="mvf-box myth"><strong>Wat mensen denken</strong>Ik moet een halve dag thuisblijven of vrij nemen.</div>
+                <div class="mvf-box fact"><strong>Hoe het echt zit</strong>Voor de eerste kennismaking ben ik blij als je er even bij bent. Dat duurt 10 minuten &mdash; daarna kun je gewoon verder.</div>
+              </div>
+              <p class="faq-quote">Ik dacht dat ik de hele ochtend moest thuisblijven, maar hij was binnen twintig minuten klaar. &mdash; Mark, Beuningen</p>
+            </div>
+          </div>
         </div>
-        <div class="objection-body"><div class="objection-inner">
-          <div class="obj-row">
-            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ze vragen vast veel meer dan ik denk, met verborgen extra&rsquo;s.</div>
-            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>Tijdens het eerste bezoek leg ik alles eerlijk uit &mdash; prijs, mogelijkheden, frequentie. Geen verrassingen achteraf. Jij beslist.</div>
-          </div>
-          <p class="obj-proof">&#128172; "Prijs precies zoals afgesproken. Geen gedoe, geen extra rekening." &mdash; Peter, Groesbeek</p>
-        </div></div>
-      </div>
 
-      <div class="objection" id="obj5">
-        <div class="objection-q" onclick="toggleObj('obj5')">
-          <span>&#8220;Werkt dit ook voor mijn type woning?&#8221;</span>
-          <span class="arrow">&#9660;</span>
+        <div class="faq-item" id="faq3">
+          <button class="faq-q" onclick="toggleFaq('faq3')" aria-expanded="false">
+            <span>&#8220;Glazenwassers laten altijd strepen achter&#8221;</span>
+            <span class="faq-arrow">&#9660;</span>
+          </button>
+          <div class="faq-body">
+            <div class="faq-inner-content">
+              <div class="myth-vs-fact">
+                <div class="mvf-box myth"><strong>Ervaring</strong>Eerder geprobeerd en het viel tegen. Strepen, vegen, niet echt schoon.</div>
+                <div class="mvf-box fact"><strong>Hoe het echt zit</strong>Met professioneel materiaal en de juiste techniek zijn strepen te vermijden. Kwaliteit gaat voor snelheid.</div>
+              </div>
+              <p class="faq-quote">Geen enkel streepje. Ik was sceptisch, maar dit is echt een andere wereld. &mdash; Anita, Wijchen</p>
+            </div>
+          </div>
         </div>
-        <div class="objection-body"><div class="objection-inner">
-          <div class="obj-row">
-            <div class="obj-box obj-wrong"><strong>Wat mensen denken</strong>Ik heb een appartement, dakkapel of moeilijk bereikbare ramen &mdash; dat lukt vast niet.</div>
-            <div class="obj-box obj-right"><strong>Hoe het echt zit</strong>Rijtjeswoning, vrijstaand, appartement &mdash; ik werk voor alle woningtypes in Nijmegen en omstreken. Twijfel je? Gewoon even bellen.</div>
-          </div>
-          <p class="obj-proof">&#128172; "Ik had een dakkapel waarvan ik dacht dat niemand dat aankon. Geen probleem voor Lappers." &mdash; Roos, Malden</p>
-        </div></div>
-      </div>
-    </section>
-  </div>
 
-  <!-- REVIEWS -->
-  <div class="light">
-    <section class="section">
-      <span class="section-label">Wat klanten zeggen</span>
-      <h2 class="section-title">Nijmegen over <em>Lappers</em></h2>
+        <div class="faq-item" id="faq4">
+          <button class="faq-q" onclick="toggleFaq('faq4')" aria-expanded="false">
+            <span>&#8220;Wat kost het daarna als ik verder wil?&#8221;</span>
+            <span class="faq-arrow">&#9660;</span>
+          </button>
+          <div class="faq-body">
+            <div class="faq-inner-content">
+              <div class="myth-vs-fact">
+                <div class="mvf-box myth"><strong>Wat mensen denken</strong>Ze vragen vast veel meer dan verwacht, met verborgen extra&rsquo;s.</div>
+                <div class="mvf-box fact"><strong>Hoe het echt zit</strong>Tijdens het eerste bezoek leg ik alles eerlijk uit &mdash; prijs, mogelijkheden, frequentie. Jij beslist.</div>
+              </div>
+              <p class="faq-quote">Prijs precies zoals afgesproken. Geen gedoe, geen extra rekening. &mdash; Peter, Groesbeek</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq5">
+          <button class="faq-q" onclick="toggleFaq('faq5')" aria-expanded="false">
+            <span>&#8220;Werkt dit ook voor mijn type woning?&#8221;</span>
+            <span class="faq-arrow">&#9660;</span>
+          </button>
+          <div class="faq-body">
+            <div class="faq-inner-content">
+              <div class="myth-vs-fact">
+                <div class="mvf-box myth"><strong>Wat mensen denken</strong>Ik heb een appartement of dakkapel &mdash; dat lukt vast niet.</div>
+                <div class="mvf-box fact"><strong>Hoe het echt zit</strong>Rijtjeswoning, vrijstaand, appartement &mdash; ik werk voor alle woningtypes. Twijfel je? Gewoon even bellen.</div>
+              </div>
+              <p class="faq-quote">Ik had een dakkapel waarvan ik dacht dat niemand dat aankon. Geen probleem voor Lappers. &mdash; Roos, Malden</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       REVIEWS
+  ═══════════════════════════════════════════════════ -->
+  <section class="reviews-section" aria-labelledby="reviews-heading">
+    <div class="reviews-inner">
+      <span class="section-label">Beoordelingen</span>
+      <h2 class="section-title" id="reviews-heading">Nijmegen over <em>Lappers</em></h2>
       <div class="reviews-grid">
-        <div class="review-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>&#8220;Eindelijk een glazenwasser die ook echt de kozijnen meeneemt. Huis ziet er compleet anders uit.&#8221;</p>
-          <div class="reviewer">Sandra V.<span>Nijmegen &mdash; vaste klant</span></div>
+        <div class="rv-card">
+          <div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rv-text">Via de gratis wasbeurt begonnen en nooit meer weggegaan. Betrouwbaar, punctueel, kraakhelder resultaat.</p>
+          <div class="rv-author">
+            <div class="rv-avatar">M</div>
+            <div>
+              <span class="rv-name">Mark de B.</span>
+              <span class="rv-city">Beuningen &mdash; abonnement</span>
+            </div>
+          </div>
         </div>
-        <div class="review-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>&#8220;Via de gratis wasbeurt begonnen en nooit meer weggegaan. Betrouwbaar, punctueel, kraakhelder resultaat.&#8221;</p>
-          <div class="reviewer">Mark de B.<span>Beuningen &mdash; abonnement</span></div>
+        <div class="rv-card">
+          <div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rv-text">Eindelijk een glazenwasser die ook echt de kozijnen meeneemt. Huis ziet er compleet anders uit.</p>
+          <div class="rv-author">
+            <div class="rv-avatar">S</div>
+            <div>
+              <span class="rv-name">Sandra V.</span>
+              <span class="rv-city">Nijmegen &mdash; vaste klant</span>
+            </div>
+          </div>
         </div>
-        <div class="review-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>&#8220;Geen gedoe, geen strepen, geen verrassingen. Gewoon wat er beloofd wordt. Dat is zeldzaam.&#8221;</p>
-          <div class="reviewer">Anita K.<span>Wijchen &mdash; vaste klant</span></div>
+        <div class="rv-card">
+          <div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rv-text">Geen gedoe, geen strepen, geen verrassingen. Gewoon wat er beloofd wordt. Dat is zeldzaam.</p>
+          <div class="rv-author">
+            <div class="rv-avatar">A</div>
+            <div>
+              <span class="rv-name">Anita K.</span>
+              <span class="rv-city">Wijchen &mdash; vaste klant</span>
+            </div>
+          </div>
         </div>
-        <div class="review-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>&#8220;Hij weet wanneer hij komt, doet zijn werk en het ziet er altijd perfect uit. Ideaal.&#8221;</p>
-          <div class="reviewer">Peter L.<span>Groesbeek &mdash; abonnement</span></div>
+        <div class="rv-card">
+          <div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rv-text">Hij weet wanneer hij komt, doet zijn werk en het ziet er altijd perfect uit. Ideaal.</p>
+          <div class="rv-author">
+            <div class="rv-avatar">P</div>
+            <div>
+              <span class="rv-name">Peter L.</span>
+              <span class="rv-city">Groesbeek &mdash; abonnement</span>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
+  <!-- ═══════════════════════════════════════════════════
+       FINAL CTA
+  ═══════════════════════════════════════════════════ -->
+  <section class="final-cta" aria-labelledby="finalcta-heading">
+    <div class="final-cta-inner">
+      <h2 id="finalcta-heading">Nog twijfels?<br>Probeer het gewoon. Het is <em>gratis.</em></h2>
+      <a href="#aanvragen" class="btn-big">&#127873; Claim mijn gratis wasbeurt &rarr;</a>
+      <p>Geen verplichtingen &middot; Binnen 24 uur reactie &middot; Streeploos of je geld terug</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════ -->
   <footer>
-    <a href="/" style="font-size:1.1rem;color:rgba(255,255,255,0.7);font-family:'Fraunces',serif;font-weight:900;">Lap<span style="color:#a8d8f8;">pers</span></a>
+    <a href="/" class="footer-logo">Lap<span>pers</span></a>
     <span>Glazenwasser Nijmegen &amp; omstreken</span>
     <a href="tel:+31629010630">06 290 106 30</a>
   </footer>
 
-  <!-- COOKIE BANNER -->
-  <div class="cookie-banner" id="cookieBanner">
-    <p>Wij gebruiken cookies om de website te laten functioneren en bezoekersstatistieken te verzamelen.</p>
-    <div class="cookie-banner-actions">
-      <button class="cookie-btn cookie-btn-decline" onclick="cookieChoice(false)">Alleen noodzakelijk</button>
-      <button class="cookie-btn cookie-btn-accept"  onclick="cookieChoice(true)">Accepteren</button>
+  <!-- Cookie banner -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog">
+    <p>Wij gebruiken cookies om de website te laten functioneren en bezoekersstatistieken bij te houden.</p>
+    <div class="cookie-actions">
+      <button class="ck-btn ck-decline" onclick="cookieChoice(false)">Alleen noodzakelijk</button>
+      <button class="ck-btn ck-accept" onclick="cookieChoice(true)">Accepteren</button>
     </div>
   </div>
 
   <script>
-    /* ── OBJECTION ACCORDION ── */
-    function toggleObj(id) {
-      document.getElementById(id).classList.toggle('open');
+    /* ── FAQ accordion ── */
+    function toggleFaq(id) {
+      var item = document.getElementById(id);
+      var btn  = item.querySelector('.faq-q');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function (el) {
+        el.classList.remove('open');
+        el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     }
 
-    /* ── CANVAS VSL ANIMATION ── */
-    var canvas    = document.getElementById('vslCanvas');
-    var ctx       = canvas.getContext('2d');
-    var animFrame, t = 0, startTime = null;
-    var particles = [];
+    /* ── Canvas VSL animation ── */
+    var canvas = document.getElementById('vslCanvas');
+    var ctx    = canvas.getContext('2d');
+    var t = 0, startTime = null, animFrame, particles = [];
 
     function initParticles() {
       particles = [];
-      var W = canvas.width  / (window.devicePixelRatio || 1);
+      var W = canvas.width / (window.devicePixelRatio || 1);
       var H = canvas.height / (window.devicePixelRatio || 1);
-      for (var i = 0; i < 28; i++) {
+      for (var i = 0; i < 32; i++) {
         particles.push({
-          x:  Math.random() * W,
-          y:  Math.random() * H,
-          vx: (Math.random() - 0.5) * 0.18,
-          vy: (Math.random() - 0.5) * 0.18,
-          r:  Math.random() * 1.4 + 0.3,
-          a:  Math.random() * 0.35 + 0.08
+          x: Math.random() * W, y: Math.random() * H,
+          vx: (Math.random() - .5) * .18, vy: (Math.random() - .5) * .18,
+          r: Math.random() * 1.4 + .3, a: Math.random() * .35 + .06
         });
       }
     }
@@ -529,30 +1244,30 @@
 
     function drawFrame() {
       var dpr = window.devicePixelRatio || 1;
-      var W   = canvas.width  / dpr;
-      var H   = canvas.height / dpr;
+      var W = canvas.width / dpr;
+      var H = canvas.height / dpr;
 
-      /* Background */
+      /* Background gradient */
       var bg = ctx.createLinearGradient(0, 0, W, H);
-      bg.addColorStop(0, '#050a14');
-      bg.addColorStop(1, '#0a1628');
+      bg.addColorStop(0, '#040c18');
+      bg.addColorStop(1, '#081424');
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, W, H);
 
-      /* Orb 1 — blue */
-      var o1x = W * (0.28 + 0.07 * Math.sin(t * 0.30));
-      var o1y = H * (0.40 + 0.05 * Math.cos(t * 0.38));
-      var g1  = ctx.createRadialGradient(o1x, o1y, 0, o1x, o1y, W * 0.52);
-      g1.addColorStop(0, 'rgba(26,111,181,0.22)');
+      /* Blue orb */
+      var o1x = W * (.28 + .07 * Math.sin(t * .3));
+      var o1y = H * (.4 + .05 * Math.cos(t * .38));
+      var g1  = ctx.createRadialGradient(o1x, o1y, 0, o1x, o1y, W * .55);
+      g1.addColorStop(0, 'rgba(26,111,181,.22)');
       g1.addColorStop(1, 'transparent');
       ctx.fillStyle = g1;
       ctx.fillRect(0, 0, W, H);
 
-      /* Orb 2 — gold */
-      var o2x = W * (0.76 + 0.05 * Math.cos(t * 0.33));
-      var o2y = H * (0.62 + 0.05 * Math.sin(t * 0.28));
-      var g2  = ctx.createRadialGradient(o2x, o2y, 0, o2x, o2y, W * 0.42);
-      g2.addColorStop(0, 'rgba(249,200,74,0.16)');
+      /* Gold orb */
+      var o2x = W * (.76 + .05 * Math.cos(t * .33));
+      var o2y = H * (.62 + .05 * Math.sin(t * .28));
+      var g2  = ctx.createRadialGradient(o2x, o2y, 0, o2x, o2y, W * .4);
+      g2.addColorStop(0, 'rgba(249,200,74,.18)');
       g2.addColorStop(1, 'transparent');
       ctx.fillStyle = g2;
       ctx.fillRect(0, 0, W, H);
@@ -569,59 +1284,54 @@
         ctx.fill();
       }
 
-      /* Text — centered */
-      var cx     = W / 2;
-      var cy     = H / 2;
-      var pulse  = 1 + 0.014 * Math.sin(t * 1.4);
-      var fScale = Math.min(1, W / 600);
+      /* Center text */
+      var cx = W / 2, cy = H / 2;
+      var pulse = 1 + .013 * Math.sin(t * 1.4);
+      var fScale = Math.min(1, W / 640);
 
       ctx.save();
       ctx.translate(cx, cy);
       ctx.scale(pulse, pulse);
       ctx.textAlign = 'center';
 
-      /* Label */
-      ctx.font      = '600 ' + Math.max(11, 13 * fScale) + 'px "DM Sans", sans-serif';
-      ctx.fillStyle = 'rgba(168,216,248,0.85)';
-      ctx.fillText('GRATIS WASBEURT', 0, -H * 0.18);
+      ctx.font = '700 ' + Math.max(10, 12 * fScale) + 'px "DM Sans", sans-serif';
+      ctx.fillStyle = 'rgba(168,216,248,.8)';
+      ctx.fillText('GRATIS WASBEURT', 0, -H * .2);
 
-      /* Headline */
-      ctx.font      = '900 ' + Math.max(22, 50 * fScale) + 'px "Fraunces", serif';
+      ctx.font = '900 ' + Math.max(20, 52 * fScale) + 'px "Fraunces", serif';
       ctx.fillStyle = '#ffffff';
-      ctx.fillText('Claim hieronder', 0, -H * 0.04);
+      ctx.fillText('Lappers', 0, -H * .04);
 
-      /* Yellow rule */
-      var lw = Math.min(260, W * 0.38);
-      ctx.fillStyle = 'rgba(249,200,74,0.9)';
-      ctx.fillRect(-lw / 2, H * 0.02, lw, 3);
+      var lw = Math.min(200, W * .32);
+      ctx.fillStyle = 'rgba(249,200,74,.9)';
+      ctx.fillRect(-lw / 2, H * .02, lw, 3);
 
-      /* Sub-line */
-      ctx.font      = '300 ' + Math.max(14, 24 * fScale) + 'px "DM Sans", sans-serif';
-      ctx.fillStyle = 'rgba(255,255,255,0.82)';
-      ctx.fillText('je gratis wasbeurt.', 0, H * 0.10);
+      ctx.font = '300 ' + Math.max(13, 22 * fScale) + 'px "DM Sans", sans-serif';
+      ctx.fillStyle = 'rgba(255,255,255,.78)';
+      ctx.fillText('Nijmegen en omstreken', 0, H * .1);
 
       ctx.restore();
 
-      /* Down arrow with bounce */
-      var arrY   = H - 56 + Math.sin(t * 2) * 5;
-      ctx.strokeStyle = '#f9c84a';
+      /* Bouncing arrow */
+      var arrY = H - 52 + Math.sin(t * 2) * 5;
+      ctx.strokeStyle = 'rgba(249,200,74,.75)';
       ctx.lineWidth   = 2.5;
       ctx.lineCap     = 'round';
       ctx.lineJoin    = 'round';
       ctx.beginPath();
-      ctx.moveTo(cx - 12, arrY - 6);
-      ctx.lineTo(cx,      arrY + 4);
-      ctx.lineTo(cx + 12, arrY - 6);
+      ctx.moveTo(cx - 11, arrY - 5);
+      ctx.lineTo(cx, arrY + 5);
+      ctx.lineTo(cx + 11, arrY - 5);
       ctx.stroke();
 
       /* Watermark */
-      ctx.font      = '900 ' + Math.max(11, 13 * fScale) + 'px "Fraunces", serif';
+      ctx.font      = '900 ' + Math.max(10, 12 * fScale) + 'px "Fraunces", serif';
       ctx.textAlign = 'left';
-      ctx.fillStyle = 'rgba(255,255,255,0.45)';
-      ctx.fillText('Lap', 20, H - 16);
+      ctx.fillStyle = 'rgba(255,255,255,.4)';
+      ctx.fillText('Lap', 18, H - 14);
       var lw2 = ctx.measureText('Lap').width;
-      ctx.fillStyle = 'rgba(168,216,248,0.65)';
-      ctx.fillText('pers', 20 + lw2, H - 16);
+      ctx.fillStyle = 'rgba(168,216,248,.6)';
+      ctx.fillText('pers', 18 + lw2, H - 14);
     }
 
     function animate(ts) {
@@ -631,81 +1341,74 @@
       animFrame = requestAnimationFrame(animate);
     }
 
-    function startVSL() {
-      document.getElementById('playOverlay').classList.add('hidden');
-      startTime = null;
-      animFrame = requestAnimationFrame(animate);
-    }
-
     window.addEventListener('resize', function () { resizeCanvas(); drawFrame(); });
     resizeCanvas();
-    /* Animate directly — no play needed for placeholder */
-    document.getElementById('playOverlay').classList.add('hidden');
     animFrame = requestAnimationFrame(animate);
 
-    /* ── LEAD FORM ── */
-    document.getElementById('leadForm').addEventListener('submit', function (e) {
+    /* VSL click to scroll to form */
+    document.getElementById('vslWrapper').addEventListener('click', function () {
+      document.getElementById('aanvragen').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    /* ── Lead form ── */
+    var leadForm = document.getElementById('leadForm');
+    leadForm.addEventListener('submit', function (e) {
       e.preventDefault();
+      var naam    = leadForm.querySelector('[name="naam"]');
+      var tel     = leadForm.querySelector('[name="telefoon"]');
+      var email   = leadForm.querySelector('[name="email"]');
+      var valid   = true;
 
-      var form    = this;
-      var btn     = document.getElementById('submitBtn');
-      var naam    = form.querySelector('[name="naam"]').value.trim();
-      var tel     = form.querySelector('[name="telefoon"]').value.trim();
-      var email   = form.querySelector('[name="email"]').value.trim();
+      [naam, tel, email].forEach(function (f) { f.classList.remove('error'); });
+      if (!naam.value.trim() || naam.value.trim().length < 2) { naam.classList.add('error'); valid = false; }
+      if (!tel.value.trim() || tel.value.replace(/\s/g,'').length < 9) { tel.classList.add('error'); valid = false; }
+      if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email.classList.add('error'); valid = false; }
+      if (!valid) return;
 
+      var btn = document.getElementById('submitBtn');
       btn.textContent = 'Versturen…';
       btn.disabled    = true;
 
-      /* CallMeBot WhatsApp — activeer via: stuur "I allow callmebot to send me messages"
-         naar +34 644 82 35 55 op WhatsApp, vervang YOUR_API_KEY door je eigen sleutel */
+      /* WhatsApp notificatie via CallMeBot (vul je eigen API-sleutel in) */
       var apiKey = 'YOUR_API_KEY';
-      var msg    = encodeURIComponent(
-        '🔔 NIEUWE LEAD — Lappers\n\n' +
-        '👤 ' + naam  + '\n' +
-        '📞 ' + tel   + '\n' +
-        '📧 ' + email + '\n\n' +
-        'Bron: gratis wasbeurt aanvraag'
-      );
+      var msg    = encodeURIComponent('🔔 NIEUWE LEAD — Lappers\n👤 ' + naam.value.trim() + '\n📞 ' + tel.value.trim() + '\n📧 ' + email.value.trim() + '\nBron: gratis-wasbeurt.html');
       fetch('https://api.callmebot.com/whatsapp.php?phone=31629010630&text=' + msg + '&apikey=' + apiKey, { mode: 'no-cors' }).catch(function () {});
 
-      /* Formspree */
+      /* Formspree submit */
       fetch('https://formspree.io/f/mzdwpyqb', {
-        method:  'POST',
+        method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ naam: naam, telefoon: tel, email: email, bron: 'gratis-wasbeurt' })
+        body: JSON.stringify({ naam: naam.value.trim(), telefoon: tel.value.trim(), email: email.value.trim(), bron: 'gratis-wasbeurt' })
       })
       .then(function (res) {
         if (res.ok) {
-          form.style.display = 'none';
+          leadForm.style.display = 'none';
           document.getElementById('successBox').style.display = 'block';
         } else {
-          btn.disabled    = false;
+          btn.disabled = false;
           btn.textContent = '🎁 Claim mijn gratis wasbeurt →';
-          alert('Er ging iets mis. Probeer het opnieuw of bel direct: 06 290 106 30');
         }
       })
       .catch(function () {
-        btn.disabled    = false;
+        btn.disabled = false;
         btn.textContent = '🎁 Claim mijn gratis wasbeurt →';
-        alert('Er ging iets mis. Probeer het opnieuw of bel direct: 06 290 106 30');
       });
     });
 
-    /* ── COOKIE BANNER ── */
-    (function () {
-      try {
-        if (!localStorage.getItem('cookieChoice')) {
-          setTimeout(function () {
-            document.getElementById('cookieBanner').classList.add('show');
-          }, 1200);
-        }
-      } catch (e) {}
-    })();
+    leadForm.querySelectorAll('input').forEach(function (el) {
+      el.addEventListener('input', function () { el.classList.remove('error'); });
+    });
 
-    function cookieChoice(accepted) {
+    /* ── Cookie ── */
+    window.cookieChoice = function (accepted) {
       try { localStorage.setItem('cookieChoice', accepted ? 'accepted' : 'declined'); } catch (e) {}
       document.getElementById('cookieBanner').classList.remove('show');
-    }
+    };
+    try {
+      if (!localStorage.getItem('cookieChoice')) {
+        setTimeout(function () { document.getElementById('cookieBanner').classList.add('show'); }, 1500);
+      }
+    } catch (e) {}
   </script>
 
 </body>
